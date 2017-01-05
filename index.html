@@ -3,17 +3,33 @@
     <head>
         <meta charset="utf-8">
         <title>Codeground</title>
-        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="container">
-            <div class="editors">
+            <div class="editors half">
+                <div id="html" class="editor">
+                    <h2>HTML</h2>
+                    <textarea name="html"cols="5"></textarea>
+                </div>
+                <div id="css" class="editor">
+                    <h2>CSS</h2>
+                    <textarea name="css"cols="5"></textarea>
+                </div>
+                <div id="js" class="editor">
+                    <h2>Javascript</h2>
+                    <textarea name="js"cols="5"></textarea>
+                </div>
+
 
             </div>
-            <div class="output">
+            <div class="output half">
+                <iframe></iframe>
+            </div>
+            <div class="clear">
 
             </div>
         </div>
-        <script src="/script.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>
