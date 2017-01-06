@@ -47,6 +47,10 @@ body, html {
     -webkit-box-sizing: border-box;
     border: none;
     resize: none;
+    padding: 10px;
+}
+.editor textarea:focus {
+    outline: none;
 }
 .output iframe {
     width: 100%;
