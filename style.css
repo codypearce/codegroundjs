@@ -45,6 +45,8 @@ body, html {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    border: none;
+    resize: none;
 }
 .output iframe {
     width: 100%;
