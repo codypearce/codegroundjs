@@ -48,3 +48,30 @@ var render = function() {
     iframe_doc.write(source);
     iframe_doc.close();
 };
+
+
+// EDITORS
+
+// CM OPTIONS
+var codeMirrorOptions = {
+    mode: 'text/html',
+    gutter: true,
+    lineNumbers: true,
+
+    onChange: function (instance, changes) {
+        render();
+    }
+};
+
+// HTML EDITOR
+var htmlTextArea = document.querySelector('#html textarea');
+var htmlEditor = CodeMirror.fromTextArea(htmlTextArea, codeMirrorOptions);
+
+codeMirrorOptions.mode = 'css';
+var cssTextArea = document.querySelector('#css textarea');
+var cssEditor = CodeMirror.fromTextArea(cssTextArea, codeMirrorOptions);
+
+
+codeMirrorOptions.mode = 'javascript';
+var jsTextArea = document.querySelector('#js textarea');
+var jsEditor = CodeMirror.fromTextArea(jsTextArea, codeMirrorOptions);
