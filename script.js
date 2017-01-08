@@ -49,10 +49,13 @@ var render = function() {
     iframe_doc.close();
 };
 
-var preset = function(prestHTML, presetCSS, presetJS) {
-    htmlEditor.value += prestHTML;
-    cssEditor.value += presetCSS;
-    jsEditor.value += presetJS;
+var preset = function(presetHTML, presetCSS, presetJS) {
+    if(presetHTML)
+        htmlEditor.value += presetHTML;
+    if(presetCSS)
+        cssEditor.value += presetCSS;
+    if(presetJS)
+        jsEditor.value += presetJS;
     render();
 }
-preset('<h1>test</h1>');
+preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
