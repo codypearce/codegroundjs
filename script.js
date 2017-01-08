@@ -48,3 +48,11 @@ var render = function() {
     iframe_doc.write(source);
     iframe_doc.close();
 };
+
+var preset = function(prestHTML, presetCSS, presetJS) {
+    htmlEditor.value += prestHTML;
+    cssEditor.value += presetCSS;
+    jsEditor.value += presetJS;
+    render();
+}
+preset('<h1>test</h1>');
