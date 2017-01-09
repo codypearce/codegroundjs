@@ -70,6 +70,11 @@ function codeground() {
 
     codeground.appendChild(editorsDiv);
     codeground.appendChild(outputDiv);
+
+    // Create Editors
+    var htmlDiv = document.createElement("div");
+    htmlDiv.className += "html lang";
+    editorsDiv.appendChild(htmlDiv);
 }
 
 codeground();
