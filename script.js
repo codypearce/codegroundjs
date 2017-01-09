@@ -59,3 +59,14 @@ var preset = function(presetHTML, presetCSS, presetJS) {
     render();
 }
 preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
+
+
+var codeground = document.getElementById('codeground');
+
+var editorsDiv = document.createElement("div");
+editorsDiv.className += "editors half";
+var outputDiv = document.createElement("div");
+outputDiv.className += "output half";
+
+codeground.appendChild(editorsDiv);
+codeground.appendChild(outputDiv);
