@@ -79,6 +79,8 @@ function codeground() {
     var htmlCode = document.createElement("div");
     htmlCode.className += "code";
     htmlDiv.appendChild(htmlCode);
+    var htmlTextarea = document.createElement("textarea");
+    htmlCode.appendChild(htmlTextarea);
 
     var cssDiv = document.createElement("div");
     cssDiv.id += "css";
@@ -86,7 +88,7 @@ function codeground() {
     editorsDiv.appendChild(cssDiv);
     var cssCode = document.createElement("div");
     cssCode.className += "code";
-    htmlDiv.appendChild(cssCode);
+    cssDiv.appendChild(cssCode);
 
     var jsDiv = document.createElement("div");
     jsDiv.id += "js";
@@ -94,7 +96,7 @@ function codeground() {
     editorsDiv.appendChild(jsDiv);
     var jsCode = document.createElement("div");
     jsCode.className += "code";
-    htmlDiv.appendChild(jsCode);
+    jsDiv.appendChild(jsCode);
 }
 
 codeground();
