@@ -75,6 +75,16 @@ function codeground() {
     var htmlDiv = document.createElement("div");
     htmlDiv.className += "html lang";
     editorsDiv.appendChild(htmlDiv);
+
+    // Create Editors
+    var cssDiv = document.createElement("div");
+    cssDiv.className += "css lang";
+    editorsDiv.appendChild(cssDiv);
+
+    // Create Editors
+    var jsDiv = document.createElement("div");
+    jsDiv.className += "js lang";
+    editorsDiv.appendChild(jsDiv);
 }
 
 codeground();
