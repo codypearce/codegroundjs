@@ -72,31 +72,24 @@ function codeground() {
     codeground.appendChild(outputDiv);
 
     // Create Editors
-    var htmlDiv = document.createElement("div");
-    htmlDiv.id = "html";
-    htmlDiv.className += "editor";
-    editorsDiv.appendChild(htmlDiv);
-    var htmlCode = document.createElement("div");
-    htmlCode.className += "code";
-    htmlDiv.appendChild(htmlCode);
-    var htmlTextarea = document.createElement("textarea");
-    htmlCode.appendChild(htmlTextarea);
+    createEditor('html', editorsDiv);
+    createEditor('css', editorsDiv);
+    createEditor('js', editorsDiv);
 
-    var cssDiv = document.createElement("div");
-    cssDiv.id += "css";
-    cssDiv.className += "editor";
-    editorsDiv.appendChild(cssDiv);
-    var cssCode = document.createElement("div");
-    cssCode.className += "code";
-    cssDiv.appendChild(cssCode);
 
-    var jsDiv = document.createElement("div");
-    jsDiv.id += "js";
-    jsDiv.className += "editor";
-    editorsDiv.appendChild(jsDiv);
-    var jsCode = document.createElement("div");
-    jsCode.className += "code";
-    jsDiv.appendChild(jsCode);
+
 }
+function createEditor(editor, editorsDiv) {
+    var div = document.createElement("div");
+    div.id = editor;
+    div.className += "editor";
+    editorsDiv.appendChild(div);
 
+    var code = document.createElement("div");
+    code.className += "code";
+    div.appendChild(code);
+
+    var textarea = document.createElement("textarea");
+    code.appendChild(textarea);
+}
 codeground();
