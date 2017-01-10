@@ -73,17 +73,20 @@ function codeground() {
 
     // Create Editors
     var htmlDiv = document.createElement("div");
-    htmlDiv.className += "html lang";
+    htmlDiv.id = "html";
+    htmlDiv.className += "editor";
     editorsDiv.appendChild(htmlDiv);
 
     // Create Editors
     var cssDiv = document.createElement("div");
-    cssDiv.className += "css lang";
+    cssDiv.id += "css";
+    cssDiv.className += "editor";
     editorsDiv.appendChild(cssDiv);
 
     // Create Editors
     var jsDiv = document.createElement("div");
-    jsDiv.className += "js lang";
+    jsDiv.id += "js";
+    jsDiv.className += "editor";
     editorsDiv.appendChild(jsDiv);
 }
 
