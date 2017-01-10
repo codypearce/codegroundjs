@@ -76,18 +76,25 @@ function codeground() {
     htmlDiv.id = "html";
     htmlDiv.className += "editor";
     editorsDiv.appendChild(htmlDiv);
+    var htmlCode = document.createElement("div");
+    htmlCode.className += "code";
+    htmlDiv.appendChild(htmlCode);
 
-    // Create Editors
     var cssDiv = document.createElement("div");
     cssDiv.id += "css";
     cssDiv.className += "editor";
     editorsDiv.appendChild(cssDiv);
+    var cssCode = document.createElement("div");
+    cssCode.className += "code";
+    htmlDiv.appendChild(cssCode);
 
-    // Create Editors
     var jsDiv = document.createElement("div");
     jsDiv.id += "js";
     jsDiv.className += "editor";
     editorsDiv.appendChild(jsDiv);
+    var jsCode = document.createElement("div");
+    jsCode.className += "code";
+    htmlDiv.appendChild(jsCode);
 }
 
 codeground();
