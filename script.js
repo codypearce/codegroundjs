@@ -1,3 +1,46 @@
+
+
+function codeground() {
+    var codeground = document.getElementById('codeground');
+
+    var editorsDiv = document.createElement("div");
+    editorsDiv.className += "editors half";
+    var outputDiv = document.createElement("div");
+    outputDiv.className += "output half";
+
+    codeground.appendChild(editorsDiv);
+    codeground.appendChild(outputDiv);
+
+    // Create Editors
+    createEditor('html', editorsDiv);
+    createEditor('css', editorsDiv);
+    createEditor('js', editorsDiv);
+
+    var iframe = document.createElement('iframe');
+    outputDiv.appendChild(iframe);
+
+}
+function createEditor(editor, editorsDiv) {
+    var div = document.createElement("div");
+    div.id = editor;
+    div.className += "editor";
+    editorsDiv.appendChild(div);
+
+    var header = document.createElement("h2");
+    header.textContent = editor
+    div.appendChild(header)
+
+
+    var code = document.createElement("div");
+    code.className += "code";
+    div.appendChild(code);
+
+    var textarea = document.createElement("textarea");
+    code.appendChild(textarea);
+}
+codeground();
+
+
 var htmlEditor = document.querySelector('#html textarea'),
     cssEditor = document.querySelector('#css textarea'),
     jsEditor = document.querySelector('#js textarea');
@@ -41,7 +84,7 @@ var prepareSource = function() {
 var render = function() {
     var source = prepareSource();
 
-    var iframe = document.querySelector('#output iframe'),
+    var iframe = document.querySelector('.output iframe'),
         iframe_doc = iframe.contentDocument;
 
     iframe_doc.open();
@@ -59,42 +102,3 @@ var preset = function(presetHTML, presetCSS, presetJS) {
     render();
 }
 preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
-
-function codeground() {
-    var codeground = document.getElementById('codeground');
-
-    var editorsDiv = document.createElement("div");
-    editorsDiv.className += "editors half";
-    var outputDiv = document.createElement("div");
-    outputDiv.className += "output half";
-
-    codeground.appendChild(editorsDiv);
-    codeground.appendChild(outputDiv);
-
-    // Create Editors
-    createEditor('html', editorsDiv);
-    createEditor('css', editorsDiv);
-    createEditor('js', editorsDiv);
-
-
-
-}
-function createEditor(editor, editorsDiv) {
-    var div = document.createElement("div");
-    div.id = editor;
-    div.className += "editor";
-    editorsDiv.appendChild(div);
-
-    var header = document.createElement("h2");
-    header.textContent = editor
-    div.appendChild(header)
-
-
-    var code = document.createElement("div");
-    code.className += "code";
-    div.appendChild(code);
-
-    var textarea = document.createElement("textarea");
-    code.appendChild(textarea);
-}
-codeground();
