@@ -23,13 +23,12 @@ body, html {
     clear: both;
 }
 .editor {
-    height: 33%;
+    height: 250px;
     width: 100%;
 }
 .editor .lang {
     background: black;
     color: white;
-    height: 20%;
 }
 .editor .lang h2 {
     margin: 0;
