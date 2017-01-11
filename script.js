@@ -85,6 +85,11 @@ function createEditor(editor, editorsDiv) {
     div.className += "editor";
     editorsDiv.appendChild(div);
 
+    var header = document.createElement("h2");
+    header.textContent = editor
+    div.appendChild(header)
+
+
     var code = document.createElement("div");
     code.className += "code";
     div.appendChild(code);
