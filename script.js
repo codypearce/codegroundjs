@@ -35,16 +35,20 @@ function createEditor(editor, editorsDiv) {
 
     var textarea = document.createElement("textarea");
     code.appendChild(textarea);
+
+    var htmlEditor = document.querySelector('#html textarea'),
+        cssEditor = document.querySelector('#css textarea'),
+        jsEditor = document.querySelector('#js textarea');
+
+    keyupRender(htmlEditor, cssEditor, jsEditor);
+    preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
 }
 codeground();
 
 
-var htmlEditor = document.querySelector('#html textarea'),
-    cssEditor = document.querySelector('#css textarea'),
-    jsEditor = document.querySelector('#js textarea');
 
 
-function keyupRender() {
+function keyupRender(htmlEditor, cssEditor, jsEditor) {
     var editors = [htmlEditor, cssEditor, jsEditor];
 
     editors.forEach(function(editor, i, arr) {
@@ -54,7 +58,7 @@ function keyupRender() {
     });
 
 }
-keyupRender();
+
 
 
 function prepareSource() {
@@ -104,4 +108,3 @@ function preset(presetHTML, presetCSS, presetJS) {
         jsEditor.value += presetJS;
     render();
 }
-preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
