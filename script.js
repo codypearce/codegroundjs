@@ -1,3 +1,7 @@
+var htmlEditor = document.querySelector('#html textarea'),
+    cssEditor = document.querySelector('#css textarea'),
+    jsEditor = document.querySelector('#js textarea');
+
 function codeground() {
     var codeground = document.getElementById('codeground');
 
@@ -9,46 +13,49 @@ function codeground() {
     codeground.appendChild(editorsDiv);
     codeground.appendChild(outputDiv);
 
+    codeground.createEditor = function(editor) {
+        var div = document.createElement("div");
+        div.id = editor;
+        div.className += "editor";
+        editorsDiv.appendChild(div);
+
+        var header = document.createElement("h2");
+        header.textContent = editor
+        div.appendChild(header)
+
+
+        var code = document.createElement("div");
+        code.className += "code";
+        div.appendChild(code);
+
+        var textarea = document.createElement("textarea");
+        code.appendChild(textarea);
+    }
+
     // Create Editors
-    createEditor('html', editorsDiv);
-    createEditor('css', editorsDiv);
-    createEditor('js', editorsDiv);
+    codeground.createEditor('html', editorsDiv);
+    codeground.createEditor('css', editorsDiv);
+    codeground.createEditor('js', editorsDiv);
 
     var iframe = document.createElement('iframe');
     outputDiv.appendChild(iframe);
 
+
+
+
+
+
+    keyupRender();
+    preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
+
 }
 function createEditor(editor, editorsDiv) {
-    var div = document.createElement("div");
-    div.id = editor;
-    div.className += "editor";
-    editorsDiv.appendChild(div);
 
-    var header = document.createElement("h2");
-    header.textContent = editor
-    div.appendChild(header)
-
-
-    var code = document.createElement("div");
-    code.className += "code";
-    div.appendChild(code);
-
-    var textarea = document.createElement("textarea");
-    code.appendChild(textarea);
-
-    var htmlEditor = document.querySelector('#html textarea'),
-        cssEditor = document.querySelector('#css textarea'),
-        jsEditor = document.querySelector('#js textarea');
-
-    keyupRender(htmlEditor, cssEditor, jsEditor);
-    preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
 }
 codeground();
 
 
-
-
-function keyupRender(htmlEditor, cssEditor, jsEditor) {
+function keyupRender() {
     var editors = [htmlEditor, cssEditor, jsEditor];
 
     editors.forEach(function(editor, i, arr) {
