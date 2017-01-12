@@ -1,5 +1,3 @@
-
-
 function codeground() {
     var codeground = document.getElementById('codeground');
 
@@ -59,7 +57,7 @@ function keyupRender() {
 keyupRender();
 
 
-var prepareSource = function() {
+function prepareSource() {
     var html = htmlEditor.value,
         css = cssEditor.value,
         js = jsEditor.value,
@@ -86,7 +84,7 @@ var prepareSource = function() {
 
     return src;
 };
-var render = function() {
+function render() {
     var source = prepareSource();
 
     var iframe = document.querySelector('.output iframe'),
@@ -97,7 +95,7 @@ var render = function() {
     iframe_doc.close();
 };
 
-var preset = function(presetHTML, presetCSS, presetJS) {
+function preset(presetHTML, presetCSS, presetJS) {
     if(presetHTML)
         htmlEditor.value += presetHTML;
     if(presetCSS)
