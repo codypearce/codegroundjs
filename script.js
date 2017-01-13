@@ -1,7 +1,13 @@
+function Codeground(id) {
+    var codeground;
+    console.log(id);
+    if(id) {
+        codeground = document.getElementById(id)
+        console.log(codeground);
+    } else {
+        codeground = document.getElementById('codeground');
+    }
 
-
-function Codeground() {
-    var codeground = document.getElementById('codeground');
 
     var editorsDiv = document.createElement("div");
     editorsDiv.className += "editors half";
@@ -105,9 +111,9 @@ function Codeground() {
             jsEditor.value += presetJS;
         render();
     }
-    
+
     keyupRender();
     preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
 
 }
-var codeground = new Codeground();
+var codeground = new Codeground('test');
