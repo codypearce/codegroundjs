@@ -1,22 +1,22 @@
 function Codeground(id) {
     var codeground;
-    console.log(id);
     if(id) {
-        codeground = document.getElementById(id)
-        console.log(codeground);
+        codeground = document.getElementById(id);
     } else {
         codeground = document.getElementById('codeground');
     }
 
-
+    // Initialize editors
     var editorsDiv = document.createElement("div");
     editorsDiv.className += "editors half";
+    codeground.appendChild(editorsDiv);
+
+    // Initialize output
     var outputDiv = document.createElement("div");
     outputDiv.className += "output half";
-
-    codeground.appendChild(editorsDiv);
     codeground.appendChild(outputDiv);
 
+    // Functions
     function createEditor(editor) {
         var div = document.createElement("div");
         div.id = editor;
@@ -46,23 +46,6 @@ function Codeground(id) {
         });
 
     }
-
-
-    // Create Editors
-    createEditor('html', editorsDiv);
-    createEditor('css', editorsDiv);
-    createEditor('js', editorsDiv);
-
-    var htmlEditor = document.querySelector('#html textarea'),
-        cssEditor = document.querySelector('#css textarea'),
-        jsEditor = document.querySelector('#js textarea');
-
-    var iframe = document.createElement('iframe');
-    outputDiv.appendChild(iframe);
-
-
-
-
 
     function prepareSource() {
         var html = htmlEditor.value,
@@ -111,6 +94,21 @@ function Codeground(id) {
             jsEditor.value += presetJS;
         render();
     }
+
+
+    // Create Editors
+    createEditor('html', editorsDiv);
+    createEditor('css', editorsDiv);
+    createEditor('js', editorsDiv);
+
+    var htmlEditor = document.querySelector('#html textarea'),
+        cssEditor = document.querySelector('#css textarea'),
+        jsEditor = document.querySelector('#js textarea');
+
+    var iframe = document.createElement('iframe');
+    outputDiv.appendChild(iframe);
+
+
 
     keyupRender();
     preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
