@@ -94,12 +94,15 @@ function Codeground(id) {
             jsEditor.value += presetJS;
         render();
     }
-
-
-    // Create Editors
-    createEditor('html', editorsDiv);
-    createEditor('css', editorsDiv);
-    createEditor('js', editorsDiv);
+    this.html = true;
+    this.css = true;
+    this.javascript = true;
+    if(this.html)
+        createEditor('html', editorsDiv);
+    if(this.css)
+        createEditor('css', editorsDiv);
+    if(this.javascript)
+        createEditor('js', editorsDiv);
 
     var htmlEditor = document.querySelector('#html textarea'),
         cssEditor = document.querySelector('#css textarea'),
@@ -108,11 +111,10 @@ function Codeground(id) {
     var iframe = document.createElement('iframe');
     outputDiv.appendChild(iframe);
 
-
-
     keyupRender();
-
+    render();
 
 }
 var codeground = new Codeground();
+codeground.html = false;
 codeground.preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
