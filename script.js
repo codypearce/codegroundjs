@@ -85,7 +85,7 @@ function Codeground(id) {
         iframe_doc.close();
     };
 
-    function preset(presetHTML, presetCSS, presetJS) {
+    this.preset = function(presetHTML, presetCSS, presetJS) {
         if(presetHTML)
             htmlEditor.value += presetHTML;
         if(presetCSS)
@@ -111,7 +111,8 @@ function Codeground(id) {
 
 
     keyupRender();
-    preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
+
 
 }
-var codeground = new Codeground('test');
+var codeground = new Codeground();
+codeground.preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
