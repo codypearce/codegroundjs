@@ -94,27 +94,33 @@ function Codeground(id) {
             jsEditor.value += presetJS;
         render();
     }
-    this.html = true;
-    this.css = true;
-    this.javascript = true;
-    if(this.html)
+    // Default Options
+    this.options = {
+        html: true,
+        css: true,
+        js: true
+    }
+    if(this.options.html) {
         createEditor('html', editorsDiv);
-    if(this.css)
+         htmlEditor = document.querySelector('#html textarea')
+     }
+    if(this.options.css) {
         createEditor('css', editorsDiv);
-    if(this.javascript)
+        cssEditor = document.querySelector('#css textarea');
+    }
+    if(this.options.js) {
         createEditor('js', editorsDiv);
-
-    var htmlEditor = document.querySelector('#html textarea'),
-        cssEditor = document.querySelector('#css textarea'),
         jsEditor = document.querySelector('#js textarea');
+    }
+
+
 
     var iframe = document.createElement('iframe');
     outputDiv.appendChild(iframe);
 
     keyupRender();
-    render();
-
 }
-var codeground = new Codeground();
-codeground.html = false;
+
+var codeground = new Codeground('codeground');
+console.log(codeground.options);
 codeground.preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
