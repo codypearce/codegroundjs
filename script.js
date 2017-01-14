@@ -16,31 +16,24 @@ function Codeground(id, opts) {
     outputDiv.className += "output half";
     codeground.appendChild(outputDiv);
 
-    // Functions
-    function createEditor(editor) {
-        var div = document.createElement("div");
-        div.id = editor;
-        div.className += "editor";
-        editorsDiv.appendChild(div);
-
-        var header = document.createElement("h2");
-        header.textContent = editor
-        div.appendChild(header)
-
-
-        var code = document.createElement("div");
-        code.className += "code";
-        div.appendChild(code);
-
-        var textarea = document.createElement("textarea");
-        code.appendChild(textarea);
-    }
+    // Create all three Editors
     createEditor('html', editorsDiv);
     htmlEditor = document.querySelector('#html textarea')
     createEditor('css', editorsDiv);
     cssEditor = document.querySelector('#css textarea');
     createEditor('js', editorsDiv);
     jsEditor = document.querySelector('#js textarea');
+
+
+    // Add event listeners to each
+    keyupRender(htmlEditor);
+    keyupRender(cssEditor);
+    keyupRender(jsEditor);
+
+    // Create and add the iframe to the document
+    var iframe = document.createElement('iframe');
+    outputDiv.appendChild(iframe);
+
 
     // Default Options
     this.options = {
@@ -63,25 +56,7 @@ function Codeground(id, opts) {
         document.querySelector('#js').style.display = 'none';
     }
 
-    function keyupRender() {
-        if(htmlEditor) {
-            htmlEditor.addEventListener('keyup', function() {
-                render();
-            }, false);
-        }
-        if(cssEditor) {
-            cssEditor.addEventListener('keyup', function() {
-                render();
-            }, false);
-        }
-        if(jsEditor) {
-            jsEditor.addEventListener('keyup', function() {
-                render();
-            }, false);
-        }
-
-    }
-
+    // Public Functions for more options
     this.preset = function(presetHTML, presetCSS, presetJS) {
         if(presetHTML)
             htmlEditor.value += presetHTML;
@@ -90,6 +65,32 @@ function Codeground(id, opts) {
         if(presetJS)
             jsEditor.value += presetJS;
         render();
+    }
+
+
+    // Functions
+    function createEditor(editor) {
+        var div = document.createElement("div");
+        div.id = editor;
+        div.className += "editor";
+        editorsDiv.appendChild(div);
+
+        var header = document.createElement("h2");
+        header.textContent = editor
+        div.appendChild(header)
+
+
+        var code = document.createElement("div");
+        code.className += "code";
+        div.appendChild(code);
+
+        var textarea = document.createElement("textarea");
+        code.appendChild(textarea);
+    }
+    function keyupRender(editor) {
+        editor.addEventListener('keyup', function() {
+            render();
+        }, false);
     }
 
     function render() {
@@ -131,19 +132,11 @@ function Codeground(id, opts) {
 
         return src;
     };
-
-
-
-
-    var iframe = document.createElement('iframe');
-    outputDiv.appendChild(iframe);
-
-    keyupRender();
 }
 var opts = {
-    html: false,
-    css: false,
-    js: false
+    html: true,
+    css: true,
+    js: true
 }
 var codeground = new Codeground('codeground', opts);
 codeground.preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
