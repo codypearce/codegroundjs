@@ -67,7 +67,7 @@ function Codeground(id, opts) {
                 render();
             }, false);
         }
-        if(this.cssEditor) {
+        if(cssEditor) {
             cssEditor.addEventListener('keyup', function() {
                 render();
             }, false);
@@ -144,5 +144,4 @@ var opts = {
     js: true
 }
 var codeground = new Codeground('codeground', opts);
-console.log(codeground.options);
 codeground.preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
