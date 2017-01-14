@@ -35,7 +35,12 @@ function Codeground(id, opts) {
         var textarea = document.createElement("textarea");
         code.appendChild(textarea);
     }
-
+    createEditor('html', editorsDiv);
+    htmlEditor = document.querySelector('#html textarea')
+    createEditor('css', editorsDiv);
+    cssEditor = document.querySelector('#css textarea');
+    createEditor('js', editorsDiv);
+    jsEditor = document.querySelector('#js textarea');
 
     // Default Options
     this.options = {
@@ -48,17 +53,14 @@ function Codeground(id, opts) {
         this.options.css = opts.css,
         this.options.js = opts.js
     }
-    if(this.options.html) {
-        createEditor('html', editorsDiv);
-        htmlEditor = document.querySelector('#html textarea')
-     }
-    if(this.options.css) {
-        createEditor('css', editorsDiv);
-        cssEditor = document.querySelector('#css textarea');
+    if(!this.options.html) {
+        document.querySelector('#html').style.display = 'none';
     }
-    if(this.options.js) {
-        createEditor('js', editorsDiv);
-        jsEditor = document.querySelector('#js textarea');
+    if(!this.options.css) {
+        document.querySelector('#css').style.display = 'none';
+    }
+    if(!this.options.js) {
+        document.querySelector('#js').style.display = 'none';
     }
 
     function keyupRender() {
@@ -139,9 +141,9 @@ function Codeground(id, opts) {
     keyupRender();
 }
 var opts = {
-    html: true,
-    css: true,
-    js: true
+    html: false,
+    css: false,
+    js: false
 }
 var codeground = new Codeground('codeground', opts);
 codeground.preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
