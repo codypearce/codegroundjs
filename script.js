@@ -11,12 +11,12 @@ function Codeground(id, opts) {
         html: true,
         css: true,
         js: true,
-        height: '500px',
-        width: '700px'
+        height: 500,
+        width: 1000
     }
 
-    codeground.style.height = this.options.height;
-    codeground.style.width = this.options.width;
+    codeground.style.height = this.options.height + 'px';
+    codeground.style.width = this.options.width + 'px';
 
     // Initialize editors
     var editorsDiv = document.createElement("div");
@@ -28,10 +28,10 @@ function Codeground(id, opts) {
     outputDiv.className += "output half";
     codeground.appendChild(outputDiv);
 
-    editorsDiv.style.height = this.options.height
-    editorsDiv.style.width = this.options.width / 2
-    outputDiv.style.height = this.options.height
-    outputDiv.style.width = this.options.width / 2
+    editorsDiv.style.height = this.options.height + 'px';
+    editorsDiv.style.width = (this.options.width / 2) + 'px';
+    outputDiv.style.height = this.options.height + 'px';
+    outputDiv.style.width = (this.options.width / 2) + 'px';
 
     // Create all three Editors
     createEditor('html', editorsDiv);
