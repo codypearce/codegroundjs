@@ -28,8 +28,10 @@ function Codeground(id, opts) {
     outputDiv.className += "output half";
     codeground.appendChild(outputDiv);
 
+    editorsDiv.style.height = this.options.height
+    editorsDiv.style.width = this.options.width / 2
     outputDiv.style.height = this.options.height
-    outputDiv.style.width = this.options.width
+    outputDiv.style.width = this.options.width / 2
 
     // Create all three Editors
     createEditor('html', editorsDiv);
