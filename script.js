@@ -6,6 +6,18 @@ function Codeground(id, opts) {
         codeground = document.getElementById('codeground');
     }
 
+    // Default Options
+    this.options = {
+        html: true,
+        css: true,
+        js: true,
+        height: '500px',
+        width: '700px'
+    }
+
+    codeground.style.height = this.options.height;
+    codeground.style.width = this.options.width;
+
     // Initialize editors
     var editorsDiv = document.createElement("div");
     editorsDiv.className += "editors half";
@@ -15,6 +27,9 @@ function Codeground(id, opts) {
     var outputDiv = document.createElement("div");
     outputDiv.className += "output half";
     codeground.appendChild(outputDiv);
+
+    outputDiv.style.height = this.options.height
+    outputDiv.style.width = this.options.width
 
     // Create all three Editors
     createEditor('html', editorsDiv);
@@ -35,12 +50,6 @@ function Codeground(id, opts) {
     outputDiv.appendChild(iframe);
 
 
-    // Default Options
-    this.options = {
-        html: true,
-        css: true,
-        js: true
-    }
     if(opts) {
         this.options.html = opts.html,
         this.options.css = opts.css,

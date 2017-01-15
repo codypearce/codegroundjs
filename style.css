@@ -15,15 +15,15 @@ body, html {
     width: 100%;
 }
 .half {
-    width: 50%;
-    height: 100%;
+    width: 500px;
+    height: 400px;
     float: left;
 }
 .clear {
     clear: both;
 }
 .editor {
-    height: 250px;
+    height: 125px;
     width: 100%;
 }
 .editor .lang {
