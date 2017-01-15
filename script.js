@@ -12,8 +12,10 @@ function Codeground(id, opts) {
         css: true,
         js: true,
         height: 500,
-        width: 1000
+        width: 1000,
+        layout: 'half'
     }
+
 
     codeground.style.height = this.options.height + 'px';
     codeground.style.width = this.options.width + 'px';
@@ -28,10 +30,19 @@ function Codeground(id, opts) {
     outputDiv.className += "output half";
     codeground.appendChild(outputDiv);
 
-    editorsDiv.style.height = this.options.height + 'px';
-    editorsDiv.style.width = (this.options.width / 2) + 'px';
-    outputDiv.style.height = this.options.height + 'px';
-    outputDiv.style.width = (this.options.width / 2) + 'px';
+
+    // Layouts: half(split 50%) or full
+    if(this.options.layout === 'half') {
+        editorsDiv.style.height = this.options.height + 'px';
+        editorsDiv.style.width = (this.options.width / 2) + 'px';
+        outputDiv.style.height = this.options.height + 'px';
+        outputDiv.style.width = (this.options.width / 2) + 'px';
+    } else if (this.options.layout === 'full') {
+        editorsDiv.style.height = this.options.height + 'px';
+        editorsDiv.style.width = this.options.width + 'px';
+        outputDiv.style.height = this.options.height + 'px';
+        outputDiv.style.width = this.options.width  + 'px';
+    }
 
     // Create all three Editors
     createEditor('html', editorsDiv);
