@@ -43,17 +43,17 @@ function Codeground(id, opts) {
     outputDiv.className += "output half";
     codeground.appendChild(outputDiv);
 
-
+    var editorHeight = this.options.height - 10; // shorter by the height of the topbar
     // Layouts: half(split 50%) or full
     if(this.options.layout === 'half') {
-        editorsDiv.style.height = this.options.height + 'px';
+        editorsDiv.style.height = editorHeight + 'px';
         editorsDiv.style.width = (this.options.width / 2) + 'px';
-        outputDiv.style.height = this.options.height + 'px';
+        outputDiv.style.height = editorHeight + 'px';
         outputDiv.style.width = (this.options.width / 2) + 'px';
     } else if (this.options.layout === 'full') {
-        editorsDiv.style.height = this.options.height + 'px';
+        editorsDiv.style.height = editorHeight + 'px';
         editorsDiv.style.width = this.options.width + 'px';
-        outputDiv.style.height = this.options.height + 'px';
+        outputDiv.style.height = editorHeight + 'px';
         outputDiv.style.width = this.options.width  + 'px';
     }
 
