@@ -13,7 +13,8 @@ function Codeground(id, opts) {
         js: true,
         height: 500,
         width: 1000,
-        layout: 'half'
+        layout: 'half',
+        title: 'Codeground'
     }
 
     var topBar = document.createElement("div");
@@ -23,7 +24,7 @@ function Codeground(id, opts) {
     codeground.appendChild(topBar)
 
     var title = document.createElement("h2");
-    title.textContent = 'CodeGround';
+    title.textContent = this.options.title;
     title.style.color = 'white';
     title.style.textAlign ='right';
     title.style.padding = "10px";
