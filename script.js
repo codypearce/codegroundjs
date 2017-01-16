@@ -16,6 +16,13 @@ function Codeground(id, opts) {
         layout: 'half'
     }
 
+    var topBar = document.createElement("div");
+    topBar.style.height = '50px';
+    topBar.style.width = '100%';
+    topBar.style.backgroundColor = 'black';
+    codeground.appendChild(topBar)
+
+
 
     codeground.style.height = this.options.height + 'px';
     codeground.style.width = this.options.width + 'px';
