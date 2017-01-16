@@ -22,7 +22,12 @@ function Codeground(id, opts) {
     topBar.style.backgroundColor = 'black';
     codeground.appendChild(topBar)
 
-
+    var title = document.createElement("h2");
+    title.textContent = 'CodeGround';
+    title.style.color = 'white';
+    title.style.textAlign ='right';
+    title.style.padding = "10px";
+    topBar.appendChild(title);
 
     codeground.style.height = this.options.height + 'px';
     codeground.style.width = this.options.width + 'px';
