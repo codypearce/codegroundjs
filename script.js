@@ -21,13 +21,16 @@ function Codeground(id, opts) {
     topBar.style.height = '50px';
     topBar.style.width = '100%';
     topBar.style.backgroundColor = 'black';
-    codeground.appendChild(topBar)
+    codeground.appendChild(topBar);
 
     var title = document.createElement("h2");
     title.textContent = this.options.title;
     title.style.color = 'white';
     title.style.textAlign ='right';
     title.style.padding = "10px";
+    title.style.display = 'inline';
+    title.style.float = 'right';
+    title.style.margine = 0
     topBar.appendChild(title);
 
     codeground.style.height = this.options.height + 'px';
