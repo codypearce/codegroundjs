@@ -23,6 +23,18 @@ function Codeground(id, opts) {
     topBar.style.backgroundColor = 'black';
     codeground.appendChild(topBar);
 
+    var htmlBtn = document.createElement("button");
+    htmlBtn.textContent = "HTML";
+    htmlBtn.addEventListener('click', function() {
+        var htmlDisplay = document.getElementById('html');
+        if(htmlDisplay.style.display == 'none') {
+            htmlDisplay.style.display = 'block';
+        } else {
+            htmlDisplay.style.display = 'none';
+        }
+    })
+    topBar.appendChild(htmlBtn);
+
     var title = document.createElement("h2");
     title.textContent = this.options.title;
     title.style.color = 'white';
@@ -30,7 +42,7 @@ function Codeground(id, opts) {
     title.style.padding = "10px";
     title.style.display = 'inline';
     title.style.float = 'right';
-    title.style.margine = 0
+    title.style.margine = 0;
     topBar.appendChild(title);
 
     codeground.style.height = this.options.height + 'px';
