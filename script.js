@@ -25,6 +25,22 @@ function Codeground(id, opts) {
 
     var htmlBtn = document.createElement("button");
     htmlBtn.textContent = "HTML";
+    htmlBtn.style.height = '50px';
+    htmlBtn.style.width = '70px';
+    htmlBtn.style.background = 'none';
+    htmlBtn.style.border = 'none';
+    htmlBtn.style.borderRight = '1px solid white';
+    htmlBtn.style.outline = 'none';
+    htmlBtn.style.color = 'white';
+    htmlBtn.addEventListener('mouseenter', function() {
+        htmlBtn.style.background = 'white';
+        htmlBtn.style.color = 'black';
+        htmlBtn.style.cursor = 'pointer';
+    });
+    htmlBtn.addEventListener('mouseleave', function() {
+        htmlBtn.style.background = 'none';
+        htmlBtn.style.color = 'white';
+    })
     htmlBtn.addEventListener('click', function() {
         var htmlDisplay = document.getElementById('html');
         if(htmlDisplay.style.display == 'none') {
