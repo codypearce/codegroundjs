@@ -23,33 +23,7 @@ function Codeground(id, opts) {
     topBar.style.backgroundColor = 'black';
     codeground.appendChild(topBar);
 
-    var htmlBtn = document.createElement("button");
-    htmlBtn.textContent = "HTML";
-    htmlBtn.style.height = '50px';
-    htmlBtn.style.width = '70px';
-    htmlBtn.style.background = 'none';
-    htmlBtn.style.border = 'none';
-    htmlBtn.style.borderRight = '1px solid white';
-    htmlBtn.style.outline = 'none';
-    htmlBtn.style.color = 'white';
-    htmlBtn.addEventListener('mouseenter', function() {
-        htmlBtn.style.background = 'white';
-        htmlBtn.style.color = 'black';
-        htmlBtn.style.cursor = 'pointer';
-    });
-    htmlBtn.addEventListener('mouseleave', function() {
-        htmlBtn.style.background = 'none';
-        htmlBtn.style.color = 'white';
-    })
-    htmlBtn.addEventListener('click', function() {
-        var htmlDisplay = document.getElementById('html');
-        if(htmlDisplay.style.display == 'none') {
-            htmlDisplay.style.display = 'block';
-        } else {
-            htmlDisplay.style.display = 'none';
-        }
-    })
-    topBar.appendChild(htmlBtn);
+    createTabBtn('HTML');
 
     var title = document.createElement("h2");
     title.textContent = this.options.title;
@@ -58,7 +32,7 @@ function Codeground(id, opts) {
     title.style.padding = "10px";
     title.style.display = 'inline';
     title.style.float = 'right';
-    title.style.margine = 0;
+    title.style.margin = 0;
     topBar.appendChild(title);
 
     codeground.style.height = this.options.height + 'px';
@@ -152,6 +126,35 @@ function Codeground(id, opts) {
 
         var textarea = document.createElement("textarea");
         code.appendChild(textarea);
+    }
+    function createTabBtn(name) {
+        var btn = document.createElement("button");
+        btn.textContent = name;
+        btn.style.height = '50px';
+        btn.style.width = '70px';
+        btn.style.background = 'none';
+        btn.style.border = 'none';
+        btn.style.borderRight = '1px solid white';
+        btn.style.outline = 'none';
+        btn.style.color = 'white';
+        btn.addEventListener('mouseenter', function() {
+            btn.style.background = 'white';
+            btn.style.color = 'black';
+            btn.style.cursor = 'pointer';
+        });
+        btn.addEventListener('mouseleave', function() {
+            btn.style.background = 'none';
+            btn.style.color = 'white';
+        })
+        btn.addEventListener('click', function() {
+            var htmlDisplay = document.getElementById('html');
+            if(htmlDisplay.style.display == 'none') {
+                htmlDisplay.style.display = 'block';
+            } else {
+                htmlDisplay.style.display = 'none';
+            }
+        })
+        topBar.appendChild(btn);
     }
     function keyupRender(editor) {
         editor.addEventListener('keyup', function() {
