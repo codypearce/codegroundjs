@@ -66,17 +66,25 @@ function Codeground(id, opts) {
 
     // Create all three Editors
     createEditor('html', editorsDiv);
-    htmlEditor = document.querySelector('#html textarea')
+    htmlEditor = document.querySelector('#html');
+    htmlEditorCode = document.querySelector('#html textarea')
+    htmlEditor.style.height = '100%';
+
     createEditor('css', editorsDiv);
-    cssEditor = document.querySelector('#css textarea');
+    cssEditor = document.querySelector('#css');
+    cssEditorCode = document.querySelector('#css textarea');
+    cssEditor.style.display = 'none';
+
     createEditor('js', editorsDiv);
-    jsEditor = document.querySelector('#js textarea');
+    jsEditor = document.querySelector('#js');
+    jsEditorCode = document.querySelector('#js textarea');
+    jsEditor.style.display = 'none';
 
 
     // Add event listeners to each
-    keyupRender(htmlEditor);
-    keyupRender(cssEditor);
-    keyupRender(jsEditor);
+    keyupRender(htmlEditorCode);
+    keyupRender(cssEditorCode);
+    keyupRender(jsEditorCode);
 
     // Create and add the iframe to the document
     var iframe = document.createElement('iframe');
@@ -101,11 +109,11 @@ function Codeground(id, opts) {
     // Public Functions for more options
     this.preset = function(presetHTML, presetCSS, presetJS) {
         if(presetHTML)
-            htmlEditor.value += presetHTML;
+            htmlEditorCode.value += presetHTML;
         if(presetCSS)
-            cssEditor.value += presetCSS;
+            cssEditorCode.value += presetCSS;
         if(presetJS)
-            jsEditor.value += presetJS;
+            jsEditorCode.value += presetJS;
         render();
     }
 
@@ -177,9 +185,9 @@ function Codeground(id, opts) {
 
 
     function prepareSource() {
-        var html = htmlEditor.value,
-            css = this.cssEditor.value,
-            js = this.jsEditor.value,
+        var html = htmlEditorCode.value,
+            css = this.cssEditorCode.value,
+            js = this.jsEditorCode.value,
             src = '';
 
         var baseTemplate =

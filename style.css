@@ -10,10 +10,7 @@
 .clear {
     clear: both;
 }
-.editor {
-    height: 125px;
-    width: 100%;
-}
+
 .editor .lang {
     background: black;
     color: white;
