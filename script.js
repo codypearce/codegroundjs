@@ -24,6 +24,8 @@ function Codeground(id, opts) {
     codeground.appendChild(topBar);
 
     createTabBtn('HTML');
+    createTabBtn('CSS');
+    createTabBtn('JS')
 
     var title = document.createElement("h2");
     title.textContent = this.options.title;
@@ -147,7 +149,7 @@ function Codeground(id, opts) {
             btn.style.color = 'white';
         })
         btn.addEventListener('click', function() {
-            var htmlDisplay = document.getElementById('html');
+            var htmlDisplay = document.getElementById(name.toLowerCase());
             if(htmlDisplay.style.display == 'none') {
                 htmlDisplay.style.display = 'block';
             } else {
