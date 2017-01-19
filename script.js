@@ -14,7 +14,11 @@ function Codeground(id, opts) {
         height: 500,
         width: 1000,
         layout: 'half',
-        title: 'Codeground'
+        title: 'Codeground',
+        tabs: {
+            init: true,
+            initial: 'html'
+        }
     }
 
     var topBar = document.createElement("div");
@@ -64,23 +68,40 @@ function Codeground(id, opts) {
         outputDiv.style.width = this.options.width  + 'px';
     }
 
+
+
     // Create all three Editors
     createEditor('html', editorsDiv);
     htmlEditor = document.querySelector('#html');
     htmlEditorCode = document.querySelector('#html textarea')
-    htmlEditor.style.height = '100%';
+
 
     createEditor('css', editorsDiv);
     cssEditor = document.querySelector('#css');
     cssEditorCode = document.querySelector('#css textarea');
-    cssEditor.style.display = 'none';
+
 
     createEditor('js', editorsDiv);
     jsEditor = document.querySelector('#js');
     jsEditorCode = document.querySelector('#js textarea');
-    jsEditor.style.display = 'none';
 
 
+    function tabs(initial) {
+        if(initial === 'html') {
+            htmlEditor.style.height = '100%';
+            cssEditor.style.display = 'none';
+            jsEditor.style.display = 'none';
+        } else if(initial === 'css') {
+            htmlEditor.style.display = 'none';
+            cssEditor.style.height = '100%';
+            jsEditor.style.display = 'none';
+        } else {
+            htmlEditor.style.display = 'none';
+            cssEditor.style.display = 'none';
+            jsEditor.style.height = '100%';
+        }
+    }
+    tabs('css');
     // Add event listeners to each
     keyupRender(htmlEditorCode);
     keyupRender(cssEditorCode);
