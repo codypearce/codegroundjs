@@ -16,7 +16,7 @@ function Codeground(id, opts) {
         layout: 'half',
         title: 'Codeground',
         tabs: {
-            init: true,
+            on: true,
             initial: 'html'
         }
     }
@@ -178,11 +178,12 @@ function Codeground(id, opts) {
             btn.style.color = 'white';
         })
         btn.addEventListener('click', function() {
-            var htmlDisplay = document.getElementById(name.toLowerCase());
-            if(htmlDisplay.style.display == 'none') {
-                htmlDisplay.style.display = 'block';
+            var display = document.getElementById(name.toLowerCase());
+            if(display.style.display == 'none') {
+                display.style.display = 'block';
+                display.style.height = '100%';
             } else {
-                htmlDisplay.style.display = 'none';
+                display.style.display = 'none';
             }
         })
         topBar.appendChild(btn);
