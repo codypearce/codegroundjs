@@ -19,39 +19,47 @@ function Codeground(id, opts) {
         title: 'Codeground'
     }
 
-    var topBar = document.createElement("div");
-    topBar.style.height = '50px';
-    topBar.style.width = '100%';
-    topBar.style.backgroundColor = 'black';
-    codeground.appendChild(topBar);
+    if(this.options.topbar) {
+        var topBar = document.createElement("div");
+        topBar.style.height = '50px';
+        topBar.style.width = '100%';
+        topBar.style.backgroundColor = 'black';
+        codeground.appendChild(topBar);
 
-    createTabBtn('HTML');
-    createTabBtn('CSS');
-    createTabBtn('JS')
+        createTabBtn('HTML');
+        createTabBtn('CSS');
+        createTabBtn('JS')
 
-    var htmlBtn = document.getElementById('htmlBtn');
-    htmlBtn.addEventListener('click', function() {
-        tabs('html');
-    })
+        var htmlBtn = document.getElementById('htmlBtn');
+        htmlBtn.addEventListener('click', function() {
+            tabs('html');
+        })
 
-    var cssBtn = document.getElementById('cssBtn');
-    cssBtn.addEventListener('click', function() {
-        tabs('css');
-    })
-    var jsBtn = document.getElementById('jsBtn');
-    jsBtn.addEventListener('click', function() {
-        tabs('js');
-    })
+        var cssBtn = document.getElementById('cssBtn');
+        cssBtn.addEventListener('click', function() {
+            tabs('css');
+        })
+        var jsBtn = document.getElementById('jsBtn');
+        jsBtn.addEventListener('click', function() {
+            tabs('js');
+        })
 
-    var title = document.createElement("h2");
-    title.textContent = this.options.title;
-    title.style.color = 'white';
-    title.style.textAlign ='right';
-    title.style.padding = "10px";
-    title.style.display = 'inline';
-    title.style.float = 'right';
-    title.style.margin = 0;
-    topBar.appendChild(title);
+
+        var title = document.createElement("h2");
+        title.textContent = this.options.title;
+        title.style.color = 'white';
+        title.style.textAlign ='right';
+        title.style.padding = "10px";
+        title.style.display = 'inline';
+        title.style.float = 'right';
+        title.style.margin = 0;
+        topBar.appendChild(title);
+
+
+
+    }
+
+
 
     codeground.style.height = this.options.height + 'px';
     codeground.style.width = this.options.width + 'px';
