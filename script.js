@@ -31,6 +31,21 @@ function Codeground(id, opts) {
     createTabBtn('CSS');
     createTabBtn('JS')
 
+
+    var htmlBtn = document.getElementById('htmlBtn');
+    htmlBtn.addEventListener('click', function() {
+        tabs('html');
+    })
+
+    var cssBtn = document.getElementById('cssBtn');
+    cssBtn.addEventListener('click', function() {
+        tabs('css');
+    })
+    var jsBtn = document.getElementById('jsBtn');
+    jsBtn.addEventListener('click', function() {
+        tabs('js');
+    })
+
     var title = document.createElement("h2");
     title.textContent = this.options.title;
     title.style.color = 'white';
@@ -88,16 +103,19 @@ function Codeground(id, opts) {
 
     function tabs(initial) {
         if(initial === 'html') {
+            htmlEditor.style.display = 'block';
             htmlEditor.style.height = '100%';
             cssEditor.style.display = 'none';
             jsEditor.style.display = 'none';
         } else if(initial === 'css') {
             htmlEditor.style.display = 'none';
+            cssEditor.style.display = 'block';
             cssEditor.style.height = '100%';
             jsEditor.style.display = 'none';
-        } else {
+        } else if(initial === 'js') {
             htmlEditor.style.display = 'none';
             cssEditor.style.display = 'none';
+            jsEditor.style.display = 'block';
             jsEditor.style.height = '100%';
         }
     }
@@ -160,6 +178,7 @@ function Codeground(id, opts) {
     }
     function createTabBtn(name) {
         var btn = document.createElement("button");
+        btn.id = name.toLowerCase() + 'Btn';
         btn.textContent = name;
         btn.style.height = '50px';
         btn.style.width = '70px';
@@ -177,15 +196,7 @@ function Codeground(id, opts) {
             btn.style.background = 'none';
             btn.style.color = 'white';
         })
-        btn.addEventListener('click', function() {
-            var display = document.getElementById(name.toLowerCase());
-            if(display.style.display == 'none') {
-                display.style.display = 'block';
-                display.style.height = '100%';
-            } else {
-                display.style.display = 'none';
-            }
-        })
+
         topBar.appendChild(btn);
     }
     function keyupRender(editor) {
