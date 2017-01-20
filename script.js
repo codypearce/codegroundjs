@@ -13,12 +13,10 @@ function Codeground(id, opts) {
         js: true,
         height: 500,
         width: 1000,
-        layout: 'half',
-        title: 'Codeground',
-        tabs: {
-            on: true,
-            initial: 'html'
-        }
+        layout: 'half', // whether editor/output takes up full width or half
+        style: 'tabs', // Tabs show editors full side, column shows each editor on top of each other
+        topbar: true,
+        title: 'Codeground'
     }
 
     var topBar = document.createElement("div");
@@ -30,7 +28,6 @@ function Codeground(id, opts) {
     createTabBtn('HTML');
     createTabBtn('CSS');
     createTabBtn('JS')
-
 
     var htmlBtn = document.getElementById('htmlBtn');
     htmlBtn.addEventListener('click', function() {
