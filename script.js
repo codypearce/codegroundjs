@@ -20,7 +20,11 @@ function Codeground(id, opts) {
     }
 
     if(this.options.topbar) {
+        createTopBar(this.options.title);
+    }
+    function createTopBar(barTitle) {
         var topBar = document.createElement("div");
+        topBar.id = 'topBar';
         topBar.style.height = '50px';
         topBar.style.width = '100%';
         topBar.style.backgroundColor = 'black';
@@ -34,7 +38,6 @@ function Codeground(id, opts) {
         htmlBtn.addEventListener('click', function() {
             tabs('html');
         })
-
         var cssBtn = document.getElementById('cssBtn');
         cssBtn.addEventListener('click', function() {
             tabs('css');
@@ -43,10 +46,8 @@ function Codeground(id, opts) {
         jsBtn.addEventListener('click', function() {
             tabs('js');
         })
-
-
         var title = document.createElement("h2");
-        title.textContent = this.options.title;
+        title.textContent = barTitle;
         title.style.color = 'white';
         title.style.textAlign ='right';
         title.style.padding = "10px";
@@ -54,9 +55,6 @@ function Codeground(id, opts) {
         title.style.float = 'right';
         title.style.margin = 0;
         topBar.appendChild(title);
-
-
-
     }
 
 
@@ -201,7 +199,7 @@ function Codeground(id, opts) {
             btn.style.background = 'none';
             btn.style.color = 'white';
         })
-
+        var topBar = document.getElementById('topBar');
         topBar.appendChild(btn);
     }
     function keyupRender(editor) {
