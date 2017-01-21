@@ -19,45 +19,6 @@ function Codeground(id, opts) {
         title: 'Codeground'
     }
 
-    if(this.options.topbar) {
-        createTopBar(this.options.title);
-    }
-    function createTopBar(barTitle) {
-        var topBar = document.createElement("div");
-        topBar.id = 'topBar';
-        topBar.style.height = '50px';
-        topBar.style.width = '100%';
-        topBar.style.backgroundColor = 'black';
-        codeground.appendChild(topBar);
-
-        createTabBtn('HTML');
-        createTabBtn('CSS');
-        createTabBtn('JS')
-
-        var htmlBtn = document.getElementById('htmlBtn');
-        htmlBtn.addEventListener('click', function() {
-            tabs('html');
-        })
-        var cssBtn = document.getElementById('cssBtn');
-        cssBtn.addEventListener('click', function() {
-            tabs('css');
-        })
-        var jsBtn = document.getElementById('jsBtn');
-        jsBtn.addEventListener('click', function() {
-            tabs('js');
-        })
-        var title = document.createElement("h2");
-        title.textContent = barTitle;
-        title.style.color = 'white';
-        title.style.textAlign ='right';
-        title.style.padding = "10px";
-        title.style.display = 'inline';
-        title.style.float = 'right';
-        title.style.margin = 0;
-        topBar.appendChild(title);
-    }
-
-
 
     codeground.style.height = this.options.height + 'px';
     codeground.style.width = this.options.width + 'px';
@@ -104,24 +65,7 @@ function Codeground(id, opts) {
     jsEditorCode = document.querySelector('#js textarea');
 
 
-    function tabs(initial) {
-        if(initial === 'html') {
-            htmlEditor.style.display = 'block';
-            htmlEditor.style.height = '100%';
-            cssEditor.style.display = 'none';
-            jsEditor.style.display = 'none';
-        } else if(initial === 'css') {
-            htmlEditor.style.display = 'none';
-            cssEditor.style.display = 'block';
-            cssEditor.style.height = '100%';
-            jsEditor.style.display = 'none';
-        } else if(initial === 'js') {
-            htmlEditor.style.display = 'none';
-            cssEditor.style.display = 'none';
-            jsEditor.style.display = 'block';
-            jsEditor.style.height = '100%';
-        }
-    }
+
     tabs('css');
     // Add event listeners to each
     keyupRender(htmlEditorCode);
@@ -179,6 +123,41 @@ function Codeground(id, opts) {
         var textarea = document.createElement("textarea");
         code.appendChild(textarea);
     }
+    function createTopBar(barTitle) {
+        var topBar = document.createElement("div");
+        topBar.id = 'topBar';
+        topBar.style.height = '50px';
+        topBar.style.width = '100%';
+        topBar.style.backgroundColor = 'black';
+        codeground.appendChild(topBar);
+
+        createTabBtn('HTML');
+        createTabBtn('CSS');
+        createTabBtn('JS')
+
+        var htmlBtn = document.getElementById('htmlBtn');
+        htmlBtn.addEventListener('click', function() {
+            tabs('html');
+        })
+        var cssBtn = document.getElementById('cssBtn');
+        cssBtn.addEventListener('click', function() {
+            tabs('css');
+        })
+        var jsBtn = document.getElementById('jsBtn');
+        jsBtn.addEventListener('click', function() {
+            tabs('js');
+        })
+        var title = document.createElement("h2");
+        title.textContent = barTitle;
+        title.style.color = 'white';
+        title.style.textAlign ='right';
+        title.style.padding = "10px";
+        title.style.display = 'inline';
+        title.style.float = 'right';
+        title.style.margin = 0;
+        topBar.appendChild(title);
+    }
+
     function createTabBtn(name) {
         var btn = document.createElement("button");
         btn.id = name.toLowerCase() + 'Btn';
@@ -201,6 +180,24 @@ function Codeground(id, opts) {
         })
         var topBar = document.getElementById('topBar');
         topBar.appendChild(btn);
+    }
+    function tabs(initial) {
+        if(initial === 'html') {
+            htmlEditor.style.display = 'block';
+            htmlEditor.style.height = '100%';
+            cssEditor.style.display = 'none';
+            jsEditor.style.display = 'none';
+        } else if(initial === 'css') {
+            htmlEditor.style.display = 'none';
+            cssEditor.style.display = 'block';
+            cssEditor.style.height = '100%';
+            jsEditor.style.display = 'none';
+        } else if(initial === 'js') {
+            htmlEditor.style.display = 'none';
+            cssEditor.style.display = 'none';
+            jsEditor.style.display = 'block';
+            jsEditor.style.height = '100%';
+        }
     }
     function keyupRender(editor) {
         editor.addEventListener('keyup', function() {
