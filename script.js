@@ -14,9 +14,12 @@ function Codeground(id, opts) {
         height: 500,
         width: 1000,
         layout: 'half', // whether editor/output takes up full width or half
-        style: 'tabs', // Tabs show editors full side, column shows each editor on top of each other
+        style: 'column', // Tabs show editors full side, column shows each editor on top of each other
         topbar: true,
         title: 'Codeground'
+    }
+    if(this.options.topbar) {
+        createTopBar(this.options.title);
     }
 
 
@@ -64,9 +67,6 @@ function Codeground(id, opts) {
     jsEditor = document.querySelector('#js');
     jsEditorCode = document.querySelector('#js textarea');
 
-
-
-    tabs('css');
     // Add event listeners to each
     keyupRender(htmlEditorCode);
     keyupRender(cssEditorCode);
@@ -91,6 +91,14 @@ function Codeground(id, opts) {
     if(!this.options.js) {
         document.querySelector('#js').style.display = 'none';
     }
+
+    if(this.options.style === 'tabs') {
+        tabs('css');
+    } else {
+        console.log('columns')
+    }
+
+
 
     // Public Functions for more options
     this.preset = function(presetHTML, presetCSS, presetJS) {
