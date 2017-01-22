@@ -14,7 +14,7 @@ function Codeground(id, opts) {
         height: 500,
         width: 1000,
         layout: 'half', // whether editor/output takes up full width or half
-        style: 'column', // Tabs show editors full side, column shows each editor on top of each other
+        style: 'tabs', // Tabs show editors full side, column shows each editor on top of each other
         topbar: true,
         title: 'Codeground'
     }
@@ -93,9 +93,26 @@ function Codeground(id, opts) {
     }
 
     if(this.options.style === 'tabs') {
+
+        createTabBtn('HTML');
+        createTabBtn('CSS');
+        createTabBtn('JS')
+
+        var htmlBtn = document.getElementById('htmlBtn');
+        htmlBtn.addEventListener('click', function() {
+            tabs('html');
+        })
+        var cssBtn = document.getElementById('cssBtn');
+        cssBtn.addEventListener('click', function() {
+            tabs('css');
+        })
+        var jsBtn = document.getElementById('jsBtn');
+        jsBtn.addEventListener('click', function() {
+            tabs('js');
+        })
         tabs('css');
     } else {
-        console.log('columns')
+        console.log('columns');
     }
 
 
@@ -139,22 +156,7 @@ function Codeground(id, opts) {
         topBar.style.backgroundColor = 'black';
         codeground.appendChild(topBar);
 
-        createTabBtn('HTML');
-        createTabBtn('CSS');
-        createTabBtn('JS')
 
-        var htmlBtn = document.getElementById('htmlBtn');
-        htmlBtn.addEventListener('click', function() {
-            tabs('html');
-        })
-        var cssBtn = document.getElementById('cssBtn');
-        cssBtn.addEventListener('click', function() {
-            tabs('css');
-        })
-        var jsBtn = document.getElementById('jsBtn');
-        jsBtn.addEventListener('click', function() {
-            tabs('js');
-        })
         var title = document.createElement("h2");
         title.textContent = barTitle;
         title.style.color = 'white';
