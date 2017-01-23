@@ -42,3 +42,10 @@ var opts = {
 
 var codeground = new Codeground('codeground', opts);
 ```
+
+### Todo
+
+* Distribution files
+* Minify
+* ES6
+* Tests
