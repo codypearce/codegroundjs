@@ -1,1 +1,265 @@
-function Codeground(t,e){function o(t){var e=document.createElement("div");e.id=t,e.className+="editor",h.appendChild(e);var o=document.createElement("h2");o.textContent=t,e.appendChild(o);var s=document.createElement("div");s.className+="code",s.style.background="#ddd",e.appendChild(s);var n=document.createElement("textarea");s.appendChild(n)}function s(t){var e=document.createElement("div");e.id="topBar",e.style.height="50px",e.style.width="100%",e.style.backgroundColor="black",c.appendChild(e);var o=document.createElement("h2");o.textContent=t,o.style.color="white",o.style.textAlign="right",o.style.padding="10px",o.style.display="inline",o.style.float="right",o.style.margin=0,e.appendChild(o)}function n(t){var e=document.createElement("button");e.id=t.toLowerCase()+"Btn",e.textContent=t,e.style.height="50px",e.style.width="70px",e.style.background="none",e.style.border="none",e.style.borderRight="1px solid white",e.style.outline="none",e.style.color="white",e.addEventListener("mouseenter",function(){e.style.background="white",e.style.color="black",e.style.cursor="pointer"}),e.addEventListener("mouseleave",function(){e.style.background="none",e.style.color="white"});var o=document.getElementById("topBar");o.appendChild(e)}function d(t){"html"===t?(htmlEditor.style.display="block",htmlEditor.style.height="100%",cssEditor.style.display="none",jsEditor.style.display="none"):"css"===t?(htmlEditor.style.display="none",cssEditor.style.display="block",cssEditor.style.height="100%",jsEditor.style.display="none"):"js"===t&&(htmlEditor.style.display="none",cssEditor.style.display="none",jsEditor.style.display="block",jsEditor.style.height="100%")}function i(t){t.addEventListener("keyup",function(){l()},!1)}function l(){var t=r(),e=document.querySelector(".output iframe"),o=e.contentDocument;o.open(),o.write(t),o.close()}function r(){var t=htmlEditorCode.value,e=this.cssEditorCode.value,o=this.jsEditorCode.value,s="",n='<!doctype html>\n<html>\n\t<head>\n\t\t<meta charset="utf-8">\n\t\t<title>Test</title>\n\n\t\t\n\t</head>\n\t<body>\n\t\n\t</body>\n</html>';return s=n.replace("</body>",t+"</body>"),e="<style>"+e+"</style>",s=s.replace("</head>",e+"</head>"),o="<script>"+o+"</script>",s=s.replace("</body>",o+"</body>")}var c;c=t?document.getElementById(t):document.getElementById("codeground"),this.options={html:!0,css:!0,js:!0,height:500,width:1e3,layout:"half",style:"tabs",topbar:!0,title:"Codeground"},this.options.topbar&&s(this.options.title),c.style.height=this.options.height+"px",c.style.width=this.options.width+"px";var h=document.createElement("div");h.className+="editors half",c.appendChild(h);var a=document.createElement("div");a.className+="output half",c.appendChild(a);var y=this.options.height-10;"half"===this.options.layout?(h.style.height=y+"px",h.style.width=this.options.width/2+"px",a.style.height=y+"px",a.style.width=this.options.width/2+"px"):"full"===this.options.layout&&(h.style.height=y+"px",h.style.width=this.options.width+"px",a.style.height=y+"px",a.style.width=this.options.width+"px"),o("html",h),htmlEditor=document.querySelector("#html"),htmlEditorCode=document.querySelector("#html textarea"),o("css",h),cssEditor=document.querySelector("#css"),cssEditorCode=document.querySelector("#css textarea"),o("js",h),jsEditor=document.querySelector("#js"),jsEditorCode=document.querySelector("#js textarea"),i(htmlEditorCode),i(cssEditorCode),i(jsEditorCode);var p=document.createElement("iframe");if(a.appendChild(p),e&&(this.options.html=e.html,this.options.css=e.css,this.options.js=e.js),this.options.html||(document.querySelector("#html").style.display="none"),this.options.css||(document.querySelector("#css").style.display="none"),this.options.js||(document.querySelector("#js").style.display="none"),"tabs"===this.options.style){n("HTML"),n("CSS"),n("JS");var u=document.getElementById("htmlBtn");u.addEventListener("click",function(){d("html")});var m=document.getElementById("cssBtn");m.addEventListener("click",function(){d("css")});var E=document.getElementById("jsBtn");E.addEventListener("click",function(){d("js")}),d("css")}else console.log("columns");this.preset=function(t,e,o){t&&(htmlEditorCode.value+=t),e&&(cssEditorCode.value+=e),o&&(jsEditorCode.value+=o),l()}}var opts={html:!0,css:!0,js:!0},codeground=new Codeground("codeground",opts);codeground.preset("<h1>test</h1>","h1{color:red}",'console.log("test")');
+function Codeground(id, opts) {
+    var codeground;
+    if(id) {
+        codeground = document.getElementById(id);
+    } else {
+        codeground = document.getElementById('codeground');
+    }
+
+    // Default Options
+    this.options = {
+        html: true,
+        css: true,
+        js: true,
+        height: 500,
+        width: 1000,
+        layout: 'half', // whether editor/output takes up full width or half
+        style: 'tabs', // Tabs show editors full side, column shows each editor on top of each other
+        topbar: true,
+        title: 'Codeground'
+    }
+    if(this.options.topbar) {
+        createTopBar(this.options.title);
+    }
+
+
+    codeground.style.height = this.options.height + 'px';
+    codeground.style.width = this.options.width + 'px';
+
+    // Initialize editors
+    var editorsDiv = document.createElement("div");
+    editorsDiv.className += "editors half";
+    codeground.appendChild(editorsDiv);
+
+    // Initialize output
+    var outputDiv = document.createElement("div");
+    outputDiv.className += "output half";
+    codeground.appendChild(outputDiv);
+
+    var editorHeight = this.options.height - 10; // shorter by the height of the topbar
+    // Layouts: half(split 50%) or full
+    if(this.options.layout === 'half') {
+        editorsDiv.style.height = editorHeight + 'px';
+        editorsDiv.style.width = (this.options.width / 2) + 'px';
+        outputDiv.style.height = editorHeight + 'px';
+        outputDiv.style.width = (this.options.width / 2) + 'px';
+    } else if (this.options.layout === 'full') {
+        editorsDiv.style.height = editorHeight + 'px';
+        editorsDiv.style.width = this.options.width + 'px';
+        outputDiv.style.height = editorHeight + 'px';
+        outputDiv.style.width = this.options.width  + 'px';
+    }
+
+
+
+    // Create all three Editors
+    createEditor('html', editorsDiv);
+    htmlEditor = document.querySelector('#html');
+    htmlEditorCode = document.querySelector('#html textarea')
+
+
+    createEditor('css', editorsDiv);
+    cssEditor = document.querySelector('#css');
+    cssEditorCode = document.querySelector('#css textarea');
+
+
+    createEditor('js', editorsDiv);
+    jsEditor = document.querySelector('#js');
+    jsEditorCode = document.querySelector('#js textarea');
+
+    // Add event listeners to each
+    keyupRender(htmlEditorCode);
+    keyupRender(cssEditorCode);
+    keyupRender(jsEditorCode);
+
+    // Create and add the iframe to the document
+    var iframe = document.createElement('iframe');
+    outputDiv.appendChild(iframe);
+
+
+    if(opts) {
+        this.options.html = opts.html,
+        this.options.css = opts.css,
+        this.options.js = opts.js
+    }
+    if(!this.options.html) {
+        document.querySelector('#html').style.display = 'none';
+    }
+    if(!this.options.css) {
+        document.querySelector('#css').style.display = 'none';
+    }
+    if(!this.options.js) {
+        document.querySelector('#js').style.display = 'none';
+    }
+
+    if(this.options.style === 'tabs') {
+
+        createTabBtn('HTML');
+        createTabBtn('CSS');
+        createTabBtn('JS')
+
+        var htmlBtn = document.getElementById('htmlBtn');
+        htmlBtn.addEventListener('click', function() {
+            tabs('html');
+        })
+        var cssBtn = document.getElementById('cssBtn');
+        cssBtn.addEventListener('click', function() {
+            tabs('css');
+        })
+        var jsBtn = document.getElementById('jsBtn');
+        jsBtn.addEventListener('click', function() {
+            tabs('js');
+        })
+        tabs('css');
+    } else {
+        console.log('columns');
+    }
+
+
+
+    // Public Functions for more options
+    this.preset = function(presetHTML, presetCSS, presetJS) {
+        if(presetHTML)
+            htmlEditorCode.value += presetHTML;
+        if(presetCSS)
+            cssEditorCode.value += presetCSS;
+        if(presetJS)
+            jsEditorCode.value += presetJS;
+        render();
+    }
+
+
+    // Functions
+    function createEditor(editor) {
+        var div = document.createElement("div");
+        div.id = editor;
+        div.className += "editor";
+        editorsDiv.appendChild(div);
+
+        var header = document.createElement("h2");
+        header.textContent = editor
+        div.appendChild(header)
+
+
+        var code = document.createElement("div");
+        code.className += "code";
+        code.style.background = '#ddd';
+        div.appendChild(code);
+
+        var textarea = document.createElement("textarea");
+        code.appendChild(textarea);
+    }
+    function createTopBar(barTitle) {
+        var topBar = document.createElement("div");
+        topBar.id = 'topBar';
+        topBar.style.height = '50px';
+        topBar.style.width = '100%';
+        topBar.style.backgroundColor = 'black';
+        codeground.appendChild(topBar);
+
+
+        var title = document.createElement("h2");
+        title.textContent = barTitle;
+        title.style.color = 'white';
+        title.style.textAlign ='right';
+        title.style.padding = "10px";
+        title.style.display = 'inline';
+        title.style.float = 'right';
+        title.style.margin = 0;
+        topBar.appendChild(title);
+    }
+
+    function createTabBtn(name) {
+        var btn = document.createElement("button");
+        btn.id = name.toLowerCase() + 'Btn';
+        btn.textContent = name;
+        btn.style.height = '50px';
+        btn.style.width = '70px';
+        btn.style.background = 'none';
+        btn.style.border = 'none';
+        btn.style.borderRight = '1px solid white';
+        btn.style.outline = 'none';
+        btn.style.color = 'white';
+        btn.addEventListener('mouseenter', function() {
+            btn.style.background = 'white';
+            btn.style.color = 'black';
+            btn.style.cursor = 'pointer';
+        });
+        btn.addEventListener('mouseleave', function() {
+            btn.style.background = 'none';
+            btn.style.color = 'white';
+        })
+        var topBar = document.getElementById('topBar');
+        topBar.appendChild(btn);
+    }
+    function tabs(initial) {
+        if(initial === 'html') {
+            htmlEditor.style.display = 'block';
+            htmlEditor.style.height = '100%';
+            cssEditor.style.display = 'none';
+            jsEditor.style.display = 'none';
+        } else if(initial === 'css') {
+            htmlEditor.style.display = 'none';
+            cssEditor.style.display = 'block';
+            cssEditor.style.height = '100%';
+            jsEditor.style.display = 'none';
+        } else if(initial === 'js') {
+            htmlEditor.style.display = 'none';
+            cssEditor.style.display = 'none';
+            jsEditor.style.display = 'block';
+            jsEditor.style.height = '100%';
+        }
+    }
+    function keyupRender(editor) {
+        editor.addEventListener('keyup', function() {
+            render();
+        }, false);
+    }
+
+    function render() {
+        var source = prepareSource();
+
+        var iframe = document.querySelector('.output iframe'),
+            iframe_doc = iframe.contentDocument;
+
+        iframe_doc.open();
+        iframe_doc.write(source);
+        iframe_doc.close();
+    };
+
+
+    function prepareSource() {
+        var html = htmlEditorCode.value,
+            css = this.cssEditorCode.value,
+            js = this.jsEditorCode.value,
+            src = '';
+
+        var baseTemplate =
+            "<!doctype html>\n" +
+            "<html>\n\t" +
+            "<head>\n\t\t" +
+            "<meta charset=\"utf-8\">\n\t\t" +
+            "<title>Test</title>\n\n\t\t\n\t" +
+            "</head>\n\t" +
+            "<body>\n\t\n\t" +
+            "</body>\n" +
+            "</html>";
+
+        src = baseTemplate.replace('</body>', html + '</body>');
+
+        css = '<style>' + css + '</style>';
+        src = src.replace('</head>', css + '</head>');
+
+        js = '<script>' + js + '</script>';
+        src = src.replace('</body>', js + '</body>');
+
+        return src;
+    };
+}
+var opts = {
+    html: true,
+    css: true,
+    js: true
+}
+var codeground = new Codeground('codeground', opts);
+codeground.preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
