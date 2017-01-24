@@ -1,6 +1,8 @@
+'use strict';
+
 function Codeground(id, opts) {
     var codeground;
-    if(id) {
+    if (id) {
         codeground = document.getElementById(id);
     } else {
         codeground = document.getElementById('codeground');
@@ -17,11 +19,10 @@ function Codeground(id, opts) {
         style: 'tabs', // Tabs show editors full side, column shows each editor on top of each other
         topbar: true,
         title: 'Codeground'
-    }
-    if(this.options.topbar) {
+    };
+    if (this.options.topbar) {
         createTopBar(this.options.title);
     }
-
 
     codeground.style.height = this.options.height + 'px';
     codeground.style.width = this.options.width + 'px';
@@ -38,30 +39,26 @@ function Codeground(id, opts) {
 
     var editorHeight = this.options.height - 10; // shorter by the height of the topbar
     // Layouts: half(split 50%) or full
-    if(this.options.layout === 'half') {
+    if (this.options.layout === 'half') {
         editorsDiv.style.height = editorHeight + 'px';
-        editorsDiv.style.width = (this.options.width / 2) + 'px';
+        editorsDiv.style.width = this.options.width / 2 + 'px';
         outputDiv.style.height = editorHeight + 'px';
-        outputDiv.style.width = (this.options.width / 2) + 'px';
+        outputDiv.style.width = this.options.width / 2 + 'px';
     } else if (this.options.layout === 'full') {
         editorsDiv.style.height = editorHeight + 'px';
         editorsDiv.style.width = this.options.width + 'px';
         outputDiv.style.height = editorHeight + 'px';
-        outputDiv.style.width = this.options.width  + 'px';
+        outputDiv.style.width = this.options.width + 'px';
     }
-
-
 
     // Create all three Editors
     createEditor('html', editorsDiv);
     htmlEditor = document.querySelector('#html');
-    htmlEditorCode = document.querySelector('#html textarea')
-
+    htmlEditorCode = document.querySelector('#html textarea');
 
     createEditor('css', editorsDiv);
     cssEditor = document.querySelector('#css');
     cssEditorCode = document.querySelector('#css textarea');
-
 
     createEditor('js', editorsDiv);
     jsEditor = document.querySelector('#js');
@@ -76,58 +73,49 @@ function Codeground(id, opts) {
     var iframe = document.createElement('iframe');
     outputDiv.appendChild(iframe);
 
-
-    if(opts) {
-        this.options.html = opts.html,
-        this.options.css = opts.css,
-        this.options.js = opts.js
+    if (opts) {
+        this.options.html = opts.html, this.options.css = opts.css, this.options.js = opts.js;
     }
-    if(!this.options.html) {
+    if (!this.options.html) {
         document.querySelector('#html').style.display = 'none';
     }
-    if(!this.options.css) {
+    if (!this.options.css) {
         document.querySelector('#css').style.display = 'none';
     }
-    if(!this.options.js) {
+    if (!this.options.js) {
         document.querySelector('#js').style.display = 'none';
     }
 
-    if(this.options.style === 'tabs') {
+    if (this.options.style === 'tabs') {
 
         createTabBtn('HTML');
         createTabBtn('CSS');
-        createTabBtn('JS')
+        createTabBtn('JS');
 
         var htmlBtn = document.getElementById('htmlBtn');
-        htmlBtn.addEventListener('click', function() {
+        htmlBtn.addEventListener('click', function () {
             tabs('html');
-        })
+        });
         var cssBtn = document.getElementById('cssBtn');
-        cssBtn.addEventListener('click', function() {
+        cssBtn.addEventListener('click', function () {
             tabs('css');
-        })
+        });
         var jsBtn = document.getElementById('jsBtn');
-        jsBtn.addEventListener('click', function() {
+        jsBtn.addEventListener('click', function () {
             tabs('js');
-        })
+        });
         tabs('css');
     } else {
         console.log('columns');
     }
 
-
-
     // Public Functions for more options
-    this.preset = function(presetHTML, presetCSS, presetJS) {
-        if(presetHTML)
-            htmlEditorCode.value += presetHTML;
-        if(presetCSS)
-            cssEditorCode.value += presetCSS;
-        if(presetJS)
-            jsEditorCode.value += presetJS;
+    this.preset = function (presetHTML, presetCSS, presetJS) {
+        if (presetHTML) htmlEditorCode.value += presetHTML;
+        if (presetCSS) cssEditorCode.value += presetCSS;
+        if (presetJS) jsEditorCode.value += presetJS;
         render();
-    }
-
+    };
 
     // Functions
     function createEditor(editor) {
@@ -137,9 +125,8 @@ function Codeground(id, opts) {
         editorsDiv.appendChild(div);
 
         var header = document.createElement("h2");
-        header.textContent = editor
-        div.appendChild(header)
-
+        header.textContent = editor;
+        div.appendChild(header);
 
         var code = document.createElement("div");
         code.className += "code";
@@ -157,11 +144,10 @@ function Codeground(id, opts) {
         topBar.style.backgroundColor = 'black';
         codeground.appendChild(topBar);
 
-
         var title = document.createElement("h2");
         title.textContent = barTitle;
         title.style.color = 'white';
-        title.style.textAlign ='right';
+        title.style.textAlign = 'right';
         title.style.padding = "10px";
         title.style.display = 'inline';
         title.style.float = 'right';
@@ -180,30 +166,30 @@ function Codeground(id, opts) {
         btn.style.borderRight = '1px solid white';
         btn.style.outline = 'none';
         btn.style.color = 'white';
-        btn.addEventListener('mouseenter', function() {
+        btn.addEventListener('mouseenter', function () {
             btn.style.background = 'white';
             btn.style.color = 'black';
             btn.style.cursor = 'pointer';
         });
-        btn.addEventListener('mouseleave', function() {
+        btn.addEventListener('mouseleave', function () {
             btn.style.background = 'none';
             btn.style.color = 'white';
-        })
+        });
         var topBar = document.getElementById('topBar');
         topBar.appendChild(btn);
     }
     function tabs(initial) {
-        if(initial === 'html') {
+        if (initial === 'html') {
             htmlEditor.style.display = 'block';
             htmlEditor.style.height = '100%';
             cssEditor.style.display = 'none';
             jsEditor.style.display = 'none';
-        } else if(initial === 'css') {
+        } else if (initial === 'css') {
             htmlEditor.style.display = 'none';
             cssEditor.style.display = 'block';
             cssEditor.style.height = '100%';
             jsEditor.style.display = 'none';
-        } else if(initial === 'js') {
+        } else if (initial === 'js') {
             htmlEditor.style.display = 'none';
             cssEditor.style.display = 'none';
             jsEditor.style.display = 'block';
@@ -211,7 +197,7 @@ function Codeground(id, opts) {
         }
     }
     function keyupRender(editor) {
-        editor.addEventListener('keyup', function() {
+        editor.addEventListener('keyup', function () {
             render();
         }, false);
     }
@@ -227,23 +213,13 @@ function Codeground(id, opts) {
         iframe_doc.close();
     };
 
-
     function prepareSource() {
         var html = htmlEditorCode.value,
             css = this.cssEditorCode.value,
             js = this.jsEditorCode.value,
             src = '';
 
-        var baseTemplate =
-            "<!doctype html>\n" +
-            "<html>\n\t" +
-            "<head>\n\t\t" +
-            "<meta charset=\"utf-8\">\n\t\t" +
-            "<title>Test</title>\n\n\t\t\n\t" +
-            "</head>\n\t" +
-            "<body>\n\t\n\t" +
-            "</body>\n" +
-            "</html>";
+        var baseTemplate = "<!doctype html>\n" + "<html>\n\t" + "<head>\n\t\t" + "<meta charset=\"utf-8\">\n\t\t" + "<title>Test</title>\n\n\t\t\n\t" + "</head>\n\t" + "<body>\n\t\n\t" + "</body>\n" + "</html>";
 
         src = baseTemplate.replace('</body>', html + '</body>');
 
@@ -260,6 +236,6 @@ var opts = {
     html: true,
     css: true,
     js: true
-}
+};
 var codeground = new Codeground('codeground', opts);
 codeground.preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
