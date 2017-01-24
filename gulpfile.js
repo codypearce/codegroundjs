@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     rename = require('gulp-rename'),
     babel = require('gulp-babel'),
+    eslint = require('gulp-eslint'),
     uglify = require('gulp-uglify');
 
 gulp.task('js', function() {
@@ -10,4 +11,11 @@ gulp.task('js', function() {
     .pipe(rename('script.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
+});
+
+gulp.task('lint', () => {
+	return gulp.src(['**/*.js','!node_modules/**', '!dist/**/*'])
+		.pipe(eslint())
+		.pipe(eslint.format())
+		.pipe(eslint.failAfterError());
 });
