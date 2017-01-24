@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/codypearce/codegroundjs/issues"
   },
-  "homepage": "https://github.com/codypearce/codegroundjs#readme"
+  "homepage": "https://github.com/codypearce/codegroundjs#readme",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
 }

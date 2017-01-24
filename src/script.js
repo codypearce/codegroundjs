@@ -143,6 +143,7 @@ function Codeground(id, opts) {
 
         var code = document.createElement("div");
         code.className += "code";
+        code.style.background = '#ddd';
         div.appendChild(code);
 
         var textarea = document.createElement("textarea");
