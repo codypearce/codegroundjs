@@ -54,18 +54,18 @@ function Codeground(id, opts) {
 
     // Create all three Editors
     createEditor('html', editorsDiv);
-    htmlEditor = document.querySelector('#html');
-    htmlEditorCode = document.querySelector('#html textarea')
+    var htmlEditor = document.querySelector('#html');
+    var htmlEditorCode = document.querySelector('#html textarea');
 
 
     createEditor('css', editorsDiv);
-    cssEditor = document.querySelector('#css');
-    cssEditorCode = document.querySelector('#css textarea');
+    var cssEditor = document.querySelector('#css');
+    var cssEditorCode = document.querySelector('#css textarea');
 
 
     createEditor('js', editorsDiv);
-    jsEditor = document.querySelector('#js');
-    jsEditorCode = document.querySelector('#js textarea');
+    var jsEditor = document.querySelector('#js');
+    var jsEditorCode = document.querySelector('#js textarea');
 
     // Add event listeners to each
     keyupRender(htmlEditorCode);
@@ -78,9 +78,9 @@ function Codeground(id, opts) {
 
 
     if(opts) {
-        this.options.html = opts.html,
-        this.options.css = opts.css,
-        this.options.js = opts.js
+        this.options.html = opts.html;
+        this.options.css = opts.css;
+        this.options.js = opts.js;
     }
     if(!this.options.html) {
         document.querySelector('#html').style.display = 'none';
@@ -96,20 +96,20 @@ function Codeground(id, opts) {
 
         createTabBtn('HTML');
         createTabBtn('CSS');
-        createTabBtn('JS')
+        createTabBtn('JS');
 
         var htmlBtn = document.getElementById('htmlBtn');
         htmlBtn.addEventListener('click', function() {
             tabs('html');
-        })
+        });
         var cssBtn = document.getElementById('cssBtn');
         cssBtn.addEventListener('click', function() {
             tabs('css');
-        })
+        });
         var jsBtn = document.getElementById('jsBtn');
         jsBtn.addEventListener('click', function() {
             tabs('js');
-        })
+        });
         tabs('css');
     } else {
         console.log('columns');
@@ -126,7 +126,7 @@ function Codeground(id, opts) {
         if(presetJS)
             jsEditorCode.value += presetJS;
         render();
-    }
+    };
 
 
     // Functions
@@ -137,8 +137,8 @@ function Codeground(id, opts) {
         editorsDiv.appendChild(div);
 
         var header = document.createElement('h2');
-        header.textContent = editor
-        div.appendChild(header)
+        header.textContent = editor;
+        div.appendChild(header);
 
 
         var code = document.createElement('div');
@@ -188,7 +188,7 @@ function Codeground(id, opts) {
         btn.addEventListener('mouseleave', function() {
             btn.style.background = 'none';
             btn.style.color = 'white';
-        })
+        });
         var topBar = document.getElementById('topBar');
         topBar.appendChild(btn);
     }
@@ -225,7 +225,7 @@ function Codeground(id, opts) {
         iframe_doc.open();
         iframe_doc.write(source);
         iframe_doc.close();
-    };
+    }
 
 
     function prepareSource() {
@@ -254,12 +254,12 @@ function Codeground(id, opts) {
         src = src.replace('</body>', js + '</body>');
 
         return src;
-    };
+    }
 }
 var opts = {
     html: true,
     css: true,
     js: true
-}
+};
 var codeground = new Codeground('codeground', opts);
 codeground.preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');
