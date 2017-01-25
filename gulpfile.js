@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 var gulp = require('gulp'),
     rename = require('gulp-rename'),
     babel = require('gulp-babel'),
@@ -10,7 +12,7 @@ gulp.task('js', function() {
     .pipe(gulp.dest('dist'))
     .pipe(rename('script.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('lint', () => {
