@@ -17,7 +17,7 @@ function Codeground(id, opts) {
         style: 'tabs', // Tabs show editors full side, column shows each editor on top of each other
         topbar: true,
         title: 'Codeground'
-    }
+    };
     if(this.options.topbar) {
         createTopBar(this.options.title);
     }
@@ -27,13 +27,13 @@ function Codeground(id, opts) {
     codeground.style.width = this.options.width + 'px';
 
     // Initialize editors
-    var editorsDiv = document.createElement("div");
-    editorsDiv.className += "editors half";
+    var editorsDiv = document.createElement('div');
+    editorsDiv.className += 'editors half';
     codeground.appendChild(editorsDiv);
 
     // Initialize output
-    var outputDiv = document.createElement("div");
-    outputDiv.className += "output half";
+    var outputDiv = document.createElement('div');
+    outputDiv.className += 'output half';
     codeground.appendChild(outputDiv);
 
     var editorHeight = this.options.height - 10; // shorter by the height of the topbar
@@ -131,26 +131,26 @@ function Codeground(id, opts) {
 
     // Functions
     function createEditor(editor) {
-        var div = document.createElement("div");
+        var div = document.createElement('div');
         div.id = editor;
-        div.className += "editor";
+        div.className += 'editor';
         editorsDiv.appendChild(div);
 
-        var header = document.createElement("h2");
+        var header = document.createElement('h2');
         header.textContent = editor
         div.appendChild(header)
 
 
-        var code = document.createElement("div");
-        code.className += "code";
+        var code = document.createElement('div');
+        code.className += 'code';
         code.style.background = '#ddd';
         div.appendChild(code);
 
-        var textarea = document.createElement("textarea");
+        var textarea = document.createElement('textarea');
         code.appendChild(textarea);
     }
     function createTopBar(barTitle) {
-        var topBar = document.createElement("div");
+        var topBar = document.createElement('div');
         topBar.id = 'topBar';
         topBar.style.height = '50px';
         topBar.style.width = '100%';
@@ -158,11 +158,11 @@ function Codeground(id, opts) {
         codeground.appendChild(topBar);
 
 
-        var title = document.createElement("h2");
+        var title = document.createElement('h2');
         title.textContent = barTitle;
         title.style.color = 'white';
         title.style.textAlign ='right';
-        title.style.padding = "10px";
+        title.style.padding = '10px';
         title.style.display = 'inline';
         title.style.float = 'right';
         title.style.margin = 0;
@@ -170,7 +170,7 @@ function Codeground(id, opts) {
     }
 
     function createTabBtn(name) {
-        var btn = document.createElement("button");
+        var btn = document.createElement('button');
         btn.id = name.toLowerCase() + 'Btn';
         btn.textContent = name;
         btn.style.height = '50px';
@@ -235,15 +235,15 @@ function Codeground(id, opts) {
             src = '';
 
         var baseTemplate =
-            "<!doctype html>\n" +
-            "<html>\n\t" +
-            "<head>\n\t\t" +
-            "<meta charset=\"utf-8\">\n\t\t" +
-            "<title>Test</title>\n\n\t\t\n\t" +
-            "</head>\n\t" +
-            "<body>\n\t\n\t" +
-            "</body>\n" +
-            "</html>";
+            '<!doctype html>\n' +
+            '<html>\n\t' +
+            '<head>\n\t\t' +
+            '<meta charset=\'utf-8\'>\n\t\t' +
+            '<title>Test</title>\n\n\t\t\n\t' +
+            '</head>\n\t' +
+            '<body>\n\t\n\t' +
+            '</body>\n' +
+            '</html>';
 
         src = baseTemplate.replace('</body>', html + '</body>');
 
