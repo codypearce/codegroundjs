@@ -1,28 +1,5 @@
-* {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
 
-.half {
-    float: left;
-}
-.clear {
-    clear: both;
-}
 
-.editor .lang {
-    background: black;
-    color: white;
-}
-.editor .lang h2 {
-    margin: 0;
-    margin-left: 10px;
-    padding: 10px 0
-}
-.editor .code {
-    height: 80%;
-}
 .editor textarea {
     width:100%;
     height:100%;

@@ -50,8 +50,10 @@ function Codeground(id, opts) {
         if(options.layout === 'half') {
             editorsDiv.style.height = editorHeight + 'px';
             editorsDiv.style.width = (options.width / 2) + 'px';
+            editorsDiv.style.float = 'left'
             outputDiv.style.height = editorHeight + 'px';
             outputDiv.style.width = (options.width / 2) + 'px';
+            outputDiv.style.float = 'left'
         } else if (options.layout === 'full') {
             editorsDiv.style.height = editorHeight + 'px';
             editorsDiv.style.width = options.width + 'px';
@@ -144,14 +146,8 @@ function Codeground(id, opts) {
         header.textContent = editor;
         div.appendChild(header);
 
-
-        var code = document.createElement('div');
-        code.className += 'code';
-        code.style.background = '#ddd';
-        div.appendChild(code);
-
         var textarea = document.createElement('textarea');
-        code.appendChild(textarea);
+        div.appendChild(textarea);
     }
 
     function createTopBar(barTitle) {
