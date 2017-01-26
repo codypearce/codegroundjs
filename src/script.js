@@ -1,13 +1,6 @@
 function Codeground(id, opts) {
-    var codeground;
-    if(id) {
-        codeground = document.getElementById(id);
-    } else {
-        codeground = document.getElementById('codeground');
-    }
-
     // Default Options
-    this.options = {
+    var options = {
         html: true,
         css: true,
         js: true,
@@ -18,13 +11,23 @@ function Codeground(id, opts) {
         topbar: true,
         title: 'Codeground'
     };
-    if(this.options.topbar) {
-        createTopBar(this.options.title);
+
+    function initCodeground() {
+        if(id) {
+            this.codeground = document.getElementById(id);
+        } else {
+            this.codeground = document.getElementById('codeground');
+        }
+        this.codeground.style.height = options.height + 'px';
+        this.codeground.style.width = options.width + 'px';
+    }
+    initCodeground();
+
+    if(options.topbar) {
+        createTopBar(options.title);
     }
 
 
-    codeground.style.height = this.options.height + 'px';
-    codeground.style.width = this.options.width + 'px';
 
     // Initialize editors
     var editorsDiv = document.createElement('div');
@@ -36,18 +39,18 @@ function Codeground(id, opts) {
     outputDiv.className += 'output half';
     codeground.appendChild(outputDiv);
 
-    var editorHeight = this.options.height - 10; // shorter by the height of the topbar
+    var editorHeight = options.height - 10; // shorter by the height of the topbar
     // Layouts: half(split 50%) or full
-    if(this.options.layout === 'half') {
+    if(options.layout === 'half') {
         editorsDiv.style.height = editorHeight + 'px';
-        editorsDiv.style.width = (this.options.width / 2) + 'px';
+        editorsDiv.style.width = (options.width / 2) + 'px';
         outputDiv.style.height = editorHeight + 'px';
-        outputDiv.style.width = (this.options.width / 2) + 'px';
-    } else if (this.options.layout === 'full') {
+        outputDiv.style.width = (options.width / 2) + 'px';
+    } else if (options.layout === 'full') {
         editorsDiv.style.height = editorHeight + 'px';
-        editorsDiv.style.width = this.options.width + 'px';
+        editorsDiv.style.width = options.width + 'px';
         outputDiv.style.height = editorHeight + 'px';
-        outputDiv.style.width = this.options.width  + 'px';
+        outputDiv.style.width = options.width  + 'px';
     }
 
 
@@ -78,21 +81,21 @@ function Codeground(id, opts) {
 
 
     if(opts) {
-        this.options.html = opts.html;
-        this.options.css = opts.css;
-        this.options.js = opts.js;
+        options.html = opts.html;
+        options.css = opts.css;
+        options.js = opts.js;
     }
-    if(!this.options.html) {
+    if(!options.html) {
         document.querySelector('#html').style.display = 'none';
     }
-    if(!this.options.css) {
+    if(!options.css) {
         document.querySelector('#css').style.display = 'none';
     }
-    if(!this.options.js) {
+    if(!options.js) {
         document.querySelector('#js').style.display = 'none';
     }
 
-    if(this.options.style === 'tabs') {
+    if(options.style === 'tabs') {
 
         createTabBtn('HTML');
         createTabBtn('CSS');
@@ -230,8 +233,8 @@ function Codeground(id, opts) {
 
     function prepareSource() {
         var html = htmlEditorCode.value,
-            css = this.cssEditorCode.value,
-            js = this.jsEditorCode.value,
+            css = cssEditorCode.value,
+            js = jsEditorCode.value,
             src = '';
 
         var baseTemplate =
