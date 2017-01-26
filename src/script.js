@@ -11,114 +11,116 @@ function Codeground(id, opts) {
         topbar: true,
         title: 'Codeground'
     };
+    initCodeground();
+
+    var htmlEditor,
+        htmlEditorCode,
+        cssEditor,
+        cssEditorCode,
+        jsEditor,
+        jsEditorCode,
+        editorsDiv,
+        codeground;
 
     function initCodeground() {
         if(id) {
-            this.codeground = document.getElementById(id);
+            codeground = document.getElementById(id);
         } else {
-            this.codeground = document.getElementById('codeground');
+            codeground = document.getElementById('codeground');
         }
-        this.codeground.style.height = options.height + 'px';
-        this.codeground.style.width = options.width + 'px';
-    }
-    initCodeground();
+        codeground.style.height = options.height + 'px';
+        codeground.style.width = options.width + 'px';
 
-    if(options.topbar) {
-        createTopBar(options.title);
-    }
+        if(options.topbar) {
+            createTopBar(options.title);
+        }
 
+        // Initialize editors
+        editorsDiv = document.createElement('div');
+        editorsDiv.className += 'editors half';
+        codeground.appendChild(editorsDiv);
 
+        // Initialize output
+        var outputDiv = document.createElement('div');
+        outputDiv.className += 'output half';
+        codeground.appendChild(outputDiv);
 
-    // Initialize editors
-    var editorsDiv = document.createElement('div');
-    editorsDiv.className += 'editors half';
-    codeground.appendChild(editorsDiv);
+        var editorHeight = options.height - 10; // shorter by the height of the topbar
+        // Layouts: half(split 50%) or full
+        if(options.layout === 'half') {
+            editorsDiv.style.height = editorHeight + 'px';
+            editorsDiv.style.width = (options.width / 2) + 'px';
+            outputDiv.style.height = editorHeight + 'px';
+            outputDiv.style.width = (options.width / 2) + 'px';
+        } else if (options.layout === 'full') {
+            editorsDiv.style.height = editorHeight + 'px';
+            editorsDiv.style.width = options.width + 'px';
+            outputDiv.style.height = editorHeight + 'px';
+            outputDiv.style.width = options.width  + 'px';
+        }
 
-    // Initialize output
-    var outputDiv = document.createElement('div');
-    outputDiv.className += 'output half';
-    codeground.appendChild(outputDiv);
-
-    var editorHeight = options.height - 10; // shorter by the height of the topbar
-    // Layouts: half(split 50%) or full
-    if(options.layout === 'half') {
-        editorsDiv.style.height = editorHeight + 'px';
-        editorsDiv.style.width = (options.width / 2) + 'px';
-        outputDiv.style.height = editorHeight + 'px';
-        outputDiv.style.width = (options.width / 2) + 'px';
-    } else if (options.layout === 'full') {
-        editorsDiv.style.height = editorHeight + 'px';
-        editorsDiv.style.width = options.width + 'px';
-        outputDiv.style.height = editorHeight + 'px';
-        outputDiv.style.width = options.width  + 'px';
-    }
-
-
-
-    // Create all three Editors
-    createEditor('html', editorsDiv);
-    var htmlEditor = document.querySelector('#html');
-    var htmlEditorCode = document.querySelector('#html textarea');
+        // Create all three Editors
+        createEditor('html', editorsDiv);
+        htmlEditor = document.querySelector('#html');
+        htmlEditorCode = document.querySelector('#html textarea');
 
 
-    createEditor('css', editorsDiv);
-    var cssEditor = document.querySelector('#css');
-    var cssEditorCode = document.querySelector('#css textarea');
+        createEditor('css', editorsDiv);
+        cssEditor = document.querySelector('#css');
+        cssEditorCode = document.querySelector('#css textarea');
 
 
-    createEditor('js', editorsDiv);
-    var jsEditor = document.querySelector('#js');
-    var jsEditorCode = document.querySelector('#js textarea');
+        createEditor('js', editorsDiv);
+        jsEditor = document.querySelector('#js');
+        jsEditorCode = document.querySelector('#js textarea');
 
-    // Add event listeners to each
-    keyupRender(htmlEditorCode);
-    keyupRender(cssEditorCode);
-    keyupRender(jsEditorCode);
+        // Add event listeners to each
+        keyupRender(htmlEditorCode);
+        keyupRender(cssEditorCode);
+        keyupRender(jsEditorCode);
 
-    // Create and add the iframe to the document
-    var iframe = document.createElement('iframe');
-    outputDiv.appendChild(iframe);
+        // Create and add the iframe to the document
+        var iframe = document.createElement('iframe');
+        outputDiv.appendChild(iframe);
 
+        if(opts) {
+            options.html = opts.html;
+            options.css = opts.css;
+            options.js = opts.js;
+        }
+        if(!options.html) {
+            document.querySelector('#html').style.display = 'none';
+        }
+        if(!options.css) {
+            document.querySelector('#css').style.display = 'none';
+        }
+        if(!options.js) {
+            document.querySelector('#js').style.display = 'none';
+        }
 
-    if(opts) {
-        options.html = opts.html;
-        options.css = opts.css;
-        options.js = opts.js;
-    }
-    if(!options.html) {
-        document.querySelector('#html').style.display = 'none';
-    }
-    if(!options.css) {
-        document.querySelector('#css').style.display = 'none';
-    }
-    if(!options.js) {
-        document.querySelector('#js').style.display = 'none';
-    }
+        if(options.style === 'tabs') {
 
-    if(options.style === 'tabs') {
+            createTabBtn('HTML');
+            createTabBtn('CSS');
+            createTabBtn('JS');
 
-        createTabBtn('HTML');
-        createTabBtn('CSS');
-        createTabBtn('JS');
-
-        var htmlBtn = document.getElementById('htmlBtn');
-        htmlBtn.addEventListener('click', function() {
-            tabs('html');
-        });
-        var cssBtn = document.getElementById('cssBtn');
-        cssBtn.addEventListener('click', function() {
+            var htmlBtn = document.getElementById('htmlBtn');
+            htmlBtn.addEventListener('click', function() {
+                tabs('html');
+            });
+            var cssBtn = document.getElementById('cssBtn');
+            cssBtn.addEventListener('click', function() {
+                tabs('css');
+            });
+            var jsBtn = document.getElementById('jsBtn');
+            jsBtn.addEventListener('click', function() {
+                tabs('js');
+            });
             tabs('css');
-        });
-        var jsBtn = document.getElementById('jsBtn');
-        jsBtn.addEventListener('click', function() {
-            tabs('js');
-        });
-        tabs('css');
-    } else {
-        console.log('columns');
+        } else {
+            console.log('columns');
+        }
     }
-
-
 
     // Public Functions for more options
     this.preset = function(presetHTML, presetCSS, presetJS) {
@@ -130,7 +132,6 @@ function Codeground(id, opts) {
             jsEditorCode.value += presetJS;
         render();
     };
-
 
     // Functions
     function createEditor(editor) {
@@ -152,6 +153,7 @@ function Codeground(id, opts) {
         var textarea = document.createElement('textarea');
         code.appendChild(textarea);
     }
+
     function createTopBar(barTitle) {
         var topBar = document.createElement('div');
         topBar.id = 'topBar';
@@ -195,6 +197,7 @@ function Codeground(id, opts) {
         var topBar = document.getElementById('topBar');
         topBar.appendChild(btn);
     }
+
     function tabs(initial) {
         if(initial === 'html') {
             htmlEditor.style.display = 'block';
