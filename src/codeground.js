@@ -50,10 +50,10 @@ function Codeground(id, opts) {
         if(options.layout === 'half') {
             editorsDiv.style.height = editorHeight + 'px';
             editorsDiv.style.width = (options.width / 2) + 'px';
-            editorsDiv.style.float = 'left'
+            editorsDiv.style.float = 'left';
             outputDiv.style.height = editorHeight + 'px';
             outputDiv.style.width = (options.width / 2) + 'px';
-            outputDiv.style.float = 'left'
+            outputDiv.style.float = 'left';
         } else if (options.layout === 'full') {
             editorsDiv.style.height = editorHeight + 'px';
             editorsDiv.style.width = options.width + 'px';
@@ -155,8 +155,8 @@ function Codeground(id, opts) {
         textarea.style.border = 'none';
         textarea.style.resize = 'none';
         textarea.style.padding = '10px';
-        textarea.addEventListener("focus", function () {
-            this.style.outline = "none";
+        textarea.addEventListener('focus', function () {
+            this.style.outline = 'none';
         });
 
         div.appendChild(textarea);
