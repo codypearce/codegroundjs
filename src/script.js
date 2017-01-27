@@ -147,6 +147,15 @@ function Codeground(id, opts) {
         div.appendChild(header);
 
         var textarea = document.createElement('textarea');
+        textarea.style.width = '100%';
+        textarea.style.height = '100%';
+        textarea.style.border = 'none';
+        textarea.style.resize = 'none';
+        textarea.style.padding = '10px';
+        textarea.addEventListener("focus", function () {
+            this.style.outline = "none";
+        });
+
         div.appendChild(textarea);
     }
 
@@ -157,7 +166,6 @@ function Codeground(id, opts) {
         topBar.style.width = '100%';
         topBar.style.backgroundColor = 'black';
         codeground.appendChild(topBar);
-
 
         var title = document.createElement('h2');
         title.textContent = barTitle;
