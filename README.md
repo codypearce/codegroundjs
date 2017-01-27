@@ -7,7 +7,7 @@ A customizable HTML, CSS, and JS playground that can easily be added to any proj
 * Preset values
 * Tabs or Columns
 * Hide/disable any language
-* Customizalbe
+* Customizable 
 * Pure js, no jquery or CSS
 * No dependencies
 
