@@ -10,7 +10,7 @@ gulp.task('js', function() {
     return gulp.src('./src/*.js')
     .pipe(babel())
     .pipe(gulp.dest('dist'))
-    .pipe(rename('script.min.js'))
+    .pipe(rename('codeground.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
