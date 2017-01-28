@@ -7,7 +7,7 @@ function Codeground(id, opts) {
         height: 500,
         width: 1000,
         layout: 'half', // whether editor/output takes up full width or half
-        style: 'tabs', // Tabs show editors full side, column shows each editor on top of each other
+        style: 'columns', // Tabs show editors full side, column shows each editor on top of each other
         topbar: true,
         title: 'Codeground'
     };
@@ -123,7 +123,9 @@ function Codeground(id, opts) {
             });
             tabs('css');
         } else {
-            console.log('columns');
+            htmlEditor.style.height = '33%';
+            cssEditor.style.height = '33%';
+            jsEditor.style.height = '33%';
         }
     }
 
