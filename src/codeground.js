@@ -11,16 +11,17 @@ function Codeground(id, opts) {
 
     // Default Options
     var options = {
-        html: true,
-        css: true,
-        js: true,
-        height: 500,
-        width: 1000,
-        layout: 'half', // whether editor/output takes up full width or half
-        style: 'rows', // Tabs show editors full side, row shows each editor on top of each other
-        topbar: true,
-        title: 'Codeground'
+        html: opts.html !== false,
+        css: opts.css !== false,
+        js: opts.js !== false,
+        height: opts.height || 500,
+        width: opts.width || 1000,
+        layout: opts.layout || 'half', // whether editor/output takes up full width or half
+        style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
+        topbar: opts.topbar !== false,
+        title: opts.title || 'Codeground'
     };
+
     initCodeground();
 
     function initCodeground() {
@@ -89,11 +90,7 @@ function Codeground(id, opts) {
         iframe.style.border = 'none';
         outputDiv.appendChild(iframe);
 
-        if(opts) {
-            options.html = opts.html;
-            options.css = opts.css;
-            options.js = opts.js;
-        }
+
         if(!options.html) {
             document.querySelector('#html').style.display = 'none';
         }
@@ -105,7 +102,6 @@ function Codeground(id, opts) {
         }
 
         if(options.style === 'tabs') {
-
             createTabBtn('HTML');
             createTabBtn('CSS');
             createTabBtn('JS');
