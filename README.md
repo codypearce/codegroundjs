@@ -41,9 +41,19 @@ You can customize each instance by passing in an object with options
 
 ```
 var opts = {
-  style: 'tabs',
-  topbar: true,
-  title: 'codeground1'
+    html: true, // setting these to false hides that languages editor
+    css: true,
+    js: true,
+    
+    height: 500, // Default height and width
+    width: 1000,
+    
+    layout: 'half', // whether editor/output takes up full width or half
+    
+    style: 'rows', // Toggle between rows and tabs view
+    
+    topbar: true, // this sets a top bar, required for the tabs view
+    title: 'Codeground' // optional title for the tab
 }
 
 var codeground = new Codeground('codeground', opts);
