@@ -83,14 +83,14 @@ function Codeground(id, opts) {
         iframe.style.border = 'none';
         outputDiv.appendChild(iframe);
 
-        if (options.html == false) {
+        if (!options.html) {
             document.querySelector('#html').style.display = 'none';
         }
         if (!options.css) {
             document.querySelector('#css').style.display = 'none';
         }
         if (!options.js) {
-            document.querySelector('#js').style.display = 'none';
+            document.querySelector('#sjs').style.display = 'none';
         }
 
         if (options.style === 'tabs') {

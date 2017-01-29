@@ -23,3 +23,7 @@ gulp.task('lint', () => {
 });
 
 gulp.task('build', ['js']);
+
+gulp.task('watch', ['build'], function() {
+	gulp.watch('./src/**/*.js', ['js']);
+});
