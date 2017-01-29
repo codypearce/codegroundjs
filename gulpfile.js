@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     eslint = require('gulp-eslint'),
     uglify = require('gulp-uglify');
 
-gulp.task('js', function() {
+gulp.task('js', ['lint'], function() {
     return gulp.src('./src/*.js')
     .pipe(babel())
     .pipe(gulp.dest('dist'))
@@ -21,3 +21,5 @@ gulp.task('lint', () => {
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
 });
+
+gulp.task('build', ['js']);

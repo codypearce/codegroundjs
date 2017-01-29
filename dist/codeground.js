@@ -1,6 +1,9 @@
 'use strict';
 
+/*eslint-disable no-unused-vars*/
 function Codeground(id, opts) {
+    var htmlEditor, htmlEditorCode, cssEditor, cssEditorCode, jsEditor, jsEditorCode, editorsDiv, codeground;
+
     // Default Options
     var options = {
         html: true,
@@ -9,13 +12,11 @@ function Codeground(id, opts) {
         height: 500,
         width: 1000,
         layout: 'half', // whether editor/output takes up full width or half
-        style: 'tabs', // Tabs show editors full side, column shows each editor on top of each other
+        style: 'rows', // Tabs show editors full side, row shows each editor on top of each other
         topbar: true,
         title: 'Codeground'
     };
     initCodeground();
-
-    var htmlEditor, htmlEditorCode, cssEditor, cssEditorCode, jsEditor, jsEditorCode, editorsDiv, codeground;
 
     function initCodeground() {
         if (id) {
@@ -116,7 +117,9 @@ function Codeground(id, opts) {
             });
             tabs('css');
         } else {
-            console.log('columns');
+            htmlEditor.style.height = '33%';
+            cssEditor.style.height = '33%';
+            jsEditor.style.height = '33%';
         }
     }
 
@@ -145,8 +148,8 @@ function Codeground(id, opts) {
         textarea.style.border = 'none';
         textarea.style.resize = 'none';
         textarea.style.padding = '10px';
-        textarea.addEventListener("focus", function () {
-            this.style.outline = "none";
+        textarea.addEventListener('focus', function () {
+            this.style.outline = 'none';
         });
 
         div.appendChild(textarea);
