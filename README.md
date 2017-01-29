@@ -1,36 +1,42 @@
 # Codeground.js
 
-A customizable HTML, CSS, and JS playground that can easily be added to any project.
+A customizable HTML, CSS, and JS playground that can easily be added to any project. Basically a self-hosted embedded Codepen or JSFiddle.
 
-## Features
+## Install
 
-* Preset values
-* Tabs or Columns
-* Hide/disable any language
-* Customizable 
-* Pure js, no jquery or CSS
-* No dependencies
-
-## Development
-
-Simply download and include the script tag in your project
+### NPM
+```
+npm install --save codegroundjs
+```
+Or
 
 ```
 git clone https://github.com/codypearce/codegroundjs.git
-
 ```
 
+Include the script on your page or include it in your build process
 ```
-<script src="codegroundjs/script.js"></script>
+<script src="/node_modules/codegroundjs/dist/script.min.js"></script>
 ```
+
+## Features
+
+* Customizable: Tabs view (show one language at a time) or Rows View(show all languages ontop of each other) 
+* Preset values for demos
+* Disable a language 
+* Pure js, no jquery or CSS
+* No dependencies
+* Only 4kb
+
+## Use
+
 To create a new playground you need to define an element with the id you want to target, then just pass in that id when you create a new codeground
-
 ```
 var codeground = new Codeground('myid');
 ```
 This will create a new codeground in that div.
 
-### Options
+## Options
 You can customize each instance by passing in an object with options
 
 ```
@@ -42,7 +48,6 @@ var opts = {
 
 var codeground = new Codeground('codeground', opts);
 ```
-
 ### Todo
 
 * ES6
