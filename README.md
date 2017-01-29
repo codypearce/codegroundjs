@@ -4,7 +4,7 @@ A customizable HTML, CSS, and JS playground that can easily be added to any proj
 
 ## Install
 
-### NPM
+#### [NPM](https://www.npmjs.com/package/codegroundjs)
 ```
 npm install --save codegroundjs
 ```
