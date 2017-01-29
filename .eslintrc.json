@@ -20,5 +20,8 @@
             "error",
             "always"
         ]
+    },
+    "globals": {
+        "Codeground": false
     }
 }

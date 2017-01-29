@@ -1,18 +1,5 @@
+/*eslint-disable no-unused-vars*/
 function Codeground(id, opts) {
-    // Default Options
-    var options = {
-        html: true,
-        css: true,
-        js: true,
-        height: 500,
-        width: 1000,
-        layout: 'half', // whether editor/output takes up full width or half
-        style: 'columns', // Tabs show editors full side, column shows each editor on top of each other
-        topbar: true,
-        title: 'Codeground'
-    };
-    initCodeground();
-
     var htmlEditor,
         htmlEditorCode,
         cssEditor,
@@ -21,6 +8,20 @@ function Codeground(id, opts) {
         jsEditorCode,
         editorsDiv,
         codeground;
+
+    // Default Options
+    var options = {
+        html: true,
+        css: true,
+        js: true,
+        height: 500,
+        width: 1000,
+        layout: 'half', // whether editor/output takes up full width or half
+        style: 'rows', // Tabs show editors full side, row shows each editor on top of each other
+        topbar: true,
+        title: 'Codeground'
+    };
+    initCodeground();
 
     function initCodeground() {
         if(id) {
