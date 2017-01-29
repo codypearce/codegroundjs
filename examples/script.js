@@ -5,8 +5,8 @@ var opts = {
     height: 500,
     width: 1000,
     layout: 'half',
-    style: 'tabs',
-    topbar: true,
+    style: 'rows',
+    topbar: false,
     title: 'test'
 };
 var codeground = new Codeground('codeground', opts);

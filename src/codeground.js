@@ -18,7 +18,7 @@ function Codeground(id, opts) {
         width: opts.width || 1000,
         layout: opts.layout || 'half', // whether editor/output takes up full width or half
         style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
-        topbar: opts.topbar !== false,
+        topbar: opts.style === 'tabs' ? true : opts.topbar !== false,
         title: opts.title || 'Codeground'
     };
 
