@@ -1,11 +1,12 @@
 var opts = {
-    html: false,
+    html: true,
     css: true,
     js: true,
     height: 500,
     width: 1000,
     layout: 'half',
     style: 'tabs',
+    initialTab: 'html',
     topbar: true,
     title: 'test'
 };

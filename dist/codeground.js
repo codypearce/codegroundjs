@@ -13,7 +13,8 @@ function Codeground(id, opts) {
         width: opts.width || 1000,
         layout: opts.layout || 'half', // whether editor/output takes up full width or half
         style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
-        topbar: opts.style === 'tabs' ? true : opts.topbar !== false,
+        initialTab: opts.initialTab || 'css',
+        topbar: opts.style === 'tabs' ? true : opts.topbar !== false, // Must show if tabs are selected
         title: opts.title || 'Codeground'
     };
 
@@ -116,7 +117,7 @@ function Codeground(id, opts) {
                 });
             }
 
-            tabs('css');
+            tabs(options.initialTab);
         } else {
             htmlEditor.style.height = '33%';
             cssEditor.style.height = '33%';
