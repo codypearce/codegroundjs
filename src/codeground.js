@@ -102,22 +102,28 @@ function Codeground(id, opts) {
         }
 
         if(options.style === 'tabs') {
-            createTabBtn('HTML');
-            createTabBtn('CSS');
-            createTabBtn('JS');
+            if(options.html) {
+                createTabBtn('HTML');
+                var htmlBtn = document.getElementById('htmlBtn');
+                htmlBtn.addEventListener('click', function() {
+                    tabs('html');
+                });
+            }
+            if(options.css) {
+                createTabBtn('CSS');
+                var cssBtn = document.getElementById('cssBtn');
+                cssBtn.addEventListener('click', function() {
+                    tabs('css');
+                });
+            }
+            if(options.js) {
+                createTabBtn('JS');
+                var jsBtn = document.getElementById('jsBtn');
+                jsBtn.addEventListener('click', function() {
+                    tabs('js');
+                });
+            }
 
-            var htmlBtn = document.getElementById('htmlBtn');
-            htmlBtn.addEventListener('click', function() {
-                tabs('html');
-            });
-            var cssBtn = document.getElementById('cssBtn');
-            cssBtn.addEventListener('click', function() {
-                tabs('css');
-            });
-            var jsBtn = document.getElementById('jsBtn');
-            jsBtn.addEventListener('click', function() {
-                tabs('js');
-            });
             tabs('css');
         } else {
             htmlEditor.style.height = '33%';
