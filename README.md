@@ -21,9 +21,9 @@ Include the script on your page or include it in your build process
 
 ## Features
 
-* Customizable: Tabs view (show one language at a time) or Rows View(show all languages ontop of each other) 
+* Customizable: Tabs view (show one language at a time) or Rows View(show all languages ontop of each other)
 * Preset values for demos
-* Disable a language 
+* Disable a language
 * Pure js, no jquery or CSS
 * No dependencies
 * Only 4kb
@@ -42,16 +42,17 @@ You can customize each instance by passing in an object with options
 ```
 var opts = {
     html: true, // setting these to false hides that languages editor
-    css: true,
+    css: true, // if set false on tabs it hides the button
     js: true,
-    
+
     height: 500, // Default height and width
     width: 1000,
-    
+
     layout: 'half', // whether editor/output takes up full width or half
-    
+
     style: 'rows', // Toggle between rows and tabs view
-    
+    initialTab: 'html', // if tabs are selected this selects the initial shown tab
+
     topbar: true, // this sets a top bar, required for the tabs view
     title: 'Codeground' // optional title for the tab
 }
