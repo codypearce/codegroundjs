@@ -2,7 +2,7 @@
 
 /*eslint-disable no-unused-vars*/
 function Codeground(id, opts) {
-    var htmlEditor, htmlEditorCode, cssEditor, cssEditorCode, jsEditor, jsEditorCode, editorsDiv, codeground;
+    var htmlEditor, htmlEditorCode, cssEditor, cssEditorCode, jsEditor, jsEditorCode, editorsDiv, outputDiv, codeground;
 
     // Default Options
     var options = {
@@ -39,11 +39,12 @@ function Codeground(id, opts) {
         codeground.appendChild(editorsDiv);
 
         // Initialize output
-        var outputDiv = document.createElement('div');
+        outputDiv = document.createElement('div');
         outputDiv.className += 'output half';
         codeground.appendChild(outputDiv);
 
         var editorHeight = options.height - 10; // shorter by the height of the topbar
+
         // Layouts: half(split 50%) or full
         if (options.layout === 'half') {
             editorsDiv.style.height = editorHeight + 'px';
@@ -116,6 +117,11 @@ function Codeground(id, opts) {
                     tabs('js');
                 });
             }
+            createTabBtn('Result');
+            var resultBtn = document.getElementById('resultBtn');
+            resultBtn.addEventListener('click', function () {
+                tabs('result');
+            });
 
             tabs(options.initialTab);
         } else {
@@ -216,6 +222,9 @@ function Codeground(id, opts) {
             cssEditor.style.display = 'none';
             jsEditor.style.display = 'block';
             jsEditor.style.height = '100%';
+        }
+        if (initial === 'result') {
+            outputDiv.style.display === 'none' ? outputDiv.style.display = 'block' : outputDiv.style.display = 'none';
         }
     }
     function keyupRender(editor) {
