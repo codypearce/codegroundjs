@@ -5,6 +5,7 @@ var opts = {
     height: 500,
     width: 1000,
     layout: 'half',
+    initialFull: 'editor',
     style: 'tabs',
     initialTab: 'html',
     topbar: true,

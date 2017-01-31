@@ -49,6 +49,7 @@ var opts = {
     width: 1000,
 
     layout: 'half', // whether editor/output takes up full width or half
+    initialFull: 'editors', // this sets the initial view if you choose layout full
 
     style: 'rows', // Toggle between rows and tabs view
     initialTab: 'html', // if tabs are selected this selects the initial shown tab

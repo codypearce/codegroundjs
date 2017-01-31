@@ -12,6 +12,7 @@ function Codeground(id, opts) {
         height: opts.height || 500,
         width: opts.width || 1000,
         layout: opts.layout || 'half', // whether editor/output takes up full width or half
+        initialFull: opts.initialFull || 'output',
         style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
         initialTab: opts.initialTab || 'css',
         topbar: opts.style === 'tabs' ? true : opts.topbar !== false, // Must show if tabs are selected
@@ -43,6 +44,19 @@ function Codeground(id, opts) {
         outputDiv.className += 'output half';
         codeground.appendChild(outputDiv);
 
+        // Create all three Editors
+        createEditor('html', editorsDiv);
+        htmlEditor = document.querySelector('#html');
+        htmlEditorCode = document.querySelector('#html textarea');
+
+        createEditor('css', editorsDiv);
+        cssEditor = document.querySelector('#css');
+        cssEditorCode = document.querySelector('#css textarea');
+
+        createEditor('js', editorsDiv);
+        jsEditor = document.querySelector('#js');
+        jsEditorCode = document.querySelector('#js textarea');
+
         var editorHeight = options.height - 10; // shorter by the height of the topbar
 
         // Layouts: half(split 50%) or full
@@ -58,20 +72,13 @@ function Codeground(id, opts) {
             editorsDiv.style.width = options.width + 'px';
             outputDiv.style.height = editorHeight + 'px';
             outputDiv.style.width = options.width + 'px';
+
+            if (options.initialFull === 'output') {
+                editorsDiv.style.display = 'none';
+            } else {
+                outputDiv.style.display = 'none';
+            }
         }
-
-        // Create all three Editors
-        createEditor('html', editorsDiv);
-        htmlEditor = document.querySelector('#html');
-        htmlEditorCode = document.querySelector('#html textarea');
-
-        createEditor('css', editorsDiv);
-        cssEditor = document.querySelector('#css');
-        cssEditorCode = document.querySelector('#css textarea');
-
-        createEditor('js', editorsDiv);
-        jsEditor = document.querySelector('#js');
-        jsEditorCode = document.querySelector('#js textarea');
 
         // Add event listeners to each
         keyupRender(htmlEditorCode);
