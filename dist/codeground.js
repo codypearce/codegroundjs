@@ -29,6 +29,7 @@ function Codeground(id, opts) {
         }
         codeground.style.height = options.height + 'px';
         codeground.style.width = options.width + 'px';
+        codeground.style.border = '1px solid #eee';
 
         if (options.topbar) {
             createTopBar(options.title);
@@ -57,7 +58,7 @@ function Codeground(id, opts) {
         jsEditor = document.querySelector('#js');
         jsEditorCode = document.querySelector('#js textarea');
 
-        var editorHeight = options.height - 10; // shorter by the height of the topbar
+        var editorHeight = options.height - 50; // shorter by the height of the topbar
 
         // Layouts: half(split 50%) or full
         if (options.layout === 'half') {
@@ -175,12 +176,12 @@ function Codeground(id, opts) {
         topBar.id = 'topBar';
         topBar.style.height = '50px';
         topBar.style.width = '100%';
-        topBar.style.backgroundColor = 'black';
+        topBar.style.backgroundColor = '#b7b4b3';
         codeground.appendChild(topBar);
 
         var title = document.createElement('h2');
         title.textContent = barTitle;
-        title.style.color = 'white';
+        title.style.color = '#242121';
         title.style.textAlign = 'right';
         title.style.padding = '10px';
         title.style.display = 'inline';
@@ -199,7 +200,7 @@ function Codeground(id, opts) {
         btn.style.border = 'none';
         btn.style.borderRight = '1px solid white';
         btn.style.outline = 'none';
-        btn.style.color = 'white';
+        btn.style.color = '#242121';
         btn.addEventListener('mouseenter', function () {
             btn.style.background = 'white';
             btn.style.color = 'black';
