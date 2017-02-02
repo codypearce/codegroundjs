@@ -2,7 +2,7 @@
 
 /*eslint-disable no-unused-vars*/
 function Codeground(id, opts) {
-    var htmlEditor, htmlEditorCode, cssEditor, cssEditorCode, jsEditor, jsEditorCode, editorsDiv, outputDiv, codeground;
+    var htmlEditor, htmlEditorCode, cssEditor, cssEditorCode, jsEditor, jsEditorCode, editorsDiv, outputDiv, topBar, codeground;
 
     // Default Options
     var options = {
@@ -58,7 +58,8 @@ function Codeground(id, opts) {
         jsEditor = document.querySelector('#js');
         jsEditorCode = document.querySelector('#js textarea');
 
-        var editorHeight = options.height - 50; // shorter by the height of the topbar
+        var topBarHeight = topBar.style.height.slice(0, -2);
+        var editorHeight = options.height - topBarHeight; // shorter by the height of the topbar
 
         // Layouts: half(split 50%) or full
         if (options.layout === 'half') {
@@ -172,7 +173,7 @@ function Codeground(id, opts) {
     }
 
     function createTopBar(barTitle) {
-        var topBar = document.createElement('div');
+        topBar = document.createElement('div');
         topBar.id = 'topBar';
         topBar.style.height = '50px';
         topBar.style.width = '100%';
