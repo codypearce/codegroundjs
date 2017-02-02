@@ -1,5 +1,7 @@
 # Codeground.js
 
+[![npm version](https://badge.fury.io/js/codegroundjs.svg)](https://badge.fury.io/js/codegroundjs)
+
 A customizable HTML, CSS, and JS playground that can easily be added to any project. Basically a self-hosted embedded Codepen or JSFiddle.
 
 ## Install
