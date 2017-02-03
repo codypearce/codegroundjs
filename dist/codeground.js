@@ -2,7 +2,7 @@
 
 /*eslint-disable no-unused-vars*/
 function Codeground(id, opts) {
-    var htmlEditor, htmlEditorCode, cssEditor, cssEditorCode, jsEditor, jsEditorCode, editorsDiv, outputDiv, topBar, codeground;
+    var htmlEditor, htmlEditorCode, cssEditor, cssEditorCode, jsEditor, jsEditorCode, editorsDiv, outputDiv, topBar, editorHeight, codeground;
 
     // Default Options
     var options = {
@@ -45,21 +45,8 @@ function Codeground(id, opts) {
         outputDiv.className += 'output half';
         codeground.appendChild(outputDiv);
 
-        // Create all three Editors
-        createEditor('html', editorsDiv);
-        htmlEditor = document.querySelector('#html');
-        htmlEditorCode = document.querySelector('#html textarea');
-
-        createEditor('css', editorsDiv);
-        cssEditor = document.querySelector('#css');
-        cssEditorCode = document.querySelector('#css textarea');
-
-        createEditor('js', editorsDiv);
-        jsEditor = document.querySelector('#js');
-        jsEditorCode = document.querySelector('#js textarea');
-
         var topBarHeight = topBar.style.height.slice(0, -2);
-        var editorHeight = options.height - topBarHeight; // shorter by the height of the topbar
+        editorHeight = options.height - topBarHeight; // shorter by the height of the topbar
 
         // Layouts: half(split 50%) or full
         if (options.layout === 'half') {
@@ -82,7 +69,19 @@ function Codeground(id, opts) {
             }
         }
 
-        // Add event listeners to each
+        // Create all three Editors
+        createEditor('html', editorsDiv);
+        htmlEditor = document.querySelector('#html');
+        htmlEditorCode = document.querySelector('#html textarea');
+
+        createEditor('css', editorsDiv);
+        cssEditor = document.querySelector('#css');
+        cssEditorCode = document.querySelector('#css textarea');
+
+        createEditor('js', editorsDiv);
+        jsEditor = document.querySelector('#js');
+        jsEditorCode = document.querySelector('#js textarea');
+
         keyupRender(htmlEditorCode);
         keyupRender(cssEditorCode);
         keyupRender(jsEditorCode);
@@ -157,11 +156,17 @@ function Codeground(id, opts) {
 
         var header = document.createElement('h2');
         header.textContent = editor;
+        header.style.margin = 0;
+        header.style.paddingTop = '10px';
+        header.style.paddingBottom = '10px';
         div.appendChild(header);
 
+        /* eslint-disable no-console */
+        console.log(editorHeight);
         var textarea = document.createElement('textarea');
         textarea.style.width = '100%';
-        textarea.style.height = '100%';
+        textarea.style.height = editorHeight - 50 + 'px';
+        textarea.style.boxSizing = 'border-box';
         textarea.style.border = 'none';
         textarea.style.resize = 'none';
         textarea.style.padding = '10px';
