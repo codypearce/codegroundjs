@@ -62,7 +62,8 @@ function Codeground(id, opts) {
             editorsDiv.style.width = (options.width / 2) + 'px';
             editorsDiv.style.float = 'left';
             outputDiv.style.height = editorHeight + 'px';
-            outputDiv.style.width = (options.width / 2) + 'px';
+            outputDiv.style.width = (options.width / 2) - 1 + 'px'; // 1px less to make room for divider
+            outputDiv.style.borderLeft = '1px solid #eee';
             outputDiv.style.float = 'left';
         } else if (options.layout === 'full') {
             editorsDiv.style.height = editorHeight + 'px';
@@ -177,8 +178,6 @@ function Codeground(id, opts) {
         header.style.paddingBottom = '10px';
         div.appendChild(header);
         
-        /* eslint-disable no-console */
-        console.log(editorHeight);
         var textarea = document.createElement('textarea');
         textarea.style.width = '100%';
         textarea.style.height = (editorHeight - 50) + 'px';
