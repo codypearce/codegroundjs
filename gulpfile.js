@@ -10,7 +10,7 @@ gulp.task('js', ['lint'], function() {
     return gulp.src('./src/*.js')
     .pipe(babel())
     .pipe(gulp.dest('dist'))
-    .pipe(rename('codeground.min.js'))
+    .pipe(rename('Codeground.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });

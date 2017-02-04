@@ -5,7 +5,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*eslint-disable no-unused-vars*/
-/*eslint-disable no-unused-vars*/
 var Codeground = function () {
     function Codeground(opts) {
         _classCallCheck(this, Codeground);
@@ -187,8 +186,8 @@ var Codeground = function () {
             var header = document.createElement('h2');
             header.textContent = editor;
             header.style.margin = 0;
-            header.style.paddingTop = '10px';
-            header.style.paddingBottom = '10px';
+            header.style.padding = '10px';
+            header.style.backgroundColor = '#eee';
             div.appendChild(header);
 
             var textarea = document.createElement('textarea');

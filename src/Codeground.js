@@ -169,8 +169,8 @@ class Codeground {
         var header = document.createElement('h2');
         header.textContent = editor;
         header.style.margin = 0;
-        header.style.paddingTop = '10px';
-        header.style.paddingBottom = '10px';
+        header.style.padding = '10px';
+        header.style.backgroundColor = '#eee';
         div.appendChild(header);
         
         var textarea = document.createElement('textarea');
