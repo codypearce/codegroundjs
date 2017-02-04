@@ -7,9 +7,11 @@ var opts = {
     layout: 'half',
     initialFull: 'editor',
     style: 'tabs',
-    initialTab: 'html',
+    initialTab: 'css',
     topbar: true,
     title: 'test'
 };
-var codeground = new Codeground('codeground', opts);
+var codeground = new Codeground(opts);
+
+codeground.initCodeground('codeground');
 codeground.preset('<h1>test</h1>', 'h1{color:red}', 'console.log("test")');

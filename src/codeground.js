@@ -1,175 +1,171 @@
 /*eslint-disable no-unused-vars*/
-function Codeground(id, opts) {
-    var htmlEditor,
-        htmlEditorCode,
-        cssEditor,
-        cssEditorCode,
-        jsEditor,
-        jsEditorCode,
-        editorsDiv,
-        outputDiv,
-        topBar,
-        editorHeight,
-        codeground;
-
-    // Default Options
-    var options = {
-        html: opts.html !== false,
-        css: opts.css !== false,
-        js: opts.js !== false,
-        height: opts.height || 500,
-        width: opts.width || 1000,
-        layout: opts.layout || 'half', // whether editor/output takes up full width or half
-        initialFull: opts.initialFull || 'output',
-        style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
-        initialTab: opts.initialTab || 'css',
-        topbar: opts.style === 'tabs' ? true : opts.topbar !== false, // Must show if tabs are selected
-        title: opts.title || 'Codeground'
-    };
-
-    initCodeground();
-
-    function initCodeground() {
+/*eslint-disable no-unused-vars*/
+class Codeground {
+    constructor(opts) {
+        this.htmlEditor;
+        this.htmlEditorCode;
+        this.cssEditor;
+        this.cssEditorCode;
+        this.jsEditor;
+        this.jsEditorCode;
+        this.editorsDiv;
+        this.outputDiv;
+        this.topBar;
+        this.editorHeight;
+        this.codeground;
+        
+        
+        this.tabs = this.tabs.bind(this);
+        this.render = this.render.bind(this);
+        // Default Options
+        this.options = {
+            html: opts.html !== false,
+            css: opts.css !== false,
+            js: opts.js !== false,
+            height: opts.height || 500,
+            width: opts.width || 1000,
+            layout: opts.layout || 'half', // whether editor/output takes up full width or half
+            initialFull: opts.initialFull || 'output',
+            style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
+            initialTab: opts.initialTab || 'css',
+            topbar: opts.style === 'tabs' ? true : opts.topbar !== false, // Must show if tabs are selected
+            title: opts.title || 'Codeground'
+        };
+    }
+    
+    initCodeground(id) {
         if(id) {
-            codeground = document.getElementById(id);
+            this.codeground = document.getElementById(id);
         } else {
-            codeground = document.getElementById('codeground');
+            this.codeground = document.getElementById('codeground');
         }
-        codeground.style.height = options.height + 'px';
-        codeground.style.width = options.width + 'px';
-        codeground.style.border = '1px solid #eee';
+        this.codeground.style.height = this.options.height + 'px';
+        this.codeground.style.width = this.options.width + 'px';
+        this.codeground.style.border = '1px solid #eee';
 
-        if(options.topbar) {
-            createTopBar(options.title);
+        if(this.options.topbar) {
+            this.createTopBar(this.options.title);
         }
 
         // Initialize editors
-        editorsDiv = document.createElement('div');
-        editorsDiv.className += 'editors half';
-        codeground.appendChild(editorsDiv);
+        this.editorsDiv = document.createElement('div');
+        this.editorsDiv.className += 'editors half';
+        this.codeground.appendChild(this.editorsDiv);
 
         // Initialize output
-        outputDiv = document.createElement('div');
-        outputDiv.className += 'output half';
-        codeground.appendChild(outputDiv);
+        this.outputDiv = document.createElement('div');
+        this.outputDiv.className += 'output half';
+        this.codeground.appendChild(this.outputDiv);
 
-        let topBarHeight = topBar.style.height.slice(0, -2);
-        editorHeight = options.height - topBarHeight; // shorter by the height of the topbar
+        let topBarHeight = this.topBar.style.height.slice(0, -2);
+        this.editorHeight = this.options.height - topBarHeight; // shorter by the height of the topbar
 
         // Layouts: half(split 50%) or full
-        if(options.layout === 'half') {
-            editorsDiv.style.height = editorHeight + 'px';
-            editorsDiv.style.width = (options.width / 2) + 'px';
-            editorsDiv.style.float = 'left';
-            outputDiv.style.height = editorHeight + 'px';
-            outputDiv.style.width = (options.width / 2) - 1 + 'px'; // 1px less to make room for divider
-            outputDiv.style.borderLeft = '1px solid #eee';
-            outputDiv.style.float = 'left';
-        } else if (options.layout === 'full') {
-            editorsDiv.style.height = editorHeight + 'px';
-            editorsDiv.style.width = options.width + 'px';
-            outputDiv.style.height = editorHeight + 'px';
-            outputDiv.style.width = options.width  + 'px';
+        if(this.options.layout === 'half') {
+            this.editorsDiv.style.height = this.editorHeight + 'px';
+            this.editorsDiv.style.width = (this.options.width / 2) + 'px';
+            this.editorsDiv.style.float = 'left';
+            this.outputDiv.style.height = this.editorHeight + 'px';
+            this.outputDiv.style.width = (this.options.width / 2) - 1 + 'px'; // 1px less to make room for divider
+            this.outputDiv.style.borderLeft = '1px solid #eee';
+            this.outputDiv.style.float = 'left';
+        } else if (this.options.layout === 'full') {
+            this.editorsDiv.style.height = this.editorHeight + 'px';
+            this.editorsDiv.style.width = this.options.width + 'px';
+            this.outputDiv.style.height = this.editorHeight + 'px';
+            this.outputDiv.style.width = this.options.width  + 'px';
 
-            if(options.initialFull === 'output') {
-                editorsDiv.style.display = 'none';
+            if(this.options.initialFull === 'output') {
+                this.editorsDiv.style.display = 'none';
             } else {
-                outputDiv.style.display =  'none';
+                this.outputDiv.style.display =  'none';
             }
         }
 
 
         // Create all three Editors
-        createEditor('html', editorsDiv);
-        htmlEditor = document.querySelector('#html');
-        htmlEditorCode = document.querySelector('#html textarea');
+        this.createEditor('html', this.editorsDiv);
+        this.htmlEditor = document.querySelector('#html');
+        this.htmlEditorCode = document.querySelector('#html textarea');
 
 
-        createEditor('css', editorsDiv);
-        cssEditor = document.querySelector('#css');
-        cssEditorCode = document.querySelector('#css textarea');
+        this.createEditor('css', this.editorsDiv);
+        this.cssEditor = document.querySelector('#css');
+        this.cssEditorCode = document.querySelector('#css textarea');
 
 
-        createEditor('js', editorsDiv);
-        jsEditor = document.querySelector('#js');
-        jsEditorCode = document.querySelector('#js textarea');
+        this.createEditor('js', this.editorsDiv);
+        this.jsEditor = document.querySelector('#js');
+        this.jsEditorCode = document.querySelector('#js textarea');
 
     
-        keyupRender(htmlEditorCode);
-        keyupRender(cssEditorCode);
-        keyupRender(jsEditorCode);
+        this.keyupRender(this.htmlEditorCode);
+        this.keyupRender(this.cssEditorCode);
+        this.keyupRender(this.jsEditorCode);
 
         // Create and add the iframe to the document
         var iframe = document.createElement('iframe');
         iframe.style.width = '100%';
         iframe.style.height = '100%';
         iframe.style.border = 'none';
-        outputDiv.appendChild(iframe);
+        this.outputDiv.appendChild(iframe);
 
 
-        if(!options.html) {
+        if(!this.options.html) {
             document.querySelector('#html').style.display = 'none';
         }
-        if(!options.css) {
+        if(!this.options.css) {
             document.querySelector('#css').style.display = 'none';
         }
-        if(!options.js) {
+        if(!this.options.js) {
             document.querySelector('#js').style.display = 'none';
         }
 
-        if(options.style === 'tabs') {
-            if(options.html) {
-                createTabBtn('HTML');
+        if(this.options.style === 'tabs') {
+            if(this.options.html) {
+                this.createTabBtn('HTML');
                 var htmlBtn = document.getElementById('htmlBtn');
-                htmlBtn.addEventListener('click', function() {
-                    tabs('html');
-                });
+                htmlBtn.addEventListener('click', () => this.tabs('html'));
             }
-            if(options.css) {
-                createTabBtn('CSS');
+            if(this.options.css) {
+                this.createTabBtn('CSS');
                 var cssBtn = document.getElementById('cssBtn');
-                cssBtn.addEventListener('click', function() {
-                    tabs('css');
-                });
+                cssBtn.addEventListener('click', () => this.tabs('css'));
             }
-            if(options.js) {
-                createTabBtn('JS');
+            if(this.options.js) {
+                this.createTabBtn('JS');
                 var jsBtn = document.getElementById('jsBtn');
-                jsBtn.addEventListener('click', function() {
-                    tabs('js');
-                });
+                jsBtn.addEventListener('click', () => this.tabs('js'));
             }
-            createTabBtn('Result');
+            this.createTabBtn('Result');
                 var resultBtn = document.getElementById('resultBtn');
-                resultBtn.addEventListener('click', function() {
-                    tabs('result');
-            });
+                resultBtn.addEventListener('click', () => this.tabs('result'));
 
-            tabs(options.initialTab);
+            this.tabs(this.options.initialTab);
         } else {
-            htmlEditor.style.height = '33%';
-            cssEditor.style.height = '33%';
-            jsEditor.style.height = '33%';
+            this.htmlEditor.style.height = '33%';
+            this.cssEditor.style.height = '33%';
+            this.jsEditor.style.height = '33%';
         }
     }
 
     // Public Functions for more options
-    this.preset = function(presetHTML, presetCSS, presetJS) {
+    preset(presetHTML, presetCSS, presetJS) {
         if(presetHTML)
-            htmlEditorCode.value += presetHTML;
+            this.htmlEditorCode.value += presetHTML;
         if(presetCSS)
-            cssEditorCode.value += presetCSS;
+            this.cssEditorCode.value += presetCSS;
         if(presetJS)
-            jsEditorCode.value += presetJS;
-        render();
-    };
+            this.jsEditorCode.value += presetJS;
+        this.render();
+    }
 
     // Functions
-    function createEditor(editor) {
+    createEditor(editor) {
         var div = document.createElement('div');
         div.id = editor;
         div.className += 'editor';
-        editorsDiv.appendChild(div);
+        this.editorsDiv.appendChild(div);
 
         var header = document.createElement('h2');
         header.textContent = editor;
@@ -180,7 +176,7 @@ function Codeground(id, opts) {
         
         var textarea = document.createElement('textarea');
         textarea.style.width = '100%';
-        textarea.style.height = (editorHeight - 50) + 'px';
+        textarea.style.height = (this.editorHeight - 50) + 'px';
         textarea.style.boxSizing = 'border-box';
         textarea.style.border = 'none';
         textarea.style.resize = 'none';
@@ -192,13 +188,13 @@ function Codeground(id, opts) {
         div.appendChild(textarea);
     }
 
-    function createTopBar(barTitle) {
-        topBar = document.createElement('div');
-        topBar.id = 'topBar';
-        topBar.style.height = '50px';
-        topBar.style.width = '100%';
-        topBar.style.backgroundColor = '#b7b4b3';
-        codeground.appendChild(topBar);
+    createTopBar(barTitle) {
+        this.topBar = document.createElement('div');
+        this.topBar.id = 'topBar';
+        this.topBar.style.height = '50px';
+        this.topBar.style.width = '100%';
+        this.topBar.style.backgroundColor = '#b7b4b3';
+        this.codeground.appendChild(this.topBar);
 
         var title = document.createElement('h2');
         title.textContent = barTitle;
@@ -208,10 +204,10 @@ function Codeground(id, opts) {
         title.style.display = 'inline';
         title.style.float = 'right';
         title.style.margin = 0;
-        topBar.appendChild(title);
+        this.topBar.appendChild(title);
     }
 
-    function createTabBtn(name) {
+    createTabBtn(name) {
         var btn = document.createElement('button');
         btn.id = name.toLowerCase() + 'Btn';
         btn.textContent = name;
@@ -235,35 +231,33 @@ function Codeground(id, opts) {
         topBar.appendChild(btn);
     }
 
-    function tabs(initial) {
+    tabs(initial) {
         if(initial === 'html') {
-            htmlEditor.style.display = 'block';
-            htmlEditor.style.height = '100%';
-            cssEditor.style.display = 'none';
-            jsEditor.style.display = 'none';
+            this.htmlEditor.style.display = 'block';
+            this.htmlEditor.style.height = '100%';
+            this.cssEditor.style.display = 'none';
+            this.jsEditor.style.display = 'none';
         } else if(initial === 'css') {
-            htmlEditor.style.display = 'none';
-            cssEditor.style.display = 'block';
-            cssEditor.style.height = '100%';
-            jsEditor.style.display = 'none';
+            this.htmlEditor.style.display = 'none';
+            this.cssEditor.style.display = 'block';
+            this.cssEditor.style.height = '100%';
+            this.jsEditor.style.display = 'none';
         } else if(initial === 'js') {
-            htmlEditor.style.display = 'none';
-            cssEditor.style.display = 'none';
-            jsEditor.style.display = 'block';
-            jsEditor.style.height = '100%';
+            this.htmlEditor.style.display = 'none';
+            this.cssEditor.style.display = 'none';
+            this.jsEditor.style.display = 'block';
+            this.jsEditor.style.height = '100%';
         }
         if(initial === 'result') {
-            outputDiv.style.display === 'none' ? outputDiv.style.display = 'block' : outputDiv.style.display = 'none';
+            this.outputDiv.style.display === 'none' ? this.outputDiv.style.display = 'block' : this.outputDiv.style.display = 'none';
         }
     }
-    function keyupRender(editor) {
-        editor.addEventListener('keyup', function() {
-            render();
-        }, false);
+    keyupRender(editor) {
+        editor.addEventListener('keyup', () => this.render() );
     }
 
-    function render() {
-        var source = prepareSource();
+    render() {
+        var source = this.prepareSource();
 
         var iframe = document.querySelector('.output iframe'),
             iframe_doc = iframe.contentDocument;
@@ -274,10 +268,10 @@ function Codeground(id, opts) {
     }
 
 
-    function prepareSource() {
-        var html = htmlEditorCode.value,
-            css = cssEditorCode.value,
-            js = jsEditorCode.value,
+    prepareSource() {
+        var html = this.htmlEditorCode.value,
+            css = this.cssEditorCode.value,
+            js = this.jsEditorCode.value,
             src = '';
 
         var baseTemplate =
