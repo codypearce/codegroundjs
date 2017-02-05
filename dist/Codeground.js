@@ -72,24 +72,9 @@ var Codeground = function () {
 
             // Layouts: half(split 50%) or full
             if (this.options.layout === 'half') {
-                this.editorsDiv.style.height = this.editorHeight + 'px';
-                this.editorsDiv.style.width = this.options.width / 2 + 'px';
-                this.editorsDiv.style.float = 'left';
-                this.outputDiv.style.height = this.editorHeight + 'px';
-                this.outputDiv.style.width = this.options.width / 2 - 1 + 'px'; // 1px less to make room for divider
-                this.outputDiv.style.borderLeft = '1px solid #eee';
-                this.outputDiv.style.float = 'left';
+                this.halfWidth();
             } else if (this.options.layout === 'full') {
-                this.editorsDiv.style.height = this.editorHeight + 'px';
-                this.editorsDiv.style.width = this.options.width + 'px';
-                this.outputDiv.style.height = this.editorHeight + 'px';
-                this.outputDiv.style.width = this.options.width + 'px';
-
-                if (this.options.initialFull === 'output') {
-                    this.editorsDiv.style.display = 'none';
-                } else {
-                    this.outputDiv.style.display = 'none';
-                }
+                this.fullWidth(this.options.initialFull);
             }
 
             // Create all three Editors
@@ -252,24 +237,92 @@ var Codeground = function () {
         key: 'tabs',
         value: function tabs(initial) {
             if (initial === 'html') {
-                this.htmlEditor.style.display = 'block';
-                this.htmlEditor.style.height = '100%';
-                this.cssEditor.style.display = 'none';
-                this.jsEditor.style.display = 'none';
+                if (this.htmlEditor.style.display == 'block') {
+                    this.htmlEditor.style.display = 'none';
+                    this.fullWidth('output');
+                } else if (this.editorsDiv.style.display == 'none') {
+                    this.htmlEditor.style.display = 'block';
+                    this.editorsDiv.style.display = 'block';
+                    this.halfWidth();
+                } else {
+                    this.htmlEditor.style.display = 'block';
+                    this.htmlEditor.style.height = '100%';
+                    this.cssEditor.style.display = 'none';
+                    this.jsEditor.style.display = 'none';
+                }
             } else if (initial === 'css') {
-                this.htmlEditor.style.display = 'none';
-                this.cssEditor.style.display = 'block';
-                this.cssEditor.style.height = '100%';
-                this.jsEditor.style.display = 'none';
+                if (this.cssEditor.style.display == 'block') {
+                    this.cssEditor.style.display = 'none';
+                    this.fullWidth('output');
+                } else if (this.editorsDiv.style.display == 'none') {
+                    this.cssEditor.style.display = 'block';
+                    this.editorsDiv.style.display = 'block';
+                    this.halfWidth();
+                } else {
+                    this.htmlEditor.style.display = 'none';
+                    this.cssEditor.style.display = 'block';
+                    this.cssEditor.style.height = '100%';
+                    this.jsEditor.style.display = 'none';
+                }
             } else if (initial === 'js') {
-                this.htmlEditor.style.display = 'none';
-                this.cssEditor.style.display = 'none';
-                this.jsEditor.style.display = 'block';
-                this.jsEditor.style.height = '100%';
+                if (this.jsEditor.style.display == 'block') {
+                    this.jsEditor.style.display = 'none';
+                    this.fullWidth('output');
+                } else if (this.editorsDiv.style.display == 'none') {
+                    this.jsEditor.style.display = 'block';
+                    this.editorsDiv.style.display = 'block';
+                    this.halfWidth();
+                } else {
+                    this.htmlEditor.style.display = 'none';
+                    this.cssEditor.style.display = 'none';
+                    this.jsEditor.style.display = 'block';
+                    this.jsEditor.style.height = '100%';
+                }
+            } else if (initial === 'result') {
+                if (this.outputDiv.style.display == 'block' && this.editorsDiv.style.display == 'none') {
+                    this.halfWidth();
+                    if (this.options.html) {
+                        this.tabs('html');
+                    } else if (this.options.css) {
+                        this.tabs('css');
+                    } else {
+                        this.tabs('js');
+                    }
+                } else if (this.outputDiv.style.display == 'block') {
+                    this.fullWidth();
+                } else {
+                    this.outputDiv.style.display = 'block';
+                    this.halfWidth();
+                }
             }
-            if (initial === 'result') {
-                this.outputDiv.style.display === 'none' ? this.outputDiv.style.display = 'block' : this.outputDiv.style.display = 'none';
+        }
+    }, {
+        key: 'fullWidth',
+        value: function fullWidth(display) {
+            this.editorsDiv.style.display = 'block';
+            this.outputDiv.style.display = 'block';
+            this.editorsDiv.style.height = this.editorHeight + 'px';
+            this.editorsDiv.style.width = this.options.width + 'px';
+            this.outputDiv.style.height = this.editorHeight + 'px';
+            this.outputDiv.style.width = this.options.width + 'px';
+            if (display === 'output') {
+                this.editorsDiv.style.display = 'none';
+            } else {
+                this.outputDiv.style.display = 'none';
             }
+        }
+    }, {
+        key: 'halfWidth',
+        value: function halfWidth() {
+            this.editorsDiv.style.display = 'block';
+            this.outputDiv.style.display = 'block';
+            this.editorsDiv.style.height = this.editorHeight + 'px';
+            this.editorsDiv.style.width = this.options.width / 2 + 'px';
+            this.editorsDiv.style.float = 'left';
+            this.outputDiv.style.height = this.editorHeight + 'px';
+            this.outputDiv.style.width = this.options.width / 2 - 1 + 'px'; // 1px less to make room for divider
+            this.outputDiv.style.borderLeft = '1px solid #eee';
+            this.outputDiv.style.float = 'left';
         }
     }, {
         key: 'keyupRender',
