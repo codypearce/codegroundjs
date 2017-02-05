@@ -32,11 +32,12 @@ Include the script on your page or include it in your build process
 
 ## Use
 
-To create a new playground you need to define an element with the id you want to target, then just pass in that id when you create a new codeground
+To create a new playground you need to define an element with the id you want to target, then create a new codeground instance passing the options you want, then init a codeground at that div
 ```
-var codeground = new Codeground('myid');
+var codeground = new Codeground(opts);
+codeground.initCodeground('codeground');
 ```
-This will create a new codeground in that div.
+This will create a new codeground in that div with your preset options.
 
 ## Options
 You can customize each instance by passing in an object with options
@@ -62,8 +63,21 @@ var opts = {
     title: 'Codeground' // optional title for the tab
 }
 
-var codeground = new Codeground('codeground', opts);
+var codeground = new Codeground(opts);
+codeground.initCodeground('codeground');
 ```
+
+## Use Cases
+Why not just use Codepen or JSFiddle? These are great services that are easy to use and offer many of useful features. However, there are a few advantages a hosted solution like this one has over a cloud solution:
+
+* Reduce HTTP requests
+* Track the playground in your codebase
+* More customizable
+* Don't have to clutter codepen account with simple demos
+* Not dependent on external service's uptime
+* Build on it to make something different
+
+On the other hand, cloud solutions have a plethora of other advantages also, such as ease of use, options to fork, and many others. If you're in doubt then use Codepen/JSFiddle.
 
 ### Browser Support
 Should work on all the latest browsers. Older versions will probably have issues.
