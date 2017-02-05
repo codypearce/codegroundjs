@@ -29,7 +29,7 @@ var Codeground = function () {
             css: opts.css !== false,
             js: opts.js !== false,
             height: opts.height || 500,
-            width: opts.width || 1000,
+            width: opts.width || '100%',
             layout: opts.layout || 'half', // whether editor/output takes up full width or half
             initialFull: opts.initialFull || 'output',
             style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
@@ -50,7 +50,7 @@ var Codeground = function () {
                 this.codeground = document.getElementById('codeground');
             }
             this.codeground.style.height = this.options.height + 'px';
-            this.codeground.style.width = this.options.width + 'px';
+            this.codeground.style.width = this.options.width;
             this.codeground.style.border = '1px solid #eee';
 
             if (this.options.topbar) {
@@ -280,7 +280,7 @@ var Codeground = function () {
                 }
             } else if (initial === 'result') {
                 if (this.outputDiv.style.display == 'block' && this.editorsDiv.style.display == 'none') {
-                    this.halfWidth();
+                    this.fullWidth();
                     if (this.options.html) {
                         this.tabs('html');
                     } else if (this.options.css) {
@@ -302,9 +302,9 @@ var Codeground = function () {
             this.editorsDiv.style.display = 'block';
             this.outputDiv.style.display = 'block';
             this.editorsDiv.style.height = this.editorHeight + 'px';
-            this.editorsDiv.style.width = this.options.width + 'px';
+            this.editorsDiv.style.width = '100%';
             this.outputDiv.style.height = this.editorHeight + 'px';
-            this.outputDiv.style.width = this.options.width + 'px';
+            this.outputDiv.style.width = '100%';
             if (display === 'output') {
                 this.editorsDiv.style.display = 'none';
             } else {
@@ -317,10 +317,10 @@ var Codeground = function () {
             this.editorsDiv.style.display = 'block';
             this.outputDiv.style.display = 'block';
             this.editorsDiv.style.height = this.editorHeight + 'px';
-            this.editorsDiv.style.width = this.options.width / 2 + 'px';
+            this.editorsDiv.style.width = '49%';
             this.editorsDiv.style.float = 'left';
             this.outputDiv.style.height = this.editorHeight + 'px';
-            this.outputDiv.style.width = this.options.width / 2 - 1 + 'px'; // 1px less to make room for divider
+            this.outputDiv.style.width = '50%'; // 1px less to make room for divider
             this.outputDiv.style.borderLeft = '1px solid #eee';
             this.outputDiv.style.float = 'left';
         }
