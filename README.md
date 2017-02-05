@@ -64,6 +64,10 @@ var opts = {
 
 var codeground = new Codeground('codeground', opts);
 ```
+
+### Browser Support
+Should work on all the latest browsers. Older versions will probably have issues.
+
 ### Todo
 
 * ES6
