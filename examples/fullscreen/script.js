@@ -2,13 +2,13 @@ var opts = {
     html: true,
     css: true,
     js: true,
-    height: 500,
+    height: 1000,
     width: '100%',
     layout: 'half',
     initialFull: 'editor',
-    style: 'tabs',
+    style: 'rows',
     initialTab: 'css',
-    fullscreen: false,
+    fullscreen: true,
     topbar: true,
     title: 'test'
 };

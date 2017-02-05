@@ -3,11 +3,12 @@ let opts = {
     css: true,
     js: true,
     height: 500,
-    width: 1000,
+    width: '100%',
     layout: 'half',
     initialFull: 'editor',
     style: 'tabs',
     initialTab: 'css',
+    fullscreen: false,
     topbar: true,
     title: 'test'
 };

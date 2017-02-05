@@ -34,6 +34,7 @@ var Codeground = function () {
             initialFull: opts.initialFull || 'output',
             style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
             initialTab: opts.initialTab || 'css',
+            fullscreen: opts.fullscreen || false,
             topbar: opts.style === 'tabs' ? true : opts.topbar !== false, // Must show if tabs are selected
             title: opts.title || 'Codeground'
         };
@@ -145,6 +146,17 @@ var Codeground = function () {
                 this.cssEditor.style.height = '33%';
                 this.jsEditor.style.height = '33%';
             }
+            if (this.options.fullscreen) {
+                this.codeground.style.border = 'none';
+                this.codeground.style.height = '100%';
+                this.topBar.style.height = '5%';
+                this.editorsDiv.style.height = '94%';
+                this.outputDiv.style.height = '94%';
+                var textareas = document.querySelectorAll('textarea');
+                textareas.forEach(function (a) {
+                    return a.style.height = '100%';
+                });
+            }
         }
 
         // Public Functions for more options
@@ -168,20 +180,23 @@ var Codeground = function () {
             div.className += 'editor';
             this.editorsDiv.appendChild(div);
 
-            var header = document.createElement('h2');
+            var header = document.createElement('h3');
             header.textContent = editor;
             header.style.margin = 0;
             header.style.padding = '10px';
             header.style.backgroundColor = '#eee';
+            header.style.position = 'relative';
             div.appendChild(header);
 
             var textarea = document.createElement('textarea');
             textarea.style.width = '100%';
-            textarea.style.height = this.editorHeight - 50 + 'px';
+            textarea.style.height = '100%';
             textarea.style.boxSizing = 'border-box';
             textarea.style.border = 'none';
             textarea.style.resize = 'none';
             textarea.style.padding = '10px';
+            textarea.style.marginTop = '-42px';
+            textarea.style.paddingTop = '52px';
             textarea.addEventListener('focus', function () {
                 this.style.outline = 'none';
             });

@@ -47,14 +47,16 @@ var opts = {
     css: true, // if set false on tabs it hides the button
     js: true,
 
-    height: 500, // Default height and width
-    width: 1000,
+    height: 500, // must be number
+    width: 100%, // must be percent
 
     layout: 'half', // whether editor/output takes up full width or half
     initialFull: 'editors', // this sets the initial view if you choose layout full
 
     style: 'rows', // Toggle between rows and tabs view
     initialTab: 'html', // if tabs are selected this selects the initial shown tab
+    
+    fullscreen: false, // html, body, and container must be 100% also
 
     topbar: true, // this sets a top bar, required for the tabs view
     title: 'Codeground' // optional title for the tab
