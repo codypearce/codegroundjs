@@ -41,6 +41,8 @@ class Codeground {
         this.codeground.style.height = this.options.height + 'px';
         this.codeground.style.width = this.options.width;
         this.codeground.style.border = '1px solid #eee';
+        this.codeground.style.fontFamily = 'helvetica, sans-serif';
+        this.codeground.style.boxShadow = '0 1px 3px 1px rgba(0,0,0, .1)';
 
         if(this.options.topbar) {
             this.createTopBar(this.options.title);
@@ -161,11 +163,13 @@ class Codeground {
         this.editorsDiv.appendChild(div);
 
         var header = document.createElement('h3');
-        header.textContent = editor;
+        header.textContent = editor.toUpperCase();
         header.style.margin = 0;
-        header.style.padding = '10px';
+        header.style.padding = '13px 10px';
         header.style.backgroundColor = '#eee';
         header.style.position ='relative';
+        header.style.color = '#777272';
+        header.style.fontSize = '14px';
         div.appendChild(header);
         
         var textarea = document.createElement('textarea');
@@ -189,12 +193,13 @@ class Codeground {
         this.topBar.id = 'topBar';
         this.topBar.style.height = '50px';
         this.topBar.style.width = '100%';
-        this.topBar.style.backgroundColor = '#b7b4b3';
+        this.topBar.style.backgroundColor = '#e2e2e2';
+        this.topBar.style.borderRadius = '3px 3px 0 0';
         this.codeground.appendChild(this.topBar);
 
         var title = document.createElement('h2');
         title.textContent = barTitle;
-        title.style.color = '#242121';
+        title.style.color = '#777272';
         title.style.textAlign ='right';
         title.style.padding = '10px';
         title.style.display = 'inline';
@@ -211,17 +216,18 @@ class Codeground {
         btn.style.width = '70px';
         btn.style.background = 'none';
         btn.style.border = 'none';
-        btn.style.borderRight = '1px solid white';
+        btn.style.borderRight = '1px solid #d6d6d6';
         btn.style.outline = 'none';
-        btn.style.color = '#242121';
+        btn.style.color = '#777272';
+        btn.style.fontSize = '12px';
         btn.addEventListener('mouseenter', function() {
-            btn.style.background = 'white';
+            btn.style.background = '242121';
             btn.style.color = 'black';
             btn.style.cursor = 'pointer';
         });
         btn.addEventListener('mouseleave', function() {
             btn.style.background = 'none';
-            btn.style.color = 'white';
+            btn.style.color = '#777272';
         });
         var topBar = document.getElementById('topBar');
         topBar.appendChild(btn);

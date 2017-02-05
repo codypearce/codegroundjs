@@ -10,7 +10,7 @@ var opts = {
     initialTab: 'html',
     fullscreen: false,
     topbar: true,
-    title: 'test'
+    title: 'Demo'
 };
 var codeground = new Codeground(opts);
 
