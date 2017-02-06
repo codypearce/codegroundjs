@@ -15,7 +15,7 @@ npm install --save codegroundjs
 
 Include the script on your page or include it in your build process
 ```
-<script src="/node_modules/codegroundjs/dist/script.min.js"></script>
+<script src="/node_modules/codegroundjs/dist/Codeground.min.js"></script>
 ```
 
 ## Features
@@ -65,11 +65,11 @@ codeground.initCodeground('codeground');
 ```
 Tabs:
 
-<img src="https://github.com/codypearce/codegroundjs/blob/master/assets/codeground.png" height="150">
+<img src="https://github.com/codypearce/codegroundjs/blob/master/assets/codeground.png" height="200">
 
 Rows:
 
-<img src="https://github.com/codypearce/codegroundjs/blob/master/assets/codeground-rows.png" height="150">
+<img src="https://github.com/codypearce/codegroundjs/blob/master/assets/codeground-rows.png" height="200">
 
 ## Use Cases
 Why not just use Codepen or JSFiddle? These are great services that are easy to use and offer many of useful features. However, there are a few advantages a hosted solution like this one has over a cloud solution:
