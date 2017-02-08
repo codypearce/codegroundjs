@@ -4,12 +4,14 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     babel = require('gulp-babel'),
     eslint = require('gulp-eslint'),
+    cleanCSS = require('gulp-clean-css'),
     uglify = require('gulp-uglify');
 
 gulp.task('css', function() {
 	return gulp.src('./src/*.css')
 	.pipe(gulp.dest('dist'))
 	.pipe(rename('codeground.min.css'))
+    .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(gulp.dest('dist'));
 });
 
