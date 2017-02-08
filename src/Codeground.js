@@ -175,10 +175,8 @@ class Codeground {
     createTopBar(barTitle) {
         this.topBar = document.createElement('div');
         this.topBar.id = 'topBar';
-        this.topBar.style.height = '50px';
-        this.topBar.style.width = '100%';
-        this.topBar.style.backgroundColor = '#e2e2e2';
-        this.topBar.style.borderRadius = '3px 3px 0 0';
+        this.topBar.className = 'topbar';
+
         this.codeground.appendChild(this.topBar);
 
         var title = document.createElement('h2');

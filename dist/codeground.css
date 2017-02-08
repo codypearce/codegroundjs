@@ -5,3 +5,9 @@
     font-family: helvetica, sans-serif;
     box-shadow: 0 1px 3px 1px rgba(0,0,0, .1);
 }
+.topbar {
+    height: 50px;
+    width: 100%;
+    background-color: #e2e2e2;
+    border-radius: 3px 3px 0 0;
+}
