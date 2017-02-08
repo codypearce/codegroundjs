@@ -1,17 +1,6 @@
 /*eslint-disable no-unused-vars*/
 class Codeground {
     constructor(opts) {
-        this.htmlEditor;
-        this.htmlEditorCode;
-        this.cssEditor;
-        this.cssEditorCode;
-        this.jsEditor;
-        this.jsEditorCode;
-        this.editorsDiv;
-        this.outputDiv;
-        this.topBar;
-        this.editorHeight;
-        this.codeground;
     
         this.tabs = this.tabs.bind(this);
         this.render = this.render.bind(this);
