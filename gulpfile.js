@@ -6,6 +6,14 @@ var gulp = require('gulp'),
     eslint = require('gulp-eslint'),
     uglify = require('gulp-uglify');
 
+gulp.task('css', function() {
+	return gulp.src('./src/*.css')
+	.pipe(gulp.dest('dist'))
+	.pipe(rename('codeground.min.css'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('js', ['lint'], function() {
     return gulp.src('./src/*.js')
     .pipe(babel())
@@ -22,8 +30,9 @@ gulp.task('lint', () => {
 		.pipe(eslint.failAfterError());
 });
 
-gulp.task('build', ['js']);
+gulp.task('build', ['css', 'js']);
 
 gulp.task('watch', ['build'], function() {
+    gulp.watch('./src/**/*.css', ['css']);
 	gulp.watch('./src/**/*.js', ['js']);
 });
