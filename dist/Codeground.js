@@ -38,11 +38,7 @@ var Codeground = function () {
             } else {
                 this.codeground = document.getElementById('codeground');
             }
-            this.codeground.style.height = this.options.height + 'px';
-            this.codeground.style.width = this.options.width;
-            this.codeground.style.border = '1px solid #eee';
-            this.codeground.style.fontFamily = 'helvetica, sans-serif';
-            this.codeground.style.boxShadow = '0 1px 3px 1px rgba(0,0,0, .1)';
+            this.codeground.className = 'codeground';
 
             if (this.options.topbar) {
                 this.createTopBar(this.options.title);

@@ -10,7 +10,6 @@ gulp.task('css', function() {
 	return gulp.src('./src/*.css')
 	.pipe(gulp.dest('dist'))
 	.pipe(rename('codeground.min.css'))
-    .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
 
