@@ -148,23 +148,10 @@ class Codeground {
 
         var header = document.createElement('h3');
         header.textContent = editor.toUpperCase();
-        header.style.margin = 0;
-        header.style.padding = '13px 10px';
-        header.style.backgroundColor = '#eee';
-        header.style.position ='relative';
-        header.style.color = '#777272';
-        header.style.fontSize = '14px';
         div.appendChild(header);
         
         var textarea = document.createElement('textarea');
-        textarea.style.width = '100%';
-        textarea.style.height = '100%';
-        textarea.style.boxSizing = 'border-box';
-        textarea.style.border = 'none';
-        textarea.style.resize = 'none';
-        textarea.style.padding = '10px';
-        textarea.style.marginTop = '-42px';
-        textarea.style.paddingTop = '52px';
+
         textarea.addEventListener('focus', function () {
             this.style.outline = 'none';
         });
