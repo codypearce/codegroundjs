@@ -11,3 +11,11 @@
     background-color: #e2e2e2;
     border-radius: 3px 3px 0 0;
 }
+.topbar h2 {
+    color: #777272;
+    text-align: right;
+    padding: 10px;
+    display: inline;
+    float: right;
+    margin: 0;
+}

@@ -181,12 +181,6 @@ class Codeground {
 
         var title = document.createElement('h2');
         title.textContent = barTitle;
-        title.style.color = '#777272';
-        title.style.textAlign ='right';
-        title.style.padding = '10px';
-        title.style.display = 'inline';
-        title.style.float = 'right';
-        title.style.margin = 0;
         this.topBar.appendChild(title);
     }
 
