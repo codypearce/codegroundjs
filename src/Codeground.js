@@ -75,9 +75,6 @@ class Codeground {
 
         // Create and add the iframe to the document
         var iframe = document.createElement('iframe');
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = 'none';
         this.outputDiv.appendChild(iframe);
 
 
@@ -151,7 +148,6 @@ class Codeground {
         div.appendChild(header);
         
         var textarea = document.createElement('textarea');
-
         textarea.addEventListener('focus', function () {
             this.style.outline = 'none';
         });

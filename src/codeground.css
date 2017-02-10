@@ -38,3 +38,12 @@
     margin-top: -42px;
     padding-top: 52px;
 }
+.editor textarea:focus {
+    outline: none;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
