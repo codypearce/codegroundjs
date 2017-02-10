@@ -148,10 +148,6 @@ class Codeground {
         div.appendChild(header);
         
         var textarea = document.createElement('textarea');
-        textarea.addEventListener('focus', function () {
-            this.style.outline = 'none';
-        });
-
         div.appendChild(textarea);
     }
 
@@ -170,24 +166,9 @@ class Codeground {
     createTabBtn(name) {
         var btn = document.createElement('button');
         btn.id = name.toLowerCase() + 'Btn';
+        btn.className = 'btn';
         btn.textContent = name;
-        btn.style.height = '50px';
-        btn.style.width = '70px';
-        btn.style.background = 'none';
-        btn.style.border = 'none';
-        btn.style.borderRight = '1px solid #d6d6d6';
-        btn.style.outline = 'none';
-        btn.style.color = '#777272';
-        btn.style.fontSize = '12px';
-        btn.addEventListener('mouseenter', function() {
-            btn.style.background = '242121';
-            btn.style.color = 'black';
-            btn.style.cursor = 'pointer';
-        });
-        btn.addEventListener('mouseleave', function() {
-            btn.style.background = 'none';
-            btn.style.color = '#777272';
-        });
+
         var topBar = document.getElementById('topBar');
         topBar.appendChild(btn);
     }

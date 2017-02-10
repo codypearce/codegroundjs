@@ -19,6 +19,21 @@
     float: right;
     margin: 0;
 }
+.topbar .btn {
+    height: 50px;
+    width: 70px;
+    background: none;
+    border: none;
+    border-right: 1px solid #d6d6d6;
+    outline: none;
+    color: #777272;
+    font-size: 12px;
+}
+.topbar .btn:hover {
+    background: #c7c7c7;
+    color: #e6e6e6;
+    cursor: pointer;
+}
 
 .editor h3 {
     margin: 0;
