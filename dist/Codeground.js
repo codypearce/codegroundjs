@@ -99,15 +99,7 @@ var Codeground = function () {
                 this.rows();
             }
             if (this.options.fullscreen) {
-                this.codeground.style.border = 'none';
-                this.codeground.style.height = '100%';
-                this.topBar.style.height = '5%';
-                this.editorsDiv.style.height = '94%';
-                this.outputDiv.style.height = '94%';
-                var textareas = document.querySelectorAll('textarea');
-                textareas.forEach(function (a) {
-                    return a.style.height = '100%';
-                });
+                this.fullScreen();
             }
         }
 
@@ -266,6 +258,19 @@ var Codeground = function () {
             this.htmlEditor.style.height = '33%';
             this.cssEditor.style.height = '33%';
             this.jsEditor.style.height = '33%';
+        }
+    }, {
+        key: 'fullScreen',
+        value: function fullScreen() {
+            this.codeground.style.border = 'none';
+            this.codeground.style.height = '100%';
+            this.topBar.style.height = '5%';
+            this.editorsDiv.style.height = '94%';
+            this.outputDiv.style.height = '94%';
+            var textareas = document.querySelectorAll('textarea');
+            textareas.forEach(function (a) {
+                return a.style.height = '100%';
+            });
         }
     }, {
         key: 'fullWidth',

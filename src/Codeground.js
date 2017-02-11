@@ -87,20 +87,16 @@ class Codeground {
         if(!this.options.js) {
             document.querySelector('#js').style.display = 'none';
         }
-
+        
+        // Layout
         if(this.options.style === 'tabs') {
             this.tabs();
         } else {
             this.rows();
         }
+        // Fullscreen or not
         if(this.options.fullscreen) {
-            this.codeground.style.border = 'none';
-            this.codeground.style.height = '100%';
-            this.topBar.style.height = '5%';
-            this.editorsDiv.style.height = '94%';
-            this.outputDiv.style.height = '94%';
-            let textareas = document.querySelectorAll('textarea');
-            textareas.forEach((a) => a.style.height = '100%');
+            this.fullScreen();
         }
     }
 
@@ -240,6 +236,15 @@ class Codeground {
         this.htmlEditor.style.height = '33%';
         this.cssEditor.style.height = '33%';
         this.jsEditor.style.height = '33%';
+    }
+    fullScreen() {
+        this.codeground.style.border = 'none';
+        this.codeground.style.height = '100%';
+        this.topBar.style.height = '5%';
+        this.editorsDiv.style.height = '94%';
+        this.outputDiv.style.height = '94%';
+        let textareas = document.querySelectorAll('textarea');
+        textareas.forEach((a) => a.style.height = '100%');
     }
     fullWidth(display) {
         this.editorsDiv.style.display = 'block';
