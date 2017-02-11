@@ -9,7 +9,7 @@ var Codeground = function () {
     function Codeground(opts) {
         _classCallCheck(this, Codeground);
 
-        this.tabs = this.tabs.bind(this);
+        this.tabsToggle = this.tabsToggle.bind(this);
         this.render = this.render.bind(this);
         // Default Options
         this.options = {
@@ -31,8 +31,6 @@ var Codeground = function () {
     _createClass(Codeground, [{
         key: 'initCodeground',
         value: function initCodeground(id) {
-            var _this = this;
-
             if (id) {
                 this.codeground = document.getElementById(id);
             } else {
@@ -96,38 +94,9 @@ var Codeground = function () {
             }
 
             if (this.options.style === 'tabs') {
-                if (this.options.html) {
-                    this.createTabBtn('HTML');
-                    var htmlBtn = document.getElementById('htmlBtn');
-                    htmlBtn.addEventListener('click', function () {
-                        return _this.tabs('html');
-                    });
-                }
-                if (this.options.css) {
-                    this.createTabBtn('CSS');
-                    var cssBtn = document.getElementById('cssBtn');
-                    cssBtn.addEventListener('click', function () {
-                        return _this.tabs('css');
-                    });
-                }
-                if (this.options.js) {
-                    this.createTabBtn('JS');
-                    var jsBtn = document.getElementById('jsBtn');
-                    jsBtn.addEventListener('click', function () {
-                        return _this.tabs('js');
-                    });
-                }
-                this.createTabBtn('Result');
-                var resultBtn = document.getElementById('resultBtn');
-                resultBtn.addEventListener('click', function () {
-                    return _this.tabs('result');
-                });
-
-                this.tabs(this.options.initialTab);
+                this.tabs();
             } else {
-                this.htmlEditor.style.height = '33%';
-                this.cssEditor.style.height = '33%';
-                this.jsEditor.style.height = '33%';
+                this.rows();
             }
             if (this.options.fullscreen) {
                 this.codeground.style.border = 'none';
@@ -196,7 +165,41 @@ var Codeground = function () {
         }
     }, {
         key: 'tabs',
-        value: function tabs(initial) {
+        value: function tabs() {
+            var _this = this;
+
+            if (this.options.html) {
+                this.createTabBtn('HTML');
+                var htmlBtn = document.getElementById('htmlBtn');
+                htmlBtn.addEventListener('click', function () {
+                    return _this.tabsToggle('html');
+                });
+            }
+            if (this.options.css) {
+                this.createTabBtn('CSS');
+                var cssBtn = document.getElementById('cssBtn');
+                cssBtn.addEventListener('click', function () {
+                    return _this.tabsToggle('css');
+                });
+            }
+            if (this.options.js) {
+                this.createTabBtn('JS');
+                var jsBtn = document.getElementById('jsBtn');
+                jsBtn.addEventListener('click', function () {
+                    return _this.tabsToggle('js');
+                });
+            }
+            this.createTabBtn('Result');
+            var resultBtn = document.getElementById('resultBtn');
+            resultBtn.addEventListener('click', function () {
+                return _this.tabsToggle('result');
+            });
+
+            this.tabsToggle(this.options.initialTab);
+        }
+    }, {
+        key: 'tabsToggle',
+        value: function tabsToggle(initial) {
             if (initial === 'html') {
                 if (this.htmlEditor.style.display == 'block') {
                     this.htmlEditor.style.display = 'none';
@@ -243,11 +246,11 @@ var Codeground = function () {
                 if (this.outputDiv.style.display == 'block' && this.editorsDiv.style.display == 'none') {
                     this.fullWidth();
                     if (this.options.html) {
-                        this.tabs('html');
+                        this.tabsToggle('html');
                     } else if (this.options.css) {
-                        this.tabs('css');
+                        this.tabsToggle('css');
                     } else {
-                        this.tabs('js');
+                        this.tabsToggle('js');
                     }
                 } else if (this.outputDiv.style.display == 'block') {
                     this.fullWidth();
@@ -256,6 +259,13 @@ var Codeground = function () {
                     this.halfWidth();
                 }
             }
+        }
+    }, {
+        key: 'rows',
+        value: function rows() {
+            this.htmlEditor.style.height = '33%';
+            this.cssEditor.style.height = '33%';
+            this.jsEditor.style.height = '33%';
         }
     }, {
         key: 'fullWidth',

@@ -1,7 +1,7 @@
 /*eslint-disable no-unused-vars*/
 class Codeground {
     constructor(opts) {
-        this.tabs = this.tabs.bind(this);
+        this.tabsToggle = this.tabsToggle.bind(this);
         this.render = this.render.bind(this);
         // Default Options
         this.options = {
@@ -89,30 +89,9 @@ class Codeground {
         }
 
         if(this.options.style === 'tabs') {
-            if(this.options.html) {
-                this.createTabBtn('HTML');
-                var htmlBtn = document.getElementById('htmlBtn');
-                htmlBtn.addEventListener('click', () => this.tabs('html'));
-            }
-            if(this.options.css) {
-                this.createTabBtn('CSS');
-                var cssBtn = document.getElementById('cssBtn');
-                cssBtn.addEventListener('click', () => this.tabs('css'));
-            }
-            if(this.options.js) {
-                this.createTabBtn('JS');
-                var jsBtn = document.getElementById('jsBtn');
-                jsBtn.addEventListener('click', () => this.tabs('js'));
-            }
-            this.createTabBtn('Result');
-                var resultBtn = document.getElementById('resultBtn');
-                resultBtn.addEventListener('click', () => this.tabs('result'));
-
-            this.tabs(this.options.initialTab);
+            this.tabs();
         } else {
-            this.htmlEditor.style.height = '33%';
-            this.cssEditor.style.height = '33%';
-            this.jsEditor.style.height = '33%';
+            this.rows();
         }
         if(this.options.fullscreen) {
             this.codeground.style.border = 'none';
@@ -172,8 +151,29 @@ class Codeground {
         var topBar = document.getElementById('topBar');
         topBar.appendChild(btn);
     }
+    tabs() {
+        if(this.options.html) {
+            this.createTabBtn('HTML');
+            var htmlBtn = document.getElementById('htmlBtn');
+            htmlBtn.addEventListener('click', () => this.tabsToggle('html'));
+        }
+        if(this.options.css) {
+            this.createTabBtn('CSS');
+            var cssBtn = document.getElementById('cssBtn');
+            cssBtn.addEventListener('click', () => this.tabsToggle('css'));
+        }
+        if(this.options.js) {
+            this.createTabBtn('JS');
+            var jsBtn = document.getElementById('jsBtn');
+            jsBtn.addEventListener('click', () => this.tabsToggle('js'));
+        }
+        this.createTabBtn('Result');
+        var resultBtn = document.getElementById('resultBtn');
+        resultBtn.addEventListener('click', () => this.tabsToggle('result'));
 
-    tabs(initial) {
+        this.tabsToggle(this.options.initialTab);
+    }
+    tabsToggle(initial) {
         if(initial === 'html') {
             if(this.htmlEditor.style.display == 'block') {
                 this.htmlEditor.style.display = 'none';
@@ -221,11 +221,11 @@ class Codeground {
             if(this.outputDiv.style.display == 'block' && this.editorsDiv.style.display == 'none') {
                 this.fullWidth();
                 if(this.options.html) {
-                    this.tabs('html');
+                    this.tabsToggle('html');
                 } else if(this.options.css) {
-                    this.tabs('css');
+                    this.tabsToggle('css');
                 } else {
-                    this.tabs('js');
+                    this.tabsToggle('js');
                 }
             } else if(this.outputDiv.style.display == 'block') {
                 this.fullWidth();
@@ -235,6 +235,11 @@ class Codeground {
             }
 
         }
+    }
+    rows() {
+        this.htmlEditor.style.height = '33%';
+        this.cssEditor.style.height = '33%';
+        this.jsEditor.style.height = '33%';
     }
     fullWidth(display) {
         this.editorsDiv.style.display = 'block';
