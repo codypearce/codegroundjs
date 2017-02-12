@@ -234,13 +234,7 @@ class Codeground {
         this.editorsDiv.className += ' rows';
     }
     fullScreen() {
-        this.codeground.style.border = 'none';
-        this.codeground.style.height = '100%';
-        this.topBar.style.height = '5%';
-        this.editorsDiv.style.height = '94%';
-        this.outputDiv.style.height = '94%';
-        let textareas = document.querySelectorAll('textarea');
-        textareas.forEach((a) => a.style.height = '100%');
+        this.codeground.className += ' fullscreen';
     }
     fullWidth(display) {
         this.editorsDiv.style.display = 'block';

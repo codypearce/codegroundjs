@@ -64,3 +64,20 @@ iframe {
     height: 100%;
     border: none;
 }
+
+.fullscreen {
+    border: none;
+    height: 100%;
+}
+.fullscreen .topBar {
+    height: 5%;
+}
+.fullscreen .editors {
+    height: 94%;
+}
+.fullscreen .output {
+    height: 94%;
+}
+.fullscreen .editors textarea {
+    height: 100%
+}

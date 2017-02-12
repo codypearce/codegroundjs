@@ -262,15 +262,7 @@ var Codeground = function () {
     }, {
         key: 'fullScreen',
         value: function fullScreen() {
-            this.codeground.style.border = 'none';
-            this.codeground.style.height = '100%';
-            this.topBar.style.height = '5%';
-            this.editorsDiv.style.height = '94%';
-            this.outputDiv.style.height = '94%';
-            var textareas = document.querySelectorAll('textarea');
-            textareas.forEach(function (a) {
-                return a.style.height = '100%';
-            });
+            this.codeground.className += ' fullscreen';
         }
     }, {
         key: 'fullWidth',
