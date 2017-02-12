@@ -49,16 +49,15 @@ class Codeground {
         if(this.options.layout === 'half') {
             this.halfWidth();
         } else if (this.options.layout === 'full') {
-            this.fullWidth(this.options.initialFull);        
-        }
-
+            this.fullWidth(this.options.initialFull);   
+        }     
+        
 
         // Create all three Editors
         this.createEditor('html', this.editorsDiv);
         this.htmlEditor = document.querySelector('#html');
         this.htmlEditorCode = document.querySelector('#html textarea');
-
-
+        
         this.createEditor('css', this.editorsDiv);
         this.cssEditor = document.querySelector('#css');
         this.cssEditorCode = document.querySelector('#css textarea');
@@ -68,7 +67,6 @@ class Codeground {
         this.jsEditor = document.querySelector('#js');
         this.jsEditorCode = document.querySelector('#js textarea');
 
-    
         this.keyupRender(this.htmlEditorCode);
         this.keyupRender(this.cssEditorCode);
         this.keyupRender(this.jsEditorCode);
@@ -233,9 +231,7 @@ class Codeground {
         }
     }
     rows() {
-        this.htmlEditor.style.height = '33%';
-        this.cssEditor.style.height = '33%';
-        this.jsEditor.style.height = '33%';
+        this.editorsDiv.className += ' rows';
     }
     fullScreen() {
         this.codeground.style.border = 'none';

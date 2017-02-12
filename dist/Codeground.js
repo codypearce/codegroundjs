@@ -93,11 +93,13 @@ var Codeground = function () {
                 document.querySelector('#js').style.display = 'none';
             }
 
+            // Layout
             if (this.options.style === 'tabs') {
                 this.tabs();
             } else {
                 this.rows();
             }
+            // Fullscreen or not
             if (this.options.fullscreen) {
                 this.fullScreen();
             }
@@ -255,9 +257,7 @@ var Codeground = function () {
     }, {
         key: 'rows',
         value: function rows() {
-            this.htmlEditor.style.height = '33%';
-            this.cssEditor.style.height = '33%';
-            this.jsEditor.style.height = '33%';
+            this.editorsDiv.className += ' rows';
         }
     }, {
         key: 'fullScreen',

@@ -6,7 +6,7 @@ var opts = {
     width: '100%',
     layout: 'half',
     initialFull: 'editor',
-    style: 'tabs',
+    style: 'rows',
     initialTab: 'html',
     fullscreen: false,
     topbar: true,
