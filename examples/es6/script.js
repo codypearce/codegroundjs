@@ -2,8 +2,6 @@ let opts = {
     html: true,
     css: true,
     js: true,
-    height: 500,
-    width: '100%',
     layout: 'half',
     initialFull: 'editor',
     style: 'tabs',

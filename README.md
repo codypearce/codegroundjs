@@ -45,9 +45,6 @@ var opts = {
     css: true, // if set false on tabs it hides the button
     js: true,
 
-    height: 500, // must be number
-    width: 100%, // must be percent
-
     layout: 'half', // whether editor/output takes up full width or half
     initialFull: 'editors', // this sets the initial view if you choose layout full
 

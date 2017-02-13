@@ -2,8 +2,6 @@ var opts = {
     html: true,
     css: true,
     js: true,
-    height: 1000,
-    width: '100%',
     layout: 'half',
     initialFull: 'editor',
     style: 'rows',

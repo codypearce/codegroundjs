@@ -8,8 +8,6 @@ class Codeground {
             html: opts.html !== false,
             css: opts.css !== false,
             js: opts.js !== false,
-            height: opts.height || 500,
-            width: opts.width || '100%',
             layout: opts.layout || 'half', // whether editor/output takes up full width or half
             initialFull: opts.initialFull || 'output',
             style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
@@ -227,7 +225,6 @@ class Codeground {
                 this.outputDiv.style.display = 'block';
                 this.halfWidth();
             }
-
         }
     }
     rows() {
