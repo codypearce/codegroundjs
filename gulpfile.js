@@ -5,8 +5,20 @@ var gulp = require('gulp'),
     babel = require('gulp-babel'),
     eslint = require('gulp-eslint'),
     cleanCSS = require('gulp-clean-css'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    webserver = require('gulp-webserver');
 
+
+
+ 
+gulp.task('webserver', function() {
+  gulp.src('dist')
+    .pipe(webserver({
+      livereload: true,
+      fallback: './examples/es5/index.html',
+      open: true
+    }));
+});
 gulp.task('css', function() {
 	return gulp.src('./src/*.css')
 	.pipe(gulp.dest('dist'))
@@ -33,7 +45,7 @@ gulp.task('lint', () => {
 
 gulp.task('build', ['css', 'js']);
 
-gulp.task('watch', ['build'], function() {
+gulp.task('watch', ['build', 'webserver'], function() {
     gulp.watch('./src/**/*.css', ['css']);
 	gulp.watch('./src/**/*.js', ['js']);
 });

@@ -103,17 +103,6 @@ var Codeground = function () {
             }
         }
 
-        // Public Functions for more options
-
-    }, {
-        key: 'preset',
-        value: function preset(presetHTML, presetCSS, presetJS) {
-            if (presetHTML) this.htmlEditorCode.value += presetHTML;
-            if (presetCSS) this.cssEditorCode.value += presetCSS;
-            if (presetJS) this.jsEditorCode.value += presetJS;
-            this.render();
-        }
-
         // Functions
 
     }, {
@@ -287,6 +276,38 @@ var Codeground = function () {
             editor.addEventListener('keyup', function () {
                 return _this2.render();
             });
+        }
+    }, {
+        key: 'getFile',
+        value: function getFile(file, editor) {
+            var _this3 = this;
+
+            var xhr = new window.XMLHttpRequest();
+            xhr.open('GET', file, true);
+            xhr.responseType = 'text';
+
+            xhr.onload = function () {
+                if (xhr.status === 200 || xhr.status == 0) {
+                    editor.value += xhr.responseText;
+                    _this3.render();
+                } else {
+                    /*eslint-disable no-console*/
+                    console.log(file, xhr);
+                }
+            };
+
+            xhr.onerror = function (err) {
+                /*eslint-disable no-console*/
+                console.log(err);
+            };
+            xhr.send();
+        }
+    }, {
+        key: 'preset',
+        value: function preset(presetHTML, presetCSS, presetJS) {
+            if (presetHTML) this.getFile(presetHTML, this.htmlEditorCode);
+            if (presetCSS) this.getFile(presetCSS, this.cssEditorCode);
+            if (presetJS) this.getFile(presetJS, this.jsEditorCode);
         }
     }, {
         key: 'render',

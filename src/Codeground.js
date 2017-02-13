@@ -96,17 +96,6 @@ class Codeground {
         }
     }
 
-    // Public Functions for more options
-    preset(presetHTML, presetCSS, presetJS) {
-        if(presetHTML)
-            this.htmlEditorCode.value += presetHTML;
-        if(presetCSS)
-            this.cssEditorCode.value += presetCSS;
-        if(presetJS)
-            this.jsEditorCode.value += presetJS;
-        this.render();
-    }
-
     // Functions
     createEditor(editor) {
         var div = document.createElement('div');
@@ -250,6 +239,38 @@ class Codeground {
     keyupRender(editor) {
         editor.addEventListener('keyup', () => this.render() );
     }
+    
+
+    getFile(file, editor) {
+        var xhr = new window.XMLHttpRequest();
+        xhr.open('GET', file, true);
+        xhr.responseType = 'text';
+
+        xhr.onload = () => {
+          if (xhr.status === 200 || xhr.status == 0) {
+            editor.value += xhr.responseText;
+            this.render();
+          } else {
+            /*eslint-disable no-console*/
+            console.log(file, xhr);
+          }
+      };
+        
+        xhr.onerror = function (err) {
+            /*eslint-disable no-console*/
+          console.log(err);
+      };
+        xhr.send();    
+    }
+    preset(presetHTML, presetCSS, presetJS) {
+        if(presetHTML)
+            this.getFile(presetHTML, this.htmlEditorCode);
+        if(presetCSS)
+            this.getFile(presetCSS, this.cssEditorCode);
+        if(presetJS)
+            this.getFile(presetJS, this.jsEditorCode);
+    }
+    
 
     render() {
         var source = this.prepareSource();
