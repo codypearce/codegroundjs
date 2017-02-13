@@ -100,3 +100,15 @@ iframe {
     border-left: 1px solid #eee;
     float: left;
 }
+@media all and (max-width: 425px) {
+    .halfwidth .editors {
+        width: 100%;
+        float:none;
+    }
+    .halfwidth .output {
+        width: 100%;
+        border: none;
+        float: none;
+    }
+    
+}
