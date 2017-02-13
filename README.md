@@ -15,6 +15,7 @@ npm install --save codegroundjs
 
 Include the script on your page or include it in your build process
 ```
+<link rel="stylesheet" href="/node_modules/codegroundjs/dist/codeground.min.css" >
 <script src="/node_modules/codegroundjs/dist/Codeground.min.js"></script>
 ```
 
