@@ -267,12 +267,8 @@ var Codeground = function () {
     }, {
         key: 'fullWidth',
         value: function fullWidth(display) {
-            this.editorsDiv.style.display = 'block';
-            this.outputDiv.style.display = 'block';
-            this.editorsDiv.style.height = this.editorHeight + 'px';
-            this.editorsDiv.style.width = '100%';
-            this.outputDiv.style.height = this.editorHeight + 'px';
-            this.outputDiv.style.width = '100%';
+            this.codeground.className += ' fullwidth';
+            this.codeground.classList.remove('halfwidth');
             if (display === 'output') {
                 this.editorsDiv.style.display = 'none';
             } else {
@@ -282,15 +278,8 @@ var Codeground = function () {
     }, {
         key: 'halfWidth',
         value: function halfWidth() {
-            this.editorsDiv.style.display = 'block';
-            this.outputDiv.style.display = 'block';
-            this.editorsDiv.style.height = this.editorHeight + 'px';
-            this.editorsDiv.style.width = '49.9%';
-            this.editorsDiv.style.float = 'left';
-            this.outputDiv.style.height = this.editorHeight + 'px';
-            this.outputDiv.style.width = '50%'; // 1px less to make room for divider
-            this.outputDiv.style.borderLeft = '1px solid #eee';
-            this.outputDiv.style.float = 'left';
+            this.codeground.className += ' halfwidth';
+            this.codeground.classList.remove('fullwidth');
         }
     }, {
         key: 'keyupRender',

@@ -81,3 +81,22 @@ iframe {
 .fullscreen .editors textarea {
     height: 100%
 }
+.fullwidth .editors, .fullwidth .output {
+    display: block;
+    height: 450px;
+    width: 100%;
+}
+
+.halfwidth .editors {
+    display: block;
+    height: 450px;
+    width: 49.9%;
+    float: left;
+}
+.halfwidth .output {
+    display: block;
+    height: 450px;
+    width: 50%;
+    border-left: 1px solid #eee;
+    float: left;
+}
