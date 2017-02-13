@@ -13,6 +13,4 @@ var opts = {
     topbar: true,
     title: 'Demo'
 };
-var codeground = new Codeground(opts);
-
-codeground.initCodeground('codeground');
+var codeground = new Codeground('codeground', opts);

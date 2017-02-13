@@ -1,6 +1,6 @@
 /*eslint-disable no-unused-vars*/
 class Codeground {
-    constructor(opts) {
+    constructor(id, opts) {
         this.tabsToggle = this.tabsToggle.bind(this);
         this.render = this.render.bind(this);
         // Default Options
@@ -19,14 +19,15 @@ class Codeground {
             topbar: opts.style === 'tabs' ? true : opts.topbar !== false, // Must show if tabs are selected
             title: opts.title || 'Codeground'
         };
-    }
-    
-    initCodeground(id) {
         if(id) {
             this.codeground = document.getElementById(id);
         } else {
             this.codeground = document.getElementById('codeground');
         }
+        this.initCodeground();
+    }
+    
+    initCodeground() {
         this.codeground.className = 'codeground';
 
         if(this.options.topbar) {
@@ -97,8 +98,7 @@ class Codeground {
         if(this.options.fullscreen) {
             this.fullScreen();
         }
-        
-        
+            
         if(this.options.html) {
             this.preset(this.options.html, this.htmlEditorCode);
         }

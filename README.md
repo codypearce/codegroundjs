@@ -29,21 +29,24 @@ Include the script on your page or include it in your build process
 
 ## Use
 
-To create a new playground you need to define an element with the id you want to target, then create a new codeground instance passing the options you want, then init a codeground at that div
+To create a new playground you need to define an element with the id you want to target, then create a new codeground instance passing in the id of the element you created and pass in the options you want, 
 ```
-var codeground = new Codeground(opts);
-codeground.initCodeground('codeground');
+var codeground = new Codeground('codeground', opts);
+
 ```
 This will create a new codeground in that div with your preset options.
 
 ## Options
-You can customize each instance by passing in an object with options
 
 ```
 var opts = {
-    html: true, // setting these to false hides that languages editor
-    css: true, // if set false on tabs it hides the button
-    js: true,
+    html: 'demo.html', // add preset html, css, js by adding a path to the file you want
+    css: 'demo.css',
+    js:  'demo.js',
+    
+    htmlShow: true, // setting these to false hides that languages editor
+    cssShow: true, // if set false on tabs it hides the button
+    jsShow: true,
 
     layout: 'half', // whether editor/output takes up full width or half
     initialFull: 'editors', // this sets the initial view if you choose layout full
@@ -57,8 +60,8 @@ var opts = {
     title: 'Codeground' // optional title for the tab
 }
 
-var codeground = new Codeground(opts);
-codeground.initCodeground('codeground');
+var codeground = new Codeground('codeground', opts);
+
 ```
 Tabs:
 

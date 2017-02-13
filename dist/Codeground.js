@@ -6,7 +6,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /*eslint-disable no-unused-vars*/
 var Codeground = function () {
-    function Codeground(opts) {
+    function Codeground(id, opts) {
         _classCallCheck(this, Codeground);
 
         this.tabsToggle = this.tabsToggle.bind(this);
@@ -27,16 +27,17 @@ var Codeground = function () {
             topbar: opts.style === 'tabs' ? true : opts.topbar !== false, // Must show if tabs are selected
             title: opts.title || 'Codeground'
         };
+        if (id) {
+            this.codeground = document.getElementById(id);
+        } else {
+            this.codeground = document.getElementById('codeground');
+        }
+        this.initCodeground();
     }
 
     _createClass(Codeground, [{
         key: 'initCodeground',
-        value: function initCodeground(id) {
-            if (id) {
-                this.codeground = document.getElementById(id);
-            } else {
-                this.codeground = document.getElementById('codeground');
-            }
+        value: function initCodeground() {
             this.codeground.className = 'codeground';
 
             if (this.options.topbar) {
