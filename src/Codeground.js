@@ -234,8 +234,7 @@ class Codeground {
         this.editorsDiv.className += ' rows';
     }
     fullScreen() {
-        this.codeground.className += ' fullscreen';
-        
+        this.codeground.className += ' fullscreen';        
     }
     fullWidth(display) {
         this.codeground.className += ' fullwidth';

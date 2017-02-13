@@ -65,22 +65,8 @@ iframe {
     border: none;
 }
 
-.fullscreen {
-    border: none;
-    height: 100%;
-}
-.fullscreen .topBar {
-    height: 5%;
-}
-.fullscreen .editors {
-    height: 94%;
-}
-.fullscreen .output {
-    height: 94%;
-}
-.fullscreen .editors textarea {
-    height: 100%
-}
+
+
 .fullwidth .editors, .fullwidth .output {
     display: block;
     height: 450px;
@@ -99,6 +85,22 @@ iframe {
     width: 50%;
     border-left: 1px solid #eee;
     float: left;
+}
+.fullscreen {
+    border: none;
+    height: 100%;
+}
+.fullscreen .topBar {
+    height: 5%;
+}
+.fullscreen .editors {
+    height: 94%;
+}
+.fullscreen .output {
+    height: 94%;
+}
+.fullscreen .editors textarea {
+    height: 100%
 }
 @media all and (max-width: 425px) {
     .halfwidth .editors {

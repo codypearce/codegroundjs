@@ -9,7 +9,7 @@ var opts = {
     initialFull: 'editor',
     style: 'tabs',
     initialTab: 'html',
-    fullscreen: false,
+    fullscreen: true,
     topbar: true,
     title: 'Demo'
 };
