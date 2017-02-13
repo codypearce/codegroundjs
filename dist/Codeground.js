@@ -13,9 +13,12 @@ var Codeground = function () {
         this.render = this.render.bind(this);
         // Default Options
         this.options = {
-            html: opts.html !== false,
-            css: opts.css !== false,
-            js: opts.js !== false,
+            html: opts.html,
+            css: opts.css,
+            js: opts.js,
+            htmlShow: opts.htmlShow !== false,
+            cssShow: opts.cssShow !== false,
+            jsShow: opts.jsShow !== false,
             layout: opts.layout || 'half', // whether editor/output takes up full width or half
             initialFull: opts.initialFull || 'output',
             style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
@@ -81,13 +84,13 @@ var Codeground = function () {
             var iframe = document.createElement('iframe');
             this.outputDiv.appendChild(iframe);
 
-            if (!this.options.html) {
+            if (!this.options.htmlShow) {
                 document.querySelector('#html').style.display = 'none';
             }
-            if (!this.options.css) {
+            if (!this.options.cssShow) {
                 document.querySelector('#css').style.display = 'none';
             }
-            if (!this.options.js) {
+            if (!this.options.jsShow) {
                 document.querySelector('#js').style.display = 'none';
             }
 
@@ -100,6 +103,16 @@ var Codeground = function () {
             // Fullscreen or not
             if (this.options.fullscreen) {
                 this.fullScreen();
+            }
+
+            if (this.options.html) {
+                this.preset(this.options.html, this.htmlEditorCode);
+            }
+            if (this.options.css) {
+                this.preset(this.options.css, this.cssEditorCode);
+            }
+            if (this.options.js) {
+                this.preset(this.options.js, this.jsEditorCode);
             }
         }
 
@@ -149,21 +162,21 @@ var Codeground = function () {
         value: function tabs() {
             var _this = this;
 
-            if (this.options.html) {
+            if (this.options.htmlShow) {
                 this.createTabBtn('HTML');
                 var htmlBtn = document.getElementById('htmlBtn');
                 htmlBtn.addEventListener('click', function () {
                     return _this.tabsToggle('html');
                 });
             }
-            if (this.options.css) {
+            if (this.options.cssShow) {
                 this.createTabBtn('CSS');
                 var cssBtn = document.getElementById('cssBtn');
                 cssBtn.addEventListener('click', function () {
                     return _this.tabsToggle('css');
                 });
             }
-            if (this.options.js) {
+            if (this.options.jsShow) {
                 this.createTabBtn('JS');
                 var jsBtn = document.getElementById('jsBtn');
                 jsBtn.addEventListener('click', function () {
@@ -278,8 +291,8 @@ var Codeground = function () {
             });
         }
     }, {
-        key: 'getFile',
-        value: function getFile(file, editor) {
+        key: 'preset',
+        value: function preset(file, editor) {
             var _this3 = this;
 
             var xhr = new window.XMLHttpRequest();
@@ -301,13 +314,6 @@ var Codeground = function () {
                 console.log(err);
             };
             xhr.send();
-        }
-    }, {
-        key: 'preset',
-        value: function preset(presetHTML, presetCSS, presetJS) {
-            if (presetHTML) this.getFile(presetHTML, this.htmlEditorCode);
-            if (presetCSS) this.getFile(presetCSS, this.cssEditorCode);
-            if (presetJS) this.getFile(presetJS, this.jsEditorCode);
         }
     }, {
         key: 'render',

@@ -1,16 +1,18 @@
-let opts = {
-    html: true,
-    css: true,
-    js: true,
+var opts = {
+    html: '/examples/es6/demo/demo.html',
+    css: '/examples/es6/demo/style.css',
+    js:  '/examples/es6/demo/script.js',
+    htmlShow: true,
+    cssShow: true,
+    jsShow: true,
     layout: 'half',
     initialFull: 'editor',
     style: 'tabs',
     initialTab: 'html',
     fullscreen: false,
     topbar: true,
-    title: 'test'
+    title: 'Demo'
 };
-let codeground = new Codeground(opts);
+var codeground = new Codeground(opts);
 
 codeground.initCodeground('codeground');
-codeground.preset('/examples/es5/demo/demo.html', '/examples/es5/demo/style.css', '/examples/es5/demo/script.js');

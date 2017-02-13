@@ -5,9 +5,12 @@ class Codeground {
         this.render = this.render.bind(this);
         // Default Options
         this.options = {
-            html: opts.html !== false,
-            css: opts.css !== false,
-            js: opts.js !== false,
+            html: opts.html,
+            css: opts.css,
+            js: opts.js,
+            htmlShow: opts.htmlShow !== false,
+            cssShow: opts.cssShow !== false,
+            jsShow: opts.jsShow !== false,
             layout: opts.layout || 'half', // whether editor/output takes up full width or half
             initialFull: opts.initialFull || 'output',
             style: opts.style || 'tabs', // Tabs show editors full side, row shows each editor on top of each other
@@ -74,13 +77,13 @@ class Codeground {
         this.outputDiv.appendChild(iframe);
 
 
-        if(!this.options.html) {
+        if(!this.options.htmlShow) {
             document.querySelector('#html').style.display = 'none';
         }
-        if(!this.options.css) {
+        if(!this.options.cssShow) {
             document.querySelector('#css').style.display = 'none';
         }
-        if(!this.options.js) {
+        if(!this.options.jsShow) {
             document.querySelector('#js').style.display = 'none';
         }
         
@@ -94,6 +97,17 @@ class Codeground {
         if(this.options.fullscreen) {
             this.fullScreen();
         }
+        
+        
+        if(this.options.html) {
+            this.preset(this.options.html, this.htmlEditorCode);
+        }
+        if(this.options.css) {
+            this.preset(this.options.css, this.cssEditorCode);
+        }
+        if(this.options.js) {
+            this.preset(this.options.js, this.jsEditorCode);
+        } 
     }
 
     // Functions
@@ -133,17 +147,17 @@ class Codeground {
         topBar.appendChild(btn);
     }
     tabs() {
-        if(this.options.html) {
+        if(this.options.htmlShow) {
             this.createTabBtn('HTML');
             var htmlBtn = document.getElementById('htmlBtn');
             htmlBtn.addEventListener('click', () => this.tabsToggle('html'));
         }
-        if(this.options.css) {
+        if(this.options.cssShow) {
             this.createTabBtn('CSS');
             var cssBtn = document.getElementById('cssBtn');
             cssBtn.addEventListener('click', () => this.tabsToggle('css'));
         }
-        if(this.options.js) {
+        if(this.options.jsShow) {
             this.createTabBtn('JS');
             var jsBtn = document.getElementById('jsBtn');
             jsBtn.addEventListener('click', () => this.tabsToggle('js'));
@@ -241,7 +255,7 @@ class Codeground {
     }
     
 
-    getFile(file, editor) {
+    preset(file, editor) {
         var xhr = new window.XMLHttpRequest();
         xhr.open('GET', file, true);
         xhr.responseType = 'text';
@@ -262,16 +276,7 @@ class Codeground {
       };
         xhr.send();    
     }
-    preset(presetHTML, presetCSS, presetJS) {
-        if(presetHTML)
-            this.getFile(presetHTML, this.htmlEditorCode);
-        if(presetCSS)
-            this.getFile(presetCSS, this.cssEditorCode);
-        if(presetJS)
-            this.getFile(presetJS, this.jsEditorCode);
-    }
     
-
     render() {
         var source = this.prepareSource();
 

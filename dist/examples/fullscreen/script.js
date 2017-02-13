@@ -1,16 +1,18 @@
 var opts = {
-    html: true,
-    css: true,
-    js: true,
+    html: '/examples/fullscreen/demo/demo.html',
+    css: '/examples/fullscreen/demo/style.css',
+    js:  '/examples/fullscreen/demo/script.js',
+    htmlShow: true,
+    cssShow: true,
+    jsShow: true,
     layout: 'half',
     initialFull: 'editor',
-    style: 'rows',
+    style: 'tabs',
     initialTab: 'html',
-    fullscreen: true,
+    fullscreen: false,
     topbar: true,
-    title: 'test'
+    title: 'Demo'
 };
 var codeground = new Codeground(opts);
 
 codeground.initCodeground('codeground');
-codeground.preset('/examples/es5/demo/demo.html', '/examples/es5/demo/style.css', '/examples/es5/demo/script.js');
