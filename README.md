@@ -4,7 +4,7 @@
 
 An HTML, CSS, and JS playground plugin for self-hosted demos or playgrounds. Similar to a self-hosted embedded Codepen or JSFiddle. Layout options for fullscreen mode, tabs, or rows. Toggle splitscreen view and full view to show off just results or a particular code snippet.
 
-<img src="https://github.com/codypearce/codegroundjs/blob/master/assets/codeground.png" height="350">
+<img src="/assets/codeground.png" height="350">
 
 ## Install
 
@@ -66,11 +66,11 @@ var codeground = new Codeground('codeground', opts);
 ```
 Tabs:
 
-<img src="https://github.com/codypearce/codegroundjs/blob/master/assets/codeground.png" height="200">
+<img src="/assets/codeground.png" height="200">
 
 Rows:
 
-<img src="https://github.com/codypearce/codegroundjs/blob/master/assets/codeground-rows.png" height="200">
+<img src="/assets/codeground-rows.png" height="200">
 
 ## Use Cases
 Why not just use Codepen or JSFiddle? These are great services that are easy to use and offer many of useful features. However, there are a few advantages a hosted solution like this one has over a cloud solution:
