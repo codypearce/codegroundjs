@@ -54,9 +54,6 @@ var Codeground = function () {
             this.outputDiv.className += 'output half';
             this.codeground.appendChild(this.outputDiv);
 
-            var topBarHeight = this.topBar.style.height.slice(0, -2);
-            this.editorHeight = this.options.height - topBarHeight; // shorter by the height of the topbar
-
             // Layouts: half(split 50%) or full
             if (this.options.layout === 'half') {
                 this.halfWidth();

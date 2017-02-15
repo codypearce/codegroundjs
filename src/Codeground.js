@@ -44,9 +44,6 @@ class Codeground {
         this.outputDiv.className += 'output half';
         this.codeground.appendChild(this.outputDiv);
 
-        let topBarHeight = this.topBar.style.height.slice(0, -2);
-        this.editorHeight = this.options.height - topBarHeight; // shorter by the height of the topbar
-
         // Layouts: half(split 50%) or full
         if(this.options.layout === 'half') {
             this.halfWidth();
@@ -76,7 +73,6 @@ class Codeground {
         // Create and add the iframe to the document
         var iframe = document.createElement('iframe');
         this.outputDiv.appendChild(iframe);
-
 
         if(!this.options.htmlShow) {
             document.querySelector('#html').style.display = 'none';
