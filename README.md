@@ -87,6 +87,10 @@ On the other hand, cloud solutions have a plethora of other advantages also, suc
 ### Browser Support
 Should work on all the latest browsers. Older versions will probably have issues.
 
+### Errors
+#### XMLHttpRequest cannot load
+This error appears in chrome when you're presetting one of the languages by including a file. This is a security feature in chrome to prevent loading files from different domains, to solve this simply start a server and serve your index and the demo files.
+
 ### Todo
 
 * ES6
