@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/codypearce/codegroundjs.git"
+    "url": "git+https://github.com/codypearce/codegroundjs.git"
   },
   "author": "",
   "license": "ISC",
