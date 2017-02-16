@@ -25,7 +25,6 @@ Include the script on your page or include it in your build process
 * Fullscreen mode
 * Preset values for demos
 * Disable a language
-* Pure js, no jquery or CSS
 * No dependencies
 
 ## Use
@@ -33,7 +32,6 @@ Include the script on your page or include it in your build process
 To create a new playground you need to define an element with the id you want to target, then create a new codeground instance passing in the id of the element you created and pass in the options you want, 
 ```
 var codeground = new Codeground('codeground', opts);
-
 ```
 This will create a new codeground in that div with your preset options.
 
