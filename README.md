@@ -1,6 +1,6 @@
 # Codeground.js
 
-[![Build Status](https://travis-ci.org/codypearce/codegroundjs.svg?branch=master)](https://travis-ci.org/codypearce/codegroundjs) [![npm version](https://badge.fury.io/js/codegroundjs.svg)](https://badge.fury.io/js/codegroundjs) 
+[![Build Status](https://travis-ci.org/codypearce/codegroundjs.svg?branch=master)](https://travis-ci.org/codypearce/codegroundjs) [![npm version](https://badge.fury.io/js/codegroundjs.svg)](https://badge.fury.io/js/codegroundjs)  [![Bower](https://img.shields.io/bower/v/bootstrap.svg)](https://bower.io/search/)
 
 An HTML, CSS, and JS playground plugin for self-hosted demos or playgrounds. Similar to a self-hosted embedded Codepen or JSFiddle. Layout options for fullscreen mode, tabs, or rows. Toggle splitscreen view and full view to show off just results or a particular code snippet.
 
@@ -11,6 +11,11 @@ An HTML, CSS, and JS playground plugin for self-hosted demos or playgrounds. Sim
 #### [NPM](https://www.npmjs.com/package/codegroundjs)
 ```
 npm install --save codegroundjs
+```
+
+### [Bower](https://bower.io/search/)
+```
+bower install --save codegroundjs
 ```
 
 Include the script on your page or include it in your build process
