@@ -70,7 +70,7 @@ Tabs:
 
 Rows:
 
-<img src="https://raw.githubusercontent.com/codypearce/codegroundjs/master/assets/codeground.png" height="200">
+<img src="https://raw.githubusercontent.com/codypearce/codegroundjs/master/assets/codeground-rows.png" height="200">
 
 ## Use Cases
 Why not just use Codepen or JSFiddle? These are great services that are easy to use and offer many of useful features. However, there are a few advantages a hosted solution like this one has over a cloud solution:
