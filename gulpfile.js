@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     babel = require('gulp-babel'),
     eslint = require('gulp-eslint'),
+    mocha = require('gulp-mocha'),
     cleanCSS = require('gulp-clean-css'),
     uglify = require('gulp-uglify'),
     webserver = require('gulp-webserver');
@@ -27,7 +28,7 @@ gulp.task('css', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('js', ['lint'], function() {
+gulp.task('js', ['lint', 'test'], function() {
     return gulp.src('./src/*.js')
     .pipe(babel())
     .pipe(gulp.dest('dist'))
@@ -41,6 +42,10 @@ gulp.task('lint', () => {
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
+});
+gulp.task('test', () => {
+	return gulp.src('./test/test.js', {read: false})
+		.pipe(mocha({reporter: 'spec'}));
 });
 
 gulp.task('build', ['css', 'js']);
