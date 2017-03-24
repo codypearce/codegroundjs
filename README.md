@@ -76,7 +76,7 @@ Rows:
 <img src="https://raw.githubusercontent.com/codypearce/codegroundjs/master/assets/codeground-rows.png" height="200">
 
 ## Use Cases
-Why not just use Codepen or JSFiddle? These are great services that are easy to use and offer many of useful features. However, there are a few advantages a hosted solution like this one has over a cloud solution:
+Why not just use Codepen or JSFiddle? These are great services that are easy to use and offer many useful features. However, there are a few advantages a hosted solution like this one has over a cloud solution:
 
 * Reduce HTTP requests
 * Track the playground in your codebase
@@ -93,8 +93,3 @@ Should work on all the latest browsers. Older versions will probably have issues
 ### Errors
 #### XMLHttpRequest cannot load
 This error appears in chrome when you're presetting one of the languages by including a file. This is a security feature in chrome to prevent loading files from different domains, to solve this simply start a server and serve your index and the demo files.
-
-### Todo
-
-* ES6
-* Tests
