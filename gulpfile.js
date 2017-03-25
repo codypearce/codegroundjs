@@ -15,26 +15,26 @@ var gulp = require('gulp'),
 gulp.task('webserver', function() {
   gulp.src('dist')
     .pipe(webserver({
-      livereload: true,
-      fallback: './examples/fullscreen/index.html',
-      open: true
+        livereload: true,
+        fallback: './examples/fullscreen/index.html',
+        open: true
     }));
 });
 gulp.task('css', function() {
 	return gulp.src('./src/*.css')
-	.pipe(gulp.dest('dist'))
-	.pipe(rename('codeground.min.css'))
-    .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist'))
+        .pipe(rename('codeground.min.css'))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('js', ['lint', 'test'], function() {
     return gulp.src('./src/*.js')
-    .pipe(babel())
-    .pipe(gulp.dest('dist'))
-    .pipe(rename('Codeground.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist'));
+        .pipe(babel())
+        .pipe(gulp.dest('dist'))
+        .pipe(rename('Codeground.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('lint', () => {
