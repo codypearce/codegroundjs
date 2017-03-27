@@ -1,0 +1,22 @@
+{
+  "name": "codegroundjs-gh",
+  "version": "1.0.0",
+  "description": "Github pages for Codegroundjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codypearce/codegroundjs.git"
+  },
+  "author": "Cody Pearce",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codypearce/codegroundjs/issues"
+  },
+  "homepage": "https://github.com/codypearce/codegroundjs#readme",
+  "dependencies": {
+    "codegroundjs": "^0.1.6"
+  }
+}
