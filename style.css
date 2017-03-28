@@ -1,6 +1,6 @@
 body {
     background: #ecf0f1;
-    color: #353535;
+    color: #4c4c4c;
     font-family: 'Open Sans', sans-serif;
 }
 .hero {
@@ -9,6 +9,12 @@ body {
 }
 h1 {
     font-size: 4em;
+}
+p {
+    width: 80%;
+    line-height: 1.5;
+    color: #737373;
+    font-size: 1.2em;
 }
 .left, .right {
     width: 50%;
