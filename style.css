@@ -1,6 +1,7 @@
 body {
     background: #ecf0f1;
     color: #353535;
+    font-family: 'Open Sans', sans-serif;
 }
 .left, .right {
     width: 50%;
