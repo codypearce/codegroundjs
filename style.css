@@ -19,6 +19,9 @@ p {
 .left, .right {
     width: 50%;
 }
+.btn-group {
+    margin: 15px 0;
+}
 .btn {
     text-decoration: none;
     display:inline-block;
@@ -29,6 +32,7 @@ p {
     height: 50px;
     border: 1px solid #222;
     color: #222;
+    border-radius: 5px;
 }
 .btn:hover {
     color: #eee;
