@@ -34,3 +34,14 @@ p {
     color: #eee;
     background: #222;
 }
+.codeblock {
+    margin: 10px 0;
+    background: #222;
+    padding: 15px 10px;
+    border-radius: 5px;
+    color: #eee;
+    width: 300px;
+}
+code {
+    display: block;
+}
