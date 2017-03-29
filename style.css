@@ -19,3 +19,14 @@ p {
 .left, .right {
     width: 50%;
 }
+.btn {
+    text-decoration: none;
+    display:inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    width: 150px;
+    height: 50px;
+    border: 1px solid #222;
+    color: #222;
+}
