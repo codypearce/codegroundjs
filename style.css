@@ -10,11 +10,12 @@ body {
 h1 {
     font-size: 4em;
 }
-p {
+.hero_text {
     width: 80%;
     line-height: 1.5;
     color: #737373;
     font-size: 1.2em;
+    margin-bottom: 30px;
 }
 .left, .right {
     width: 50%;
