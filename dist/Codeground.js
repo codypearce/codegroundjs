@@ -16,6 +16,9 @@ var Codeground = function () {
             html: opts.html,
             css: opts.css,
             js: opts.js,
+            htmlStr: opts.htmlStr || false,
+            cssStr: opts.cssStr || false,
+            jsStr: opts.jsStr || false,
             htmlShow: opts.htmlShow !== false,
             cssShow: opts.cssShow !== false,
             jsShow: opts.jsShow !== false,
@@ -103,13 +106,21 @@ var Codeground = function () {
                 this.fullScreen();
             }
 
-            if (this.options.html) {
+            if (this.options.htmlStr) {
+                /* eslint-disable no-console */
+                console.log('what');
+                this.presetString(this.options.htmlStr, this.htmlEditorCode);
+            } else if (this.options.html) {
                 this.preset(this.options.html, this.htmlEditorCode);
             }
-            if (this.options.css) {
+            if (this.options.cssStr) {
+                this.presetString(this.options.cssStr, this.cssEditorCode);
+            } else if (this.options.css) {
                 this.preset(this.options.css, this.cssEditorCode);
             }
-            if (this.options.js) {
+            if (this.options.jsStr) {
+                this.presetString(this.options.jsStr, this.jsEditorCode);
+            } else if (this.options.js) {
                 this.preset(this.options.js, this.jsEditorCode);
             }
         }
@@ -292,7 +303,7 @@ var Codeground = function () {
         key: 'presetString',
         value: function presetString(str, editor) {
             editor.value += str;
-            return this.render();
+            this.render();
         }
     }, {
         key: 'preset',
