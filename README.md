@@ -48,8 +48,8 @@ var opts = {
     css: 'demo.css',
     js:  'demo.js',
     
-    htmlStr: '<div>foo</div>', // add preset string values for html, css, js, this will override the file you provide
-    cssStr: '* { color: black}',
+    htmlStr: '<div>foo</div>', // add preset string values for html, css, or js
+    cssStr: '* { color: black}', // this will override the file you provide
     jsStr: 'console.log('test')', 
     
     htmlShow: true, // setting these to false hides that languages editor
