@@ -289,6 +289,12 @@ var Codeground = function () {
             });
         }
     }, {
+        key: 'presetString',
+        value: function presetString(str, editor) {
+            editor.value += str;
+            return this.render();
+        }
+    }, {
         key: 'preset',
         value: function preset(file, editor) {
             var _this3 = this;

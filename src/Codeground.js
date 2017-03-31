@@ -249,7 +249,10 @@ class Codeground {
         editor.addEventListener('keyup', () => this.render() );
     }
     
-
+    presetString(str, editor) {
+        editor.value += str;
+        return this.render();
+    }
     preset(file, editor) {
         var xhr = new window.XMLHttpRequest();
         xhr.open('GET', file, true);

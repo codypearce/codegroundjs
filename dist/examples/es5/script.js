@@ -1,5 +1,5 @@
 var opts = {
-    html: '/examples/es5/demo/demo.html',
+    html: '<div></div>',
     css: '/examples/es5/demo/style.css',
     js:  '/examples/es5/demo/script.js',
     htmlShow: true,

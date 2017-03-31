@@ -16,7 +16,7 @@ gulp.task('webserver', function() {
   gulp.src('dist')
     .pipe(webserver({
         livereload: true,
-        fallback: './examples/fullscreen/index.html',
+        fallback: './examples/es5/index.html',
         open: true
     }));
 });
