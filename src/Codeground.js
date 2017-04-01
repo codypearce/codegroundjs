@@ -309,7 +309,7 @@ class Codeground {
             '<html>\n\t' +
             '<head>\n\t\t' +
             '<meta charset=\'utf-8\'>\n\t\t' +
-            '<title>Test</title>\n\n\t\t\n\t' +
+            '<title>'+this.options.title+'</title>\n\n\t\t\n\t' +
             '</head>\n\t' +
             '<body>\n\t\n\t' +
             '</body>\n' +

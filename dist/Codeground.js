@@ -350,7 +350,7 @@ var Codeground = function () {
                 js = this.jsEditorCode.value,
                 src = '';
 
-            var baseTemplate = '<!doctype html>\n' + '<html>\n\t' + '<head>\n\t\t' + '<meta charset=\'utf-8\'>\n\t\t' + '<title>Test</title>\n\n\t\t\n\t' + '</head>\n\t' + '<body>\n\t\n\t' + '</body>\n' + '</html>';
+            var baseTemplate = '<!doctype html>\n' + '<html>\n\t' + '<head>\n\t\t' + '<meta charset=\'utf-8\'>\n\t\t' + '<title>' + this.options.title + '</title>\n\n\t\t\n\t' + '</head>\n\t' + '<body>\n\t\n\t' + '</body>\n' + '</html>';
 
             src = baseTemplate.replace('</body>', html + '</body>');
 
