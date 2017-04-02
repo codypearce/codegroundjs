@@ -54,3 +54,6 @@ code {
 .clear {
     clear: both;
 }
+.halfwidth .editors {
+    width: 49.8% !important;
+}
