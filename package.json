@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/codypearce/codegroundjs#readme",
   "dependencies": {
-    "codegroundjs": "^0.1.6"
+    "codegroundjs": "^0.1.7"
   }
 }
