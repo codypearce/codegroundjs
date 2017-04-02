@@ -19,6 +19,7 @@ h1 {
 }
 .left, .right {
     width: 50%;
+    float: left;
 }
 .btn-group {
     margin: 15px 0;
@@ -49,4 +50,7 @@ h1 {
 }
 code {
     display: block;
+}
+.clear {
+    clear: both;
 }
