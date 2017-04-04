@@ -57,3 +57,13 @@ code {
 .halfwidth .editors {
     width: 49.8% !important;
 }
+
+.features {
+    margin: 50px 0;
+}
+.featurerow {
+    margin: 20px 0;
+}
+.feature {
+    float: left;
+}
