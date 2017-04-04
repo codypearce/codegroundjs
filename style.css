@@ -59,11 +59,17 @@ code {
 }
 
 .features {
-    margin: 50px 0;
+    margin: 75px 0;
+    text-align: center;
+}
+.features h2 {
+    font-size: 38px;
 }
 .featurerow {
     margin: 20px 0;
 }
 .feature {
     float: left;
+    width: 32%;
+    text-align: center;
 }
