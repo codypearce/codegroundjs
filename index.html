@@ -101,6 +101,11 @@
                     var codeground = new Codeground('codeground', opts);
                 </code>
             </div>
+            <div class="errors">
+                <h2>Errors</h2>
+                <h4>XMLHttpRequest cannot load</h4>
+                <p>This error appears in chrome when you're presetting one of the languages by including a file. This is a security feature in chrome to prevent loading files from different domains, to solve this simply start a server and serve your index and the demo files. Or if you don't want to set up a server, simply pass your preset values as a string into htmlStr, cssStr, jsStr, rather than as a file.</p>
+            </div>
         </div>
         <script src="script.js"></script>
     </body>
