@@ -46,7 +46,15 @@ h1 {
     padding: 15px 10px;
     border-radius: 5px;
     color: #eee;
-    width: 300px;
+    width: 350px;
+}
+.codeblock2 {
+    margin: 10px 0;
+    background: #222;
+    padding: 15px 10px;
+    border-radius: 5px;
+    color: #eee;
+    width: 500px;
 }
 code {
     display: block;
