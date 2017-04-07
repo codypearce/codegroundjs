@@ -54,7 +54,7 @@ h1 {
     padding: 15px 10px;
     border-radius: 5px;
     color: #eee;
-    width: 500px;
+    width: auto;
 }
 code {
     display: block;

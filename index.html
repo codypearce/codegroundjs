@@ -73,32 +73,34 @@
             <div class="options">
                 <h2>Options</h2>
                 <code class="codeblock2">
-                    var opts = {
-                        html: 'demo.html', // add preset html, css, js by adding a path to the file you want
-                        css: 'demo.css',
-                        js:  'demo.js',
-                        
-                        htmlStr: '<div>foo</div>', // add preset string values for html, css, or js
-                        cssStr: '* { color: black}', // this will override the file you provide
-                        jsStr: 'console.log('test')', 
-                        
-                        htmlShow: true, // setting these to false hides that languages editor
-                        cssShow: true, // if set false on tabs it hides the button
-                        jsShow: true,
+                    <pre>
+var opts = {
+    html: 'demo.html', // add preset html, css, js by adding a path to the file you want
+    css: 'demo.css',
+    js:  'demo.js',
+    
+    htmlStr: '<div>foo</div>', // add preset string values for html, css, or js
+    cssStr: '* { color: black}', // this will override the file you provide
+    jsStr: 'console.log('test')', 
+    
+    htmlShow: true, // setting these to false hides that languages editor
+    cssShow: true, // if set false on tabs it hides the button
+    jsShow: true,
 
-                        layout: 'half', // whether editor/output takes up full width or half
-                        initialFull: 'editors', // this sets the initial view if you choose layout full
+    layout: 'half', // whether editor/output takes up full width or half
+    initialFull: 'editors', // this sets the initial view if you choose layout full
 
-                        style: 'rows', // Toggle between rows and tabs view
-                        initialTab: 'html', // if tabs are selected this selects the initial shown tab
-                        
-                        fullscreen: false, // html, body, and container must be 100% also
+    style: 'rows', // Toggle between rows and tabs view
+    initialTab: 'html', // if tabs are selected this selects the initial shown tab
+    
+    fullscreen: false, // html, body, and container must be 100% also
 
-                        topbar: true, // this sets a top bar, required for the tabs view
-                        title: 'Codeground' // optional title for the tab
-                    }
+    topbar: true, // this sets a top bar, required for the tabs view
+    title: 'Codeground' // optional title for the tab
+}
 
-                    var codeground = new Codeground('codeground', opts);
+var codeground = new Codeground('codeground', opts);
+                    </pre>        
                 </code>
             </div>
             <div class="errors">
