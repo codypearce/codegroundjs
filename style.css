@@ -7,6 +7,10 @@ body {
     width: 80%;
     margin: 75px auto;
 }
+.container {
+    width: 80%;
+    margin: 50px auto;
+}
 h1 {
     font-size: 4em;
 }
