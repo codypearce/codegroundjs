@@ -30,7 +30,13 @@ h1 {
     .left, .right{
         float: none;
         width: 100%;
-
+        text-align: center;
+    }
+    .left .hero_text {
+        margin: 10px auto 30px auto;
+    }
+    .left .codeblock {
+        margin: 10px auto;
     }
     .right {
         margin-top: 100px;
