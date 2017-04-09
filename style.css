@@ -25,6 +25,18 @@ h1 {
     width: 50%;
     float: left;
 }
+
+@media (max-width:1300px) {
+    .left, .right{
+        float: none;
+        width: 100%;
+
+    }
+    .right {
+        margin-top: 100px;
+    }
+}
+
 .btn-group {
     margin: 15px 0;
 }
