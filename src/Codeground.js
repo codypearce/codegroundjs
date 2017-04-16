@@ -99,8 +99,6 @@ class Codeground {
         }
         
         if(this.options.htmlStr) {
-            /* eslint-disable no-console */
-            console.log('what');
             this.presetString(this.options.htmlStr, this.htmlEditorCode);
         } else if(this.options.html) {
             this.preset(this.options.html, this.htmlEditorCode);
@@ -277,7 +275,7 @@ class Codeground {
             /*eslint-disable no-console*/
             console.log(file, xhr);
           }
-      };
+        };
         
         xhr.onerror = function (err) {
             /*eslint-disable no-console*/
